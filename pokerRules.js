@@ -10,28 +10,47 @@ var checkCards= new Promise(
     function(resolve,reject){
         i = 1
         json.partida.forEach(element => {
+            auxPair = 0
+            auxNumPaired = 0
             i++
-            pair = false
             element.jugadas.forEach(jugadores => {
-                jugadores.PUNTOS = 0
+                pair = false
+                doublePair = false
                 var cartas = jugadores.cartas
                 cartas.forEach(cardPicked => {
                     auxPair = 0
+                    found = false
                     cartas.forEach(cards => {
                         //Pareja
-                        if(cards.valor == cardPicked.valor){
-                            auxPair += 1
+                        if(cards!==cardPicked){
+                        if(cards.valor === cardPicked.valor){
+                            auxPair++
                         }
-                        if(auxPair == 2){
+                        if(auxPair == 1 && !found){
+                            auxNumPaired += 1
                             pair = true
+                            found = true
                         }
+    
+                        //Doble pareja
+                        if(auxNumPaired==3 && pair){
+                            doublePair = true
+                        }
+                    }
                     })
                 });
-                j=0
+                jugadores.PUNTOS = 0
+
                 //Pareja
                 if(pair){
-                    jugadores.PUNTOS += 2
+                    jugadores.PUNTOS = 2
                 }
+                //Doble pareja
+                if(pair && doublePair){
+                    jugadores.PUNTOS = 4
+                }
+
+                //Para comprobar que nadie tiene mas de 5 cartas
                 if(cartas.length != 5){
                     var reason = new Error("El jugador " + jugadores.jugador + " está haciendo trampas, tiene " + cartas.length + " cartas "
                     + " en la ronda " + i)
@@ -66,6 +85,18 @@ var showOff = function(json, winner){
     });
 }
 
+
+var pickAllCardsExcept = function(card, cards){
+    var res = []
+    i =0
+        cards.array.forEach(element => {
+            if(element!=card){
+                res[i]=element
+                i++
+            }
+        });
+        return res
+}
 
 var playGame = function(){
     checkCards.then(showOff(json)).then(function (fulflilled){   
