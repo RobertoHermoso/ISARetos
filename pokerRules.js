@@ -10,34 +10,66 @@ var checkCards= new Promise(
     function(resolve,reject){
         i = 1
         json.partida.forEach(element => {
+            //Para comprobar si hay una pareja
             auxPair = 0
+            //Para contar el número de parejas, se usa para comprobar la Doble Pareja
             auxNumPaired = 0
             i++
             element.jugadas.forEach(jugadores => {
-                pair = false
-                doublePair = false
+
+                pair =          false               //Par
+                doublePair =    false               //Doble par
+                trio =          false               //Trio
+                escalera =      false               //Escalera
+
                 var cartas = jugadores.cartas
+                var j = 0
+                var auxEscalera = 0
                 cartas.forEach(cardPicked => {
                     auxPair = 0
+                    auxTrio = 0
+
+                    //variable auxiliares para la escalera
+                    var valorSumado = cartas[j].valor
+                    valorSumado++
+                    if(j<4){
+                        //Comprobamos si el valor de la carta actual +1 es igual al valor del siguiente 
+                        if(valorSumado == cartas[j+1].valor){
+                            auxEscalera++
+                        }
+                    }
+                    j++
+                    //Variable auxiliar para comprobar que en esta iteración se ha encontrado una pareja
                     found = false
                     cartas.forEach(cards => {
                         //Pareja
-                        if(cards!==cardPicked){
+                        if(cards!==cardPicked){ //Con esta sentencia evitamos que se compare conismo mismo en la iteración
                         if(cards.valor === cardPicked.valor){
                             auxPair++
+                            auxTrio++
                         }
                         if(auxPair == 1 && !found){
                             auxNumPaired += 1
                             pair = true
                             found = true
                         }
-    
-                        //Doble pareja
+                        //Doble pareja, escojemos 3 porque el algoritmo puede contar 2 veces la misma pareja (en distinto orden)
                         if(auxNumPaired==3 && pair){
                             doublePair = true
                         }
+
+                        //Trio
+                        if(auxTrio==2){
+                            trio = true
+                        }
+
                     }
                     })
+
+                    //Escalera
+                    if(auxEscalera == 4){
+                        escalera = true
+                    }
                 });
                 jugadores.PUNTOS = 0
 
@@ -47,7 +79,15 @@ var checkCards= new Promise(
                 }
                 //Doble pareja
                 if(pair && doublePair){
+                    jugadores.PUNTOS = 3
+                }
+                //Trio
+                if(trio){
                     jugadores.PUNTOS = 4
+                }
+                 //Escalera
+                 if(escalera){
+                    jugadores.PUNTOS = 5
                 }
 
                 //Para comprobar que nadie tiene mas de 5 cartas
