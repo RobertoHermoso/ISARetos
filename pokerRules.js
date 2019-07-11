@@ -21,24 +21,36 @@ var checkCards= new Promise(
                 doublePair =    false               //Doble par
                 trio =          false               //Trio
                 escalera =      false               //Escalera
+                color =         false               //Color
 
                 var cartas = jugadores.cartas
                 var j = 0
                 var auxEscalera = 0
+                var auxColor = 0
                 cartas.forEach(cardPicked => {
                     auxPair = 0
                     auxTrio = 0
+
 
                     //variable auxiliares para la escalera
                     var valorSumado = cartas[j].valor
                     valorSumado++
                     if(j<4){
-                        //Comprobamos si el valor de la carta actual +1 es igual al valor del siguiente 
+                        //Comprobamos si el valor de la carta actual +1 es igual al valor del siguiente
+                        //TODO: Recuerda contar con las que no son numericas 
                         if(valorSumado == cartas[j+1].valor){
                             auxEscalera++
                         }
                     }
+                    //Comprobamos a partir de la segunda
+                    if(j>0){
+                        if(cartas[j].palo==cartas[j-1].palo){
+                        auxColor++
+                        }
+                    }
+
                     j++
+
                     //Variable auxiliar para comprobar que en esta iteración se ha encontrado una pareja
                     found = false
                     cartas.forEach(cards => {
@@ -70,6 +82,10 @@ var checkCards= new Promise(
                     if(auxEscalera == 4){
                         escalera = true
                     }
+                    //Color
+                    if(auxColor == 4){
+                        color = true
+                    }
                 });
                 jugadores.PUNTOS = 0
 
@@ -88,6 +104,10 @@ var checkCards= new Promise(
                  //Escalera
                  if(escalera){
                     jugadores.PUNTOS = 5
+                }
+                //Color
+                if(color){
+                    jugadores.PUNTOS = 6
                 }
 
                 //Para comprobar que nadie tiene mas de 5 cartas
