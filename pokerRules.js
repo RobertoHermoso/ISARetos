@@ -22,11 +22,13 @@ var checkCards= new Promise(
                 trio =          false               //Trio
                 escalera =      false               //Escalera
                 color =         false               //Color
+                poker =         false               //Poker
 
                 var cartas = jugadores.cartas
                 var j = 0
                 var auxEscalera = 0
                 var auxColor = 0
+                var auxPoker = 0
                 cartas.forEach(cardPicked => {
                     auxPair = 0
                     auxTrio = 0
@@ -47,6 +49,8 @@ var checkCards= new Promise(
                         if(cartas[j].palo==cartas[j-1].palo){
                         auxColor++
                         }
+                        if(cartas[j].valor==cartas[j-1].valor)
+                        auxPoker++
                     }
 
                     j++
@@ -86,6 +90,10 @@ var checkCards= new Promise(
                     if(auxColor == 4){
                         color = true
                     }
+                    //Poker
+                    if(auxPoker == 3){
+                        poker = true
+                    }
                 });
                 jugadores.PUNTOS = 0
 
@@ -109,6 +117,19 @@ var checkCards= new Promise(
                 if(color){
                     jugadores.PUNTOS = 6
                 }
+                //Full
+                if(trio && escalera){
+                    jugadores.PUNTOS = 7
+                }
+                //Poker
+                if(poker){
+                    jugadores.PUNTOS = 8
+                }
+                //Escalera de Color
+                if(color && escalera){
+                    jugadores.PUNTOS = 9
+                }
+
 
                 //Para comprobar que nadie tiene mas de 5 cartas
                 if(cartas.length != 5){
