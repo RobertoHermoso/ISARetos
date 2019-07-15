@@ -8,13 +8,16 @@ let json = JSON.parse(rowdata)
 
 var checkCards= new Promise(
     function(resolve,reject){
-        i = 1
+        partida = 1
+        var results = []
         json.partida.forEach(element => {
             //Para comprobar si hay una pareja
             auxPair = 0
             //Para contar el número de parejas, se usa para comprobar la Doble Pareja
             auxNumPaired = 0
-            i++
+            partida++
+            rigged = false
+            var cards = []
             element.jugadas.forEach(jugadores => {
 
                 pair =          false               //Par
@@ -22,6 +25,7 @@ var checkCards= new Promise(
                 trio =          false               //Trio
                 escalera =      false               //Escalera
                 color =         false               //Color
+                full  =         false               //Full
                 poker =         false               //Poker
 
                 var cartas = jugadores.cartas
@@ -29,10 +33,15 @@ var checkCards= new Promise(
                 var auxEscalera = 0
                 var auxColor = 0
                 var auxPoker = 0
+
                 cartas.forEach(cardPicked => {
                     auxPair = 0
                     auxTrio = 0
-
+                    if(!checkIfCardsExistsIn(cardPicked, cards)){
+                        cards.push(cardPicked)
+                    } else{
+                        rigged = true
+                    }
 
                     //variable auxiliares para la escalera
                     var valorSumado = cartas[j].valor
@@ -63,6 +72,7 @@ var checkCards= new Promise(
                         if(cards.valor === cardPicked.valor){
                             auxPair++
                             auxTrio++
+                            var pairValue = cardPicked.valor
                         }
                         if(auxPair == 1 && !found){
                             auxNumPaired += 1
@@ -77,8 +87,15 @@ var checkCards= new Promise(
                         //Trio
                         if(auxTrio==2){
                             trio = true
+                            var trioValue = cardPicked.valor
                         }
-
+                        //Full
+                        if(trio && pair){
+                            //Comrpobamos que no ha contado como par las cartas que compone el trio
+                            if(trioValue=!pairValue){
+                                full = true
+                            }
+                        }
                     }
                     })
 
@@ -118,7 +135,7 @@ var checkCards= new Promise(
                     jugadores.PUNTOS = 6
                 }
                 //Full
-                if(trio && escalera){
+                if(full){
                     jugadores.PUNTOS = 7
                 }
                 //Poker
@@ -131,17 +148,22 @@ var checkCards= new Promise(
                 }
 
 
-                //Para comprobar que nadie tiene mas de 5 cartas
-                if(cartas.length != 5){
-                    var reason = new Error("El jugador " + jugadores.jugador + " está haciendo trampas, tiene " + cartas.length + " cartas "
-                    + " en la ronda " + i)
-                    reject(reason)
-                }
                 resolve(jugadores)
             });
+
+
+            //Comprobamos si la partida esta amañada
+            if(rigged){
+                x = partida-1
+                var res = "La partida " + x  + " está amañada"
+            }else{
+                var res = pickWinner(element)
+            }
+
+            results.push(res)
         
         });
-
+        json.results = results;
     }
 )
 
@@ -164,19 +186,77 @@ var showOff = function(json, winner){
             console.log(message)
             }
     });
+    console.log(json.results)
 }
 
 
-var pickAllCardsExcept = function(card, cards){
-    var res = []
-    i =0
-        cards.array.forEach(element => {
-            if(element!=card){
-                res[i]=element
-                i++
-            }
-        });
-        return res
+function pickWinner(partida){
+    var res = ""
+    var winner = null
+    var boteFinal = 0
+    var aux = null
+    partida.jugadas.forEach(element => {
+        if(aux===null){
+            aux = element.PUNTOS
+            winner = element
+        }
+        else if(element.PUNTOS>aux){
+            aux = element.PUNTOS
+            winner = element
+        }
+        else if (element.PUNTOS===aux){
+            winner = tiePlayers(winner, element)
+        }
+        boteFinal += element.apuesta
+    });
+    boteFinal += partida.bote
+
+    res = winner.jugador + " ha ganado " + boteFinal
+    if(winner ==="empate"){
+        res = "Iguales"
+    }
+    return res
+}
+
+function tiePlayers(player1, player2){
+    var highest1 = 0;
+    var highest2 = 0;
+    console.log(player1.cartas[1])
+    for(i=0; i<5; i++){
+        console.log(cardValue(player1.cartas[i]))
+        console.log(cardValue(player2.cartas[i]))
+        if(highest1<cardValue(player1.cartas[i])){
+            highest1= cardValue(player1.cartas[i])
+        }
+        if(highest2<cardValue(player2.cartas[i])){
+
+            highest2= cardValue(player2.cartas[i])
+        }
+
+    }
+    if(highest1>highest2){
+        var res = player1
+    }else if (highest1<highest2){
+        var res= player2
+    }else{
+        var res = "empate"
+    }
+    return res;
+}
+
+function cardValue(card){
+    var map = {1 : 1, 2: 2, 3:3, 4:4, 5:5, 6:6, 7:7, 8:8, 9:9, 10:10, 'J':11, 'Q':12, 'K':13, 'A': 14}
+    return map[card.valor]
+}
+
+function checkIfCardsExistsIn(card, cards){
+    var res = false
+    cards.forEach(element => {
+        if(element.palo === card.palo && element.valor === card.valor){
+            res = true
+        }
+    });
+    return res
 }
 
 var playGame = function(){
