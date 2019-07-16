@@ -187,6 +187,8 @@ var showOff = function(json, winner){
             }
     });
     console.log(json.results)
+    var results = JSON.stringify(json.results)
+    fs.writeFileSync('results.json', results, 'utf8');
 }
 
 
