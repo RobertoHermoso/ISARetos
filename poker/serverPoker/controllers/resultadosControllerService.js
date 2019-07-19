@@ -2,7 +2,7 @@
 
 module.exports.getResultados = function getResultados(req, res, next) {
   const fs = require('fs');
-  let rowdata = fs.readFileSync('controllers/poker.json', 'utf8')
+  let rowdata = fs.readFileSync('jsonFiles/poker.json', 'utf8')
   let json = JSON.parse(rowdata)
 
   
