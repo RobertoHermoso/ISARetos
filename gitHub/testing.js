@@ -82,24 +82,63 @@ var repositories = function(json){
     )
 }
 
-var execute = function(){
-    information.then(repositories).then(showInf).then(function (fulfilled){ //Lo que esta debajo se seguirá ejecutando asincronamente
-    }).catch(function(error){
-        console.log(error.message)
-    })
-}
-
 var showInf = function(json){
     var message = "Nombre: " + json.name + "\n" + "Descripción: " + json.description + "\n" + "Enlace: " + json.blog + "\n\n" +
      "Repositorios: \n\n" ;
     console.log(message)
 
     var repos = json.repos
-    repos.forEach(repositorie => {
-        console.log(" - " + repositorie.name + "\n")
+    repository = repos[0]
+        var name = repository.name
+        console.log(" - " + name)
+        getIssues(name);
+
         
-    });
 }
 
+ function getIssues(repository){
+
+    var i = 0;
+
+    let options = {
+        host: "api.github.com",
+        path: '/repos/' + org + "/" + repository + "/issues",
+        method: 'GET',
+        headers: { 'user-agent': user_agent}
+    }
+
+    let request = https.request(options , (response) => {
+        let body = '';
+        response.on('data', (out) => {
+            body += out;
+        });
+    
+        response.on('end', (out) => {
+            var issues = JSON.parse(body);
+            issues.forEach(is => {
+                if(is.state=="open"){
+                    i++
+                }
+            });
+            var message = "       Número de Issues abiertas " + i
+            return message
+        });
+    
+        
+    });
+        request.on('error', (e)=> {
+            var message = new Error("Error getting the issues from " +repository) //Tratamiento de errores
+            console.log(message)
+    });
+
+    request.end();
+
+}
+var execute = function(){
+    information.then(repositories).then(showInf).then(function (fulfilled){ //Lo que esta debajo se seguirá ejecutando asincronamente
+    }).catch(function(error){
+        console.log(error.message)
+    })
+}
 
 execute()
