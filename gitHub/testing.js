@@ -1,6 +1,7 @@
 var Promise = require("bluebird");
 const https = require('https');
 
+
 //Aquí se introduce lo que hemos pasado por consola
 let org = 'isa-group'
 
@@ -10,7 +11,7 @@ let token = "cd6b55ad950a81fcb255caa034158cf9a3154fa6"
 
 let host = "api.github.com"
 
-let limit = 200
+let limit = 100
 
 var mapRepositories = new Map()
 
@@ -52,13 +53,22 @@ request.end();
 )
 
 
-var repositories = function(json){
+var repositories = function rep(json){
     return   new Promise(
         function(resolve,reject){
-            
+            console.log(json)
+            var resp = []
+            var page = json.page
+
+            console.log(page)
+            //Para la primera iteración definimos la inicial
+            if(page==undefined){
+                page = 0
+            }
+
             let options = {
                 host: host,
-                path: '/orgs/' + org + "/" + "repos?per_page=" + limit,
+                path: '/orgs/' + org + "/" + "repos?page:"+ page,
                 method: 'GET',
                 per_page: limit,
                 headers: { 'user-agent': user_agent,
@@ -66,15 +76,31 @@ var repositories = function(json){
                 'Authorization' : "Bearer " + token}
             }
 
+            //Si no es la primera iteración vamos decreciendo
+            if(json.page!=undefined){
+                json.page = json.page - 1;
+            }
+
             let request = https.request(options , (response) => {
                 let body = '';
                 response.on('data', (out) => {
                     body += out;
-                });
+                    resp.push(out);
+                    var links = response.headers.link.split(',');
+                    var pages = links[links.length-1].match(/page=(\d+).*$/)[1];
+
+                    //Para la primera iteacion cogemos el número máximo de páginas
+                    if(json.page == undefined){
+                    json.page = pages
+                        }                
+                    });
             
                 response.on('end', (out) => {
                     var repos = JSON.parse(body);
-                    json.repos = repos
+                    var list = []
+                    list.push(json.repos)
+                    list.push(repos);
+                    json.repos = list;
                     resolve(json)
                 });
             
@@ -87,24 +113,29 @@ var repositories = function(json){
             
             
             request.end();
-
+            if(json.page != 0 ){
+                console.log('pataa')
+                rep()
+            }
 
         }
+
     )
+
 }
 
 function getRepoInfo(repository){
         
     var i = 0;
 
+    console.log("Debug: " +  repository)
     let options = {
         host: host,
-        path: '/repos/' + org + "/" + repository.name + "/commits?per_page=" + limit ,
+        path: '/repos/' + org + "/" + repository.name + "/commits",
         method: 'GET',
         headers: { 'user-agent': user_agent,
         'client_id' : 'RobertoHermoso',
-        'Authorization' : "Bearer " + token,
-        'limit': 99999}
+        'Authorization' : "Bearer " + token}
     }
 
     let request = https.request(options , (response) => {
@@ -112,9 +143,12 @@ function getRepoInfo(repository){
         response.on('data', (out) => {
             body += out;
         });
+
     
         response.on('end', (out) => {
+            console.log(body.length)
             json = JSON.parse(body);
+            console.log(json.length)
             var i = json.length
             console.log("-"  +repository.name )
             console.log("   Numero de Issues abiertas : " + repository.open_issues_count)
@@ -135,23 +169,35 @@ function getRepoInfo(repository){
 
 var showInf = function(json){
     var message = "Nombre: " + json.name + "\n" + "Descripción: " + json.description + "\n" + "Enlace: " + json.blog + "\n\n" +
-     "Repositorios: \n" ;
+    "Repositorios: \n" ;
     console.log(message)
 
     var repos = json.repos
     console.log(repos.length)
-    repos.forEach(element => {
-        getRepoInfo(element)
-    });
+    //repos.forEach(element => {
+    //    getRepoInfo(element)
+    //});
 
         
+}
+
+
+var inicial = function (json){
+    return   new Promise(
+        function(resolve){
+            json.repos  = []
+            json.page = 0
+            resolve(json)
+
+        }
+    )
 }
 
 
 
 
 var execute = function(){
-    information.then(repositories).then(showInf).then(function (fulfilled){ //Lo que esta debajo se seguirá ejecutando asincronamente
+    information.then(inicial).then(repositories).then(showInf).then(function (fulfilled){ //Lo que esta debajo se seguirá ejecutando asincronamente
     }).catch(function(error){
         console.log(error.message)
     })
