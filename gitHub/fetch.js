@@ -3,7 +3,6 @@ const fetch = require('node-fetch');
 
 fetch('https://api.github.com/users/RobertoHermoso')
     .then(res => res.json())
-    .then(function(res){
-        return res;
-    });
+    .then(json => console.log(json));
+
 

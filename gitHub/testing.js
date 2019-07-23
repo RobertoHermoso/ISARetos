@@ -53,33 +53,20 @@ request.end();
 )
 
 
-var repositories = function rep(json){
+var firstRepositories = function(json){
     return   new Promise(
         function(resolve,reject){
-            console.log(json)
             var resp = []
-            var page = json.page
-
-            console.log(page)
-            //Para la primera iteración definimos la inicial
-            if(page==undefined){
-                page = 0
-            }
 
             let options = {
                 host: host,
-                path: '/orgs/' + org + "/" + "repos?page:"+ page,
+                path: '/orgs/' + org + "/" + "repos?page=1",
                 method: 'GET',
-                per_page: limit,
                 headers: { 'user-agent': user_agent,
                 'client_id' : 'RobertoHermoso',
                 'Authorization' : "Bearer " + token}
             }
 
-            //Si no es la primera iteración vamos decreciendo
-            if(json.page!=undefined){
-                json.page = json.page - 1;
-            }
 
             let request = https.request(options , (response) => {
                 let body = '';
@@ -87,20 +74,15 @@ var repositories = function rep(json){
                     body += out;
                     resp.push(out);
                     var links = response.headers.link.split(',');
-                    var pages = links[links.length-1].match(/page=(\d+).*$/)[1];
+                    json.pagesMax = links[links.length-1].match(/page=(\d+).*$/)[1];
 
-                    //Para la primera iteacion cogemos el número máximo de páginas
-                    if(json.page == undefined){
-                    json.page = pages
-                        }                
+            
                     });
             
                 response.on('end', (out) => {
                     var repos = JSON.parse(body);
-                    var list = []
-                    list.push(json.repos)
-                    list.push(repos);
-                    json.repos = list;
+                    console.log("primera iteración" + repos.length)
+                    json.repos = repos
                     resolve(json)
                 });
             
@@ -113,16 +95,64 @@ var repositories = function rep(json){
             
             
             request.end();
-            if(json.page != 0 ){
-                console.log('pataa')
-                rep()
-            }
 
         }
-
     )
 
 }
+
+var repositories = function(json){
+    return   new Promise(
+        function(resolve,reject){
+
+            var limit = json.pagesMax
+            console.log(limit)
+
+            for (let index = 2; index <= limit; index++) {
+
+            let options = {
+                host: host,
+                path: '/orgs/' + org + "/" + "repos?page="+index,
+                method: 'GET',
+                headers: { 'user-agent': user_agent,
+                'client_id' : 'RobertoHermoso',
+                'Authorization' : "Bearer " + token}
+            }
+
+
+            let request = https.request(options , (response) => {
+                let body = '';
+                response.on('data', (out) => {
+                    body += out;
+                    });
+            
+                response.on('end', (out) => {
+                    var repos = JSON.parse(body);
+                    console.log("iteración " + index + " con " + repos.length + " repos ")
+                    var currentRepos = json.repos
+                    console.log( "Current repos " + currentRepos.length)
+                    var res = currentRepos.concat(repos)
+                    console.log("concatenado " + res.length)
+                    json.repos = res
+                    resolve(json)
+                });
+            
+                
+            });
+                request.on('error', (e)=> {
+                    var reason = new Error("The url " + json.url +  " is invalid") //Tratamiento de errores
+                    reject(reason)
+            });
+            
+            
+            request.end();
+
+            }      
+        }
+    )
+
+}
+
 
 function getRepoInfo(repository){
         
@@ -167,7 +197,9 @@ function getRepoInfo(repository){
     request.end();   
 }
 
-var showInf = function(json){
+var showInf =  function(json){
+    return   new Promise(
+        function(resolve,reject){
     var message = "Nombre: " + json.name + "\n" + "Descripción: " + json.description + "\n" + "Enlace: " + json.blog + "\n\n" +
     "Repositorios: \n" ;
     console.log(message)
@@ -177,30 +209,21 @@ var showInf = function(json){
     //repos.forEach(element => {
     //    getRepoInfo(element)
     //});
-
+        });
         
 }
 
-
-var inicial = function (json){
-    return   new Promise(
-        function(resolve){
-            json.repos  = []
-            json.page = 0
-            resolve(json)
-
-        }
-    )
-}
 
 
 
 
 var execute = function(){
-    information.then(inicial).then(repositories).then(showInf).then(function (fulfilled){ //Lo que esta debajo se seguirá ejecutando asincronamente
+    information.then(firstRepositories).then(repositories).then(showInf).then(function (fulfilled){ //Lo que esta debajo se seguirá ejecutando asincronamente
     }).catch(function(error){
         console.log(error.message)
     })
+
 }
 
 execute()
+
