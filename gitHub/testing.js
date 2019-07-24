@@ -56,7 +56,6 @@ request.end();
 var firstRepositories = function(json){
     return   new Promise(
         function(resolve,reject){
-            var resp = []
 
             let options = {
                 host: host,
@@ -72,7 +71,6 @@ var firstRepositories = function(json){
                 let body = '';
                 response.on('data', (out) => {
                     body += out;
-                    resp.push(out);
                     var links = response.headers.link.split(',');
                     json.pagesMax = links[links.length-1].match(/page=(\d+).*$/)[1];
 
@@ -81,7 +79,6 @@ var firstRepositories = function(json){
             
                 response.on('end', (out) => {
                     var repos = JSON.parse(body);
-                    console.log("primera iteración" + repos.length)
                     json.repos = repos
                     resolve(json)
                 });
@@ -106,7 +103,6 @@ var repositories = function(json){
         function(resolve,reject){
 
             var limit = json.pagesMax
-            console.log(limit)
 
             for (let index = 2; index <= limit; index++) {
 
@@ -128,11 +124,9 @@ var repositories = function(json){
             
                 response.on('end', (out) => {
                     var repos = JSON.parse(body);
-                    console.log("iteración " + index + " con " + repos.length + " repos ")
                     var currentRepos = json.repos
-                    console.log( "Current repos " + currentRepos.length)
+                    //Agregamos los repositorios a los que ya había 
                     var res = currentRepos.concat(repos)
-                    console.log("concatenado " + res.length)
                     json.repos = res
                     resolve(json)
                 });
@@ -154,14 +148,16 @@ var repositories = function(json){
 }
 
 
-function getRepoInfo(repository){
-        
+var getFirstRepoInfo = function(json ,repository, repoInf, repoPagesMax){
+    return   new Promise(
+        function(resolve,reject){
+    
+
     var i = 0;
 
-    console.log("Debug: " +  repository)
     let options = {
         host: host,
-        path: '/repos/' + org + "/" + repository.name + "/commits",
+        path: '/repos/' + org + "/" + repository.name + "/commits?page=1",
         method: 'GET',
         headers: { 'user-agent': user_agent,
         'client_id' : 'RobertoHermoso',
@@ -172,20 +168,29 @@ function getRepoInfo(repository){
         let body = '';
         response.on('data', (out) => {
             body += out;
+
+            if(response.headers.link != undefined){
+
+            var links = response.headers.link.split(',')
+
+            var pagesMax = links[links.length-1].match(/page=(\d+).*$/)[1];
+            repoPagesMax.set(repository.name, pagesMax)
+
+            }else
+                {
+            repoPagesMax.set(repository.name, 1)
+            }
+            json.repoPagesMax = repoPagesMax
         });
+
 
     
         response.on('end', (out) => {
-            console.log(body.length)
             json = JSON.parse(body);
-            console.log(json.length)
             var i = json.length
-            console.log("-"  +repository.name )
-            console.log("   Numero de Issues abiertas : " + repository.open_issues_count)
-            if(i == undefined){
-                i = 0
-            }
-            console.log("   Número de Commits: " + i + "\n")
+            repoInf.set(repository.name, i);
+            json.repoInf = repoInf
+            resolve(json)
         });
     
         
@@ -195,6 +200,9 @@ function getRepoInfo(repository){
             console.log(message)
     });
     request.end();   
+
+    });
+
 }
 
 var showInf =  function(json){
@@ -206,9 +214,18 @@ var showInf =  function(json){
 
     var repos = json.repos
     console.log(repos.length)
-    //repos.forEach(element => {
-    //    getRepoInfo(element)
-    //});
+
+    var repoInf = new Map();
+    var repoPagesMax = new Map();   
+
+    repos.forEach(element => {
+        json.then(getFirstRepoInfo(element, repoInf, repoPagesMax)).then(
+            console.log(json.repoPagesMax)
+
+        )
+    });
+
+    console.log(repoInf)
         });
         
 }
@@ -218,7 +235,10 @@ var showInf =  function(json){
 
 
 var execute = function(){
-    information.then(firstRepositories).then(repositories).then(showInf).then(function (fulfilled){ //Lo que esta debajo se seguirá ejecutando asincronamente
+
+    //El delay es para que de tiempo a calcular todo 
+
+    information.then(firstRepositories).then(repositories).then().delay(2000).then(showInf).then(function (fulfilled){ //Lo que esta debajo se seguirá ejecutando asincronamente
     }).catch(function(error){
         console.log(error.message)
     })
