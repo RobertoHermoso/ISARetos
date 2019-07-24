@@ -1,6 +1,6 @@
 var Promise = require("bluebird");
 const https = require('https');
-
+const fs = require('fs');
 
 //Aquí se introduce lo que hemos pasado por consola
 let org = 'isa-group'
@@ -11,9 +11,10 @@ let token = "cd6b55ad950a81fcb255caa034158cf9a3154fa6"
 
 let host = "api.github.com"
 
-let limit = 100
 
 var mapRepositories = new Map()
+
+//GENERAL INFORMATION
 
 var information = new Promise(
     function(resolve,reject){
@@ -52,6 +53,7 @@ request.end();
     }
 )
 
+//REPOSITORIES INFORMATION
 
 var firstRepositories = function(json){
     return   new Promise(
@@ -147,8 +149,9 @@ var repositories = function(json){
 
 }
 
+//REPOSITORY's COMMIT NUMBER 
 
-var getFirstRepoInfo = function(json ,repository, repoInf, repoPagesMax){
+var getFirstRepoInfo = function(repository){
     return   new Promise(
         function(resolve,reject){
     
@@ -174,13 +177,12 @@ var getFirstRepoInfo = function(json ,repository, repoInf, repoPagesMax){
             var links = response.headers.link.split(',')
 
             var pagesMax = links[links.length-1].match(/page=(\d+).*$/)[1];
-            repoPagesMax.set(repository.name, pagesMax)
+            repository.pagesMax = pagesMax
 
             }else
                 {
-            repoPagesMax.set(repository.name, 1)
+            repository.pagesMax = 1
             }
-            json.repoPagesMax = repoPagesMax
         });
 
 
@@ -188,9 +190,8 @@ var getFirstRepoInfo = function(json ,repository, repoInf, repoPagesMax){
         response.on('end', (out) => {
             json = JSON.parse(body);
             var i = json.length
-            repoInf.set(repository.name, i);
-            json.repoInf = repoInf
-            resolve(json)
+            repository.commitsNumber = i
+            resolve(repository)
         });
     
         
@@ -205,27 +206,85 @@ var getFirstRepoInfo = function(json ,repository, repoInf, repoPagesMax){
 
 }
 
+var getRepoInfo = function(repository){
+    return   new Promise(
+        function(resolve,reject){
+    
+
+    var i = 0;
+
+    let options = {
+        host: host,
+        path: '/repos/' + org + "/" + repository.name + "/commits?page=" + repository.pagesMax,
+        method: 'GET',
+        headers: { 'user-agent': user_agent,
+        'client_id' : 'RobertoHermoso',
+        'Authorization' : "Bearer " + token}
+    }
+
+    let request = https.request(options , (response) => {
+        let body = '';
+        response.on('data', (out) => {
+            body += out;
+        });
+    
+        response.on('end', (out) => {
+            json = JSON.parse(body);
+            var i = json.length
+            //Obtenemos los datos de la última página
+            var res = i + repository.commitsNumber
+
+            //Si tiene mas de dos paginas, sumamos el resto de paginas multiplicadas por 30 (El número de elementos por paginas)
+            if(repository.pagesMax>2){
+                res+= (repository.pagesMax - 2) * 30
+            }
+            repository.commitsNumber = res
+            resolve(repository)
+        });
+    
+        
+    });
+        request.on('error', (e)=> {
+            var message = new Error("Error getting the issues from " +repository) //Tratamiento de errores
+            console.log(message)
+    });
+    request.end();   
+
+    });
+
+}
+
+var showReposInfo = function(repository, ){
+        return new Promise(
+            function(resolve, reject){
+
+    
+    console.log( " • " + repository.name )
+    console.log( "  ◦ Numero de Issues Abiertas:    " + repository.open_issues_count)
+    console.log( "  ◦ Número de Commits:            " + repository.commitsNumber)
+    console.log("\n")
+    });
+} 
+
+
 var showInf =  function(json){
     return   new Promise(
         function(resolve,reject){
+    //Mostramos la información general
     var message = "Nombre: " + json.name + "\n" + "Descripción: " + json.description + "\n" + "Enlace: " + json.blog + "\n\n" +
     "Repositorios: \n" ;
     console.log(message)
 
     var repos = json.repos
-    console.log(repos.length)
 
-    var repoInf = new Map();
-    var repoPagesMax = new Map();   
+    
 
+    //Llamamos a estas promesas para obtener el número de commits principalmente
     repos.forEach(element => {
-        json.then(getFirstRepoInfo(element, repoInf, repoPagesMax)).then(
-            console.log(json.repoPagesMax)
-
-        )
+        //Ponemos delay para que de tiempo a calcular el resto de datos
+        getFirstRepoInfo(element).then(getRepoInfo).delay(2000).then(showReposInfo)
     });
 
-    console.log(repoInf)
         });
         
 }

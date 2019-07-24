@@ -1,8 +1,14 @@
-const fetch = require('node-fetch');
+const fs = require('fs');
+
+var mapa = new Map();
+
+mapa.set('primero', 1)
+mapa.set('segundo',2)
+
+console.log(mapa)
+
+var results = JSON.stringify(mapa)
+fs.writeFileSync('pruebaDeMapa.json', results, 'utf8');
 
 
-fetch('https://api.github.com/users/RobertoHermoso')
-    .then(res => res.json())
-    .then(json => console.log(json));
-
-
+fs.rmdirSync('prueba')
