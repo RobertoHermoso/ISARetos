@@ -19,7 +19,6 @@ var mapRepositories = new Map()
 var information = new Promise(
     function(resolve,reject){
 
-
 let options = {
     host: host,
     path: '/orgs/' + org,
@@ -37,6 +36,7 @@ let request = https.request(options , (response) => {
 
     response.on('end', (out) => {
         let json = JSON.parse(body);
+        json.acum = 0
         resolve(json)
     });
 
@@ -211,8 +211,6 @@ var getRepoInfo = function(repository){
         function(resolve,reject){
     
 
-    var i = 0;
-
     let options = {
         host: host,
         path: '/repos/' + org + "/" + repository.name + "/commits?page=" + repository.pagesMax,
@@ -249,12 +247,11 @@ var getRepoInfo = function(repository){
             console.log(message)
     });
     request.end();   
-
+        
     });
-
 }
 
-var showReposInfo = function(repository, ){
+var showReposInfo = function (repository){
         return new Promise(
             function(resolve, reject){
 
@@ -267,6 +264,8 @@ var showReposInfo = function(repository, ){
 } 
 
 
+
+
 var showInf =  function(json){
     return   new Promise(
         function(resolve,reject){
@@ -277,27 +276,51 @@ var showInf =  function(json){
 
     var repos = json.repos
 
-    
-
+    var acum = 0
     //Llamamos a estas promesas para obtener el número de commits principalmente
     repos.forEach(element => {
         //Ponemos delay para que de tiempo a calcular el resto de datos
-        getFirstRepoInfo(element).then(getRepoInfo).delay(2000).then(showReposInfo)
-    });
+        getFirstRepoInfo(element).delay(2000).then(getRepoInfo).delay(3000).then(showReposInfo).delay(5000)
+    }
+        );
 
-        });
+    //Extraemos los datos de los repositorios
+    json.repos = repos
+    resolve(json)
+
+     });
         
 }
 
+var showTotal =  function(json){
+    return   new Promise(
+        function(resolve,reject){
+
+    //Obtenemos el número total Issues y de Commits
+            var repos = json.repos
+            var issues = 0
+            var commits = 0
+            repos.forEach(element => {
+                issues+=element.open_issues_count
+                //Hay veces que devuelve un valor no valido, por errores del servidor
+                if(!isNaN(element.commitsNumber)){
+                commits+=element.commitsNumber
+                }
+            });
+            
+            console.log("Total: \n    • Número de Issues en todos los repositorios: " +  issues + "\n")
+            console.log("   • Número de Issues en todos los repositorios: " + commits)
 
 
+        });
+    }
 
 
 var execute = function(){
 
     //El delay es para que de tiempo a calcular todo 
 
-    information.then(firstRepositories).then(repositories).then().delay(2000).then(showInf).then(function (fulfilled){ //Lo que esta debajo se seguirá ejecutando asincronamente
+    information.then(firstRepositories).then(repositories).then().delay(2000).then(showInf).delay(8000).then(showTotal).then(function (fulfilled){ //Lo que esta debajo se seguirá ejecutando asincronamente
     }).catch(function(error){
         console.log(error.message)
     })
