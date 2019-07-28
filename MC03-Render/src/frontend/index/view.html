@@ -1,0 +1,23 @@
+<style>
+</style>
+
+
+<div>
+    <h1>Demo renderizer view.</h1>
+    <h3>Date: {{date}}</h3>
+
+    <div ng-repeat="cats in model.cats">
+        <h3> {{cats.name}} </h3>
+        <img src= "{{cats.photo}}" width= "200px">
+        <p> Colors: {{cats.color}}  </p>
+        <p> Comments: {{cats.comment}}  </p>
+    </br>
+        <button ng-click="addCat(cats);">Add to favorites</button>
+    </div>
+
+    <h2> Favourites: </h2>
+    <div ng-repeat= "cats in favourites">
+        <h3>{{cats.name}}</h3>
+    </div>
+
+</div>

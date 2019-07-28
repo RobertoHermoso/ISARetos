@@ -1,0 +1,18 @@
+{
+    "cats":{
+        "tardarSauce":
+            {
+                "name": "Tardar Sauce",
+                "color": "Brown and white",
+                "comment": "He is always grumpie",
+                "photo": "http://bit.ly/2yjAsWe"
+            },
+        "catTrumpet":
+            {   
+                "name" : "Cat Trumpet",
+                "color": "Grey and White",
+                "comment": "She loves the piano music",
+                "photo" : "https://yt3.ggpht.com/a/AGF-l7_97w2EqCESB_E_0uM_dqyb7eX-BPfMgVW9Hg=s900-c-k-c0xffffffff-no-rj-mo"
+            }
+    }
+}
