@@ -13,6 +13,35 @@
                 "color": "Grey and White",
                 "comment": "She loves the piano music",
                 "photo" : "https://yt3.ggpht.com/a/AGF-l7_97w2EqCESB_E_0uM_dqyb7eX-BPfMgVW9Hg=s900-c-k-c0xffffffff-no-rj-mo"
+            },
+
+            "pussInBoots":
+            {
+                "name": "Puss in Boots",
+                "color": "Orange",
+                "comment": "He has boots",
+                "photo": "https://i.pinimg.com/736x/f6/09/12/f609126edd7a26573e65cdb7df744d68.jpg"
+            },
+        "cheshireCat":
+            {   
+                "name" : "Cheshire Cat",
+                "color": "Blue and Grey",
+                "comment": "He is always smiling",
+                "photo" : "https://frasesdelavida.com/wp-content/uploads/2017/10/Frases-del-Gato-de-Cheshire.jpg"
+            },
+            "schrodingerCat":
+            {
+                "name": "Schrodinger Cat",
+                "color": "White and Black",
+                "comment": "Black and White",
+                "photo": "http://www.geek2man.com/wp-content/uploads/2019/01/1865718_1.jpg"
+            },
+        "salem":
+            {   
+                "name" : "Salem",
+                "color": "Black",
+                "comment": "He can talk",
+                "photo" : "https://media1.tenor.com/images/33f85236ac5d02dbc9bee7cf1f560f30/tenor.gif?itemid=5166660"
             }
     }
 }
