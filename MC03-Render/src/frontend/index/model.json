@@ -2,7 +2,7 @@
     "cats":{
         "tardarSauce":
             {
-                "name": "Tardar Sauce",
+                "name": "Grumpy Cat",
                 "color": "Brown and white",
                 "comment": "He is always grumpie",
                 "photo": "http://bit.ly/2yjAsWe"
@@ -11,7 +11,7 @@
             {   
                 "name" : "Cat Trumpet",
                 "color": "Grey and White",
-                "comment": "She loves the piano music",
+                "comment": "She loves piano music",
                 "photo" : "https://yt3.ggpht.com/a/AGF-l7_97w2EqCESB_E_0uM_dqyb7eX-BPfMgVW9Hg=s900-c-k-c0xffffffff-no-rj-mo"
             },
 
@@ -33,7 +33,7 @@
             {
                 "name": "Schrodinger Cat",
                 "color": "White and Black",
-                "comment": "Black and White",
+                "comment": "He is alive and dead",
                 "photo": "http://www.geek2man.com/wp-content/uploads/2019/01/1865718_1.jpg"
             },
         "salem":
@@ -42,6 +42,36 @@
                 "color": "Black",
                 "comment": "He can talk",
                 "photo" : "https://media1.tenor.com/images/33f85236ac5d02dbc9bee7cf1f560f30/tenor.gif?itemid=5166660"
-            }
+            },
+
+        "owlKitty":
+            {   
+                "name" : "Owl Kitty",
+                "color": "Black",
+                "comment": "He loves getting in movies",
+                "photo" : "https://pbs.twimg.com/profile_images/1102397623946829826/HU9Gelky.jpg"
+            },
+        "venus":
+            {   
+                "name" : "Venus",
+                "color": "Black and Orange",
+                "comment": "Venus, the two-faced cat",
+                "photo" : "https://petset.com/wp-content/uploads/2016/05/Top-10-Most-Famous-Internet-Cats-04-Venus-Two-Faced-Cat.jpg"
+            },
+
+        "doraemon":
+            {   
+                "name" : "Doraemon",
+                "color": "white and blue",
+                "comment": "Is a cosmic cat",
+                "photo" : "https://estaticos.elperiodico.com/resources/jpg/8/0/doraemon-1481901283808.jpg"
+            },
+        "killerQueen":
+        {   
+            "name" : "Killer Queen",
+            "color": "Pink",
+            "comment": "Bites za dasto",
+            "photo" : "https://i.kym-cdn.com/photos/images/original/001/196/413/73d.png"
+        }
     }
 }

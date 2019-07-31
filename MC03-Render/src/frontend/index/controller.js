@@ -18,12 +18,47 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.*/
 
 
+
+
 $scope.date = new Date().toISOString();
 
 $scope.favourites = {}
+$scope.colors = {}
+
 
 $scope.addCat = function addCat(cat){
     if(!$scope.favourites[cat.name]){
         $scope.favourites[cat.name] = cat
+        updateColors(cat)
     }
+
+}
+
+
+//Haer una función que saque el número de colores totoles, una especie de mapa
+    function updateColors(cat){
+        var colors = cat.color.split("and")
+        colors.forEach(element => {
+            var color = element.toLowerCase().trim()
+            if (!$scope.colors[color]) {
+                $scope.colors[color] = 0
+            }
+            $scope.colors[color] += 1;
+        
+        });
+
+
+    }
+
+    
+
+$scope.seeCats = function createCat(cat){
+    const fs = require('fs');
+    let rowdata = fs.readFileSync('index/model.json', 'utf8')
+    let json = JSON.parse(rowdata)
+    console.log(json);
+    if(!$scope.test[cat.name]){
+        json[cat.name]=angular.toJson(cat)
+    }
+    return json
 }
