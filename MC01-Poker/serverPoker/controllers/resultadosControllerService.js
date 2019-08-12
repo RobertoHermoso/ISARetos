@@ -67,7 +67,7 @@ module.exports.getResultados = function getResultados(req, res, next) {
                     var found = false
                     cartas.forEach(cards => {
                         //Pareja
-                        if(cards!==cardPicked){ //Con esta sentencia evitamos que se compare conismo mismo en la iteración
+                        if(cards!==cardPicked){ //Con esta sentencia evitamos que se compare con si mismo en la iteración
                         if(cards.valor === cardPicked.valor){
                             auxPair++
                             auxTrio++

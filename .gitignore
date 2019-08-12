@@ -2,3 +2,4 @@
 node_modules/*
 package-lock.json
 package-lock.json
+OC01-LCD/lcd-server/node_modules/*

@@ -1,0 +1,63 @@
+openapi: 3.0.0
+info:
+  description: This is a simple API
+  version: 1.0.0
+  title: Simple Inventory API
+  contact:
+    email: you@your-company.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+tags:
+  - name: lcd
+    description: Get LCD numbers
+paths:
+  /lcd:
+    get:
+      tags:
+        - lcd
+      summary: searches inventory
+      operationId: searchInventory
+      description: >
+        By passing two parameters (t, n), the API gives you n numbers by putting
+        t | and t - for
+
+        each line 
+      parameters:
+        - in: query
+          name: t
+          description: Number of | and -
+          required: true
+          schema:
+            type: integer
+            format: int32
+            minimum: 0
+        - in: query
+          name: 'n'
+          description: Nubmers that will show as LCD format
+          required: true
+          schema:
+            type: integer
+            format: int32
+            minimum: 0
+      responses:
+        '200':
+          description: 'Return the LCD numbers, for example t = 3 n = 12'
+          content:
+            application/json:
+              schema:
+                type: string
+                example: |
+                  |      ---
+                  |        |
+                  |        |
+                           |
+                  |      ---  
+                  |      |
+                  |      |
+                         |
+                         ---
+        '400':
+          description: bad input parameter
+servers:
+  - url: 'https://virtserver.swaggerhub.com/Quimi11/LCD/1.0.0'
