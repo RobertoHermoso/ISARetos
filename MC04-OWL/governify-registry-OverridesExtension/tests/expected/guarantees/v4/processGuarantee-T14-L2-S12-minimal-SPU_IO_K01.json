@@ -1,0 +1,118 @@
+{
+    "guaranteeId": "SPU_IO_K01",
+    "guaranteeValues": [{
+            "scope": {
+                "priority": "P2",
+                "activity": "Actividad no planificada",
+                "serviceLine": "Línea de servicio de operación",
+                "NODO": "SEVILLA"
+            },
+            "period": {
+                "to": "2016-02-15T22:59:59.999Z",
+                "from": "2016-01-15T23:00:00.000Z"
+            },
+            "guarantee": "SPU_IO_K01",
+            "evidences": [{
+                    "id": "4444444"
+                },
+                {
+                    "id": "11111111"
+                },
+                {
+                    "id": "16161611616"
+                },
+                {
+                    "id": "13131313"
+                },
+                {
+                    "id": "8888888"
+                },
+                {
+                    "id": "9866666666"
+                },
+                {
+                    "id": "984444444"
+                },
+                {
+                    "id": "5555555"
+                },
+                {
+                    "id": "985555555"
+                },
+                {
+                    "id": "777777"
+                },
+                {
+                    "id": "121212122"
+                }
+            ],
+            "metrics": {
+                "SPU_IO_K01": "72.72727272727273"
+            },
+            "value": false,
+            "penalties": {
+                "porcentajePTOT": -3
+            }
+        },
+        {
+            "scope": {
+                "priority": "P2",
+                "activity": "Actividad no planificada",
+                "serviceLine": "Línea de servicio de operación",
+                "NODO": "HUELVA"
+            },
+            "period": {
+                "to": "2016-03-15T22:59:59.999Z",
+                "from": "2016-02-15T23:00:00.000Z"
+            },
+            "guarantee": "SPU_IO_K01",
+            "evidences": [{
+                "id": "2222222"
+            }],
+            "metrics": {
+                "SPU_IO_K01": "100.0"
+            },
+            "value": true
+        },
+        {
+            "scope": {
+                "priority": "P2",
+                "activity": "Actividad no planificada",
+                "serviceLine": "Línea de servicio de operación",
+                "NODO": "GRANADA"
+            },
+            "period": {
+                "to": "2016-04-15T21:59:59.999Z",
+                "from": "2016-03-15T23:00:00.000Z"
+            },
+            "guarantee": "SPU_IO_K01",
+            "evidences": [{
+                "id": "1212121212121"
+            }],
+            "metrics": {
+                "SPU_IO_K01": "100.0"
+            },
+            "value": true
+        },
+        {
+            "scope": {
+                "priority": "P2",
+                "activity": "Actividad no planificada",
+                "serviceLine": "Línea de servicio de operación",
+                "NODO": "CORDOBA"
+            },
+            "period": {
+                "to": "2016-05-15T21:59:59.999Z",
+                "from": "2016-04-15T22:00:00.000Z"
+            },
+            "guarantee": "SPU_IO_K01",
+            "evidences": [{
+                "id": "13131313131313"
+            }],
+            "metrics": {
+                "SPU_IO_K01": "100.0"
+            },
+            "value": true
+        }
+    ]
+}

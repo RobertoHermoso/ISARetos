@@ -1,0 +1,22 @@
+openapi: 3.0.0
+info:
+  description: This is a server created to test Pivotal Tracker web hooks.
+  version: 1.0.0
+  title: Pivotal web hook
+paths:
+  /webhook:
+    post:
+      summary: Get new activity
+      operationId: getActivity
+      responses:
+        '200':
+          description: Activity registered
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+        description: Activity in Pivotal board
+        required: true
+servers:
+  - url: /api

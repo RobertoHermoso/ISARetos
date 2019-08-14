@@ -1,0 +1,283 @@
+swagger: '2.0'
+info:
+  description: >-
+    Governify Reporter service <div class="postman-run-button"
+    data-postman-action="collection/import"
+    data-postman-var-1="74f415fd1dd2f30a2d99"></div> <script
+    type="text/javascript">
+      (function (p,o,s,t,m,a,n) {
+        !p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); });
+        !o.getElementById(s+t) && o.getElementsByTagName("head")[0].appendChild((
+          (n = o.createElement("script")),
+          (n.id = s+t), (n.async = 1), (n.src = m), n
+        ));
+      }(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
+    </script>
+  version: 1.0.0
+  title: Governify SAS Reporter
+  termsOfService: www.isa.us.es
+  contact:
+    name: ISA Research Group
+    url: 'http://www.isa.us.es'
+    email: isagroup.us@gmail.com
+  license:
+    name: MIT
+    url: 'http://opensource.org/licenses/MIT'
+host: reporter.chap.governify.io
+basePath: /api/v1
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  '/contracts/{contractId}/ctrl/status':
+    get:
+      description: Retrieve reporter status for a specific contract
+      operationId: statusGET
+      parameters:
+        - name: contractId
+          in: path
+          description: Contract ID
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: boolean
+        '400':
+          description: Bad request
+          schema:
+            $ref: '#/definitions/error'
+      x-swagger-router-controller: Default
+  '/contracts/{contractId}/ctrl/start':
+    post:
+      description: Start reporter
+      operationId: startPOST
+      parameters:
+        - name: contractId
+          in: path
+          description: Contract ID
+          required: true
+          type: string
+        - name: month
+          in: query
+          description: Contract month
+          required: false
+          type: string
+        - name: kpi
+          in: query
+          description: KPI
+          required: false
+          type: string
+        - name: serviceLine
+          in: query
+          description: Service line
+          required: false
+          type: string
+        - name: activity
+          in: query
+          description: Activity
+          required: false
+          type: string
+        - name: format
+          in: query
+          description: Format
+          required: false
+          type: string
+        - name: from
+          in: query
+          description: Format
+          required: false
+          type: string
+        - name: to
+          in: query
+          description: Format
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: boolean
+        '400':
+          description: Bad request
+          schema:
+            $ref: '#/definitions/error'
+      x-swagger-router-controller: Default
+  '/contracts/{contractId}/ctrl/stop':
+    post:
+      description: Stop reporter computation for a specific contract
+      operationId: stopPOST
+      parameters:
+        - name: contractId
+          in: path
+          description: Contract ID
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: boolean
+        '400':
+          description: Bad request
+          schema:
+            $ref: '#/definitions/error'
+      x-swagger-router-controller: Default
+  '/contracts/{contractId}/ctrl/reset':
+    post:
+      description: Reset reporter computation for a specific contract
+      operationId: resetPOST
+      parameters:
+        - name: contractId
+          in: path
+          description: Contract ID
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: boolean
+        '400':
+          description: Bad request
+          schema:
+            $ref: '#/definitions/error'
+      x-swagger-router-controller: Default
+  '/dashboards/{agreementId}':
+    get:
+      tags:
+        - dashboards
+      description: Get basic dashboard JSON for Grafana from agreement id
+      operationId: dashboardGET
+      parameters:
+        - name: agreementId
+          in: path
+          description: Agreement ID
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: object
+            items:
+              $ref: '#/definitions/dashboard'
+        '400':
+          description: Bad request
+          schema:
+            $ref: '#/definitions/error'
+      x-swagger-router-controller: DashboardReporter
+  '/dashboards/evolution/{agreementId}':
+    get:
+      tags:
+        - dashboards
+      description: Get evolution dashboard JSON for Grafana from agreement id
+      operationId: dashboardEvolutionGET
+      parameters:
+        - name: agreementId
+          in: path
+          description: Agreement ID
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: object
+            items:
+              $ref: '#/definitions/dashboard'
+        '400':
+          description: Bad request
+          schema:
+            $ref: '#/definitions/error'
+      x-swagger-router-controller: DashboardReporter
+  '/config':
+    get:
+      tags:
+        - config
+      description: Get public config
+      operationId: configGET
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: object
+        '400':
+          description: Bad request
+          schema:
+            $ref: '#/definitions/error'
+      x-swagger-router-controller: ConfigController
+definitions:
+  contract:
+    type: object
+  error:
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+    description: Bad request
+  dashboard:
+    type: object
+    properties:
+      __inputs:
+        type: array
+        items: 
+          type: object
+      __requires:
+        type: array
+        items: 
+          type: object
+      __annotations:
+        type: object
+      editable:
+        type: boolean
+      gnetId:
+        type: integer
+        format: int64
+      graphTooltip:
+        type: integer
+        format: int64
+      hideControls: 
+        type: boolean
+      id:
+        type: integer
+        format: int64
+      links:
+        type: array
+        items: 
+          type: object
+      refresh:
+        type: string
+      rows:
+        type: array
+        items: 
+          type: object
+      schemaVersion:
+        type: integer
+        format: int64
+      style:
+        type: string
+      tags:
+        type: array
+        items: 
+          type: object
+      templating:
+        type: object
+      time:
+        type: object
+      timezone:
+        type: string
+      title:
+        type: string
+      version:
+        type: integer
+        format: int64
+    description: Bad request
+    

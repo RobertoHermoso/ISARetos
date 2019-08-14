@@ -1,0 +1,1033 @@
+{
+  "id": "SCO",
+  "version": "1.0.0",
+  "type": "agreement",
+  "context": {
+    "provider": "Oracle",
+    "consumer": "CHAP",
+    "validity": {
+      "initial": "2014-10-16",
+      "timeZone": "Europe/Madrid"
+    },
+    "infrastructure": {
+      "designer": "http://designer.governify.io",
+      "portal": "http://portal.governify.io",
+      "registry": "http://registry.chap.governify.io",
+      "reporter": "http://reporter.services.chap.governify.io"
+    },
+    "definitions": {
+      "schemas": {
+        "porcentajePCAP": {
+          "description": "Porcentaje de penalizacion sobre la facturacion mensual SCO",
+          "type": "double",
+          "unit": "%"
+        },
+        "deadline": {
+          "description": "Plazo de resolucion de una inicidencia",
+          "type": "string",
+          "unit": "hours"
+        },
+        "schedule": {
+          "description": "Horario del servicio",
+          "type": "string"
+        }
+      },
+      "scopes": {
+        "SCO": {
+          "priority": {
+            "name": "Prioridad",
+            "description": "Prioridad de la incidencia",
+            "type": "string",
+            "metadata": {
+              "reported": true
+            }
+          },
+          "type": {
+            "name": "Type",
+            "description": "Tipo de log",
+            "type": "string",
+            "metadata": {
+              "reported": true
+            }
+          },
+          "serviceLine": {
+            "name": "LineaServicio",
+            "description": "Linea de Servicio",
+            "type": "string",
+            "default": "Gestión de Incidencia"
+          },
+          "activity": {
+            "name": "Actividad",
+            "description": "Actividad",
+            "type": "string",
+            "default": "Servicio Avanzado de Soporte"
+          }
+        }
+      },
+      "logs": {
+        "naos": {
+          "default": true,
+          "uri": "http://naos.logs.chap.governify.io/api/v1",
+          "stateUri": "http://naos.logs.chap.governify.io/api/v1/count",
+          "structure": {
+            "instanceIdColumn": "INCIDENT_ID",
+            "timestampColumn": "CREATION_DATE"
+          },
+          "terminator": {
+            "column": "ESTADO",
+            "values": [
+              "Cerrado",
+              "Cancelada",
+              "Anulada",
+              "Cerrada"
+            ]
+          },
+          "scopes": {
+            "SCO": {
+              "priority": "PRIORIDAD",
+              "type": "TIPO"
+            }
+          }
+        }
+      }
+    }
+  },
+  "terms": {
+    "pricing": {
+      "billing": {
+        "period": "monthly",
+        "initial": "2016-05-12T10:35:36.000",
+        "penalties": [
+          {
+            "over": {
+              "porcentajePCAP": {
+                "$ref": "#/context/definitions/schemas/porcentajePCAP"
+              }
+            },
+            "aggregatedBy": "sum",
+            "groupBy": {
+              "serviceLine": {
+                "$ref": "#/context/definitions/scopes/SCO/serviceLine"
+              },
+              "activity": {
+                "$ref": "#/context/definitions/scopes/SCO/activity"
+              }
+            },
+            "upTo": -10
+          }
+        ]
+      }
+    },
+    "metrics": {
+      "issue_trs_duration": {
+        "schema": {
+          "description": "Fecha de Inicio de incidencia",
+          "type": "string"
+        },
+        "computer": "http://ppinot.computer.chap.governify.io/api/v1/indicators/issue_trs_duration/"
+      },
+      "issue_pu_duration": {
+        "schema": {
+          "description": "Fecha de Inicio de incidencia",
+          "type": "string"
+        },
+        "computer": "http://ppinot.computer.chap.governify.io/api/v1/indicators/issue_pu_duration/"
+      },
+      "issue_trl_duration": {
+        "schema": {
+          "description": "Duracion de una incidencia",
+          "type": "string",
+          "unit": "seconds"
+        },
+        "computer": "http://ppinot.computer.chap.governify.io/api/v1/indicators/issue_trl_duration/"
+      },
+      "CHAP_TRS_evidence": {
+        "schema": {
+          "description": "Incidencias resueltas en plazo",
+          "type": "string"
+        },
+        "computer": "http://ppinot.computer.chap.governify.io/api/v1/indicators/CHAP_TRS_evidence/",
+        "parameters": {
+          "deadline": {
+            "schema": {
+              "$ref": "#/context/definitions/schemas/deadline"
+            }
+          },
+          "schedule": {
+            "schema": {
+              "$ref": "#/context/definitions/schemas/schedule"
+            }
+          }
+        },
+        "scope": {
+          "SCO": {
+            "$ref": "#/context/definitions/scopes/SCO"
+          }
+        }
+      },
+      "CHAP_TRS": {
+        "schema": {
+          "description": "Porcentaje incidencias resueltas en plazo",
+          "type": "double",
+          "unit": "%"
+        },
+        "computer": "http://ppinot.computer.chap.governify.io/api/v1/indicators/CHAP_TRS/",
+        "parameters": {
+          "deadline": {
+            "schema": {
+              "$ref": "#/context/definitions/schemas/deadline"
+            }
+          },
+          "schedule": {
+            "schema": {
+              "$ref": "#/context/definitions/schemas/schedule"
+            }
+          }
+        },
+        "scope": {
+          "SCO": {
+            "$ref": "#/context/definitions/scopes/SCO"
+          }
+        },
+        "metadata": {
+          "name": "Porcentaje incidencias respondidas en plazo",
+          "description": "Porcentaje de incidencias respondidas en plazo respecto del total de incidencias comunicadas.",
+          "kind": "Penalizador",
+          "class": "Negocio",
+          "reportable": false
+        }
+      },
+      "CHAP_TRL_evidence": {
+        "schema": {
+          "description": "Incidencias resueltas en plazo",
+          "type": "string"
+        },
+        "computer": "http://ppinot.computer.chap.governify.io/api/v1/indicators/CHAP_TRL_evidence/",
+        "parameters": {
+          "deadline": {
+            "schema": {
+              "$ref": "#/context/definitions/schemas/deadline"
+            }
+          },
+          "schedule": {
+            "schema": {
+              "$ref": "#/context/definitions/schemas/schedule"
+            }
+          }
+        },
+        "scope": {
+          "SCO": {
+            "$ref": "#/context/definitions/scopes/SCO"
+          }
+        }
+      },
+      "CHAP_TRL": {
+        "schema": {
+          "description": "Porcentaje incidencias resueltas en plazo",
+          "type": "double",
+          "unit": "%"
+        },
+        "computer": "http://ppinot.computer.chap.governify.io/api/v1/indicators/CHAP_TRL/",
+        "parameters": {
+          "deadline": {
+            "schema": {
+              "$ref": "#/context/definitions/schemas/deadline"
+            }
+          },
+          "schedule": {
+            "schema": {
+              "$ref": "#/context/definitions/schemas/schedule"
+            }
+          }
+        },
+        "scope": {
+          "SCO": {
+            "$ref": "#/context/definitions/scopes/SCO"
+          }
+        },
+        "metadata": {
+          "name": "Porcentaje incidencias resueltas en plazo",
+          "description": "Porcentaje de incidencias resueltas en plazo respecto del total de incidencias comunicadas.",
+          "kind": "Penalizador",
+          "class": "Negocio",
+          "reportable": false
+        }
+      },
+      "CHAP_PU_evidence": {
+        "schema": {
+          "description": "Incidencias resueltas en plazo",
+          "type": "string"
+        },
+        "computer": "http://ppinot.computer.chap.governify.io/api/v1/indicators/CHAP_PU_evidence/",
+        "parameters": {
+          "deadline": {
+            "schema": {
+              "$ref": "#/context/definitions/schemas/deadline"
+            }
+          },
+          "schedule": {
+            "schema": {
+              "$ref": "#/context/definitions/schemas/schedule"
+            }
+          }
+        },
+        "scope": {
+          "SCO": {
+            "$ref": "#/context/definitions/scopes/SCO"
+          }
+        }
+      },
+      "CHAP_PU": {
+        "schema": {
+          "description": "Porcentaje incidencias resueltas en plazo",
+          "type": "double",
+          "unit": "%"
+        },
+        "computer": "http://ppinot.computer.chap.governify.io/api/v1/indicators/CHAP_PU/",
+        "parameters": {
+          "deadline": {
+            "schema": {
+              "$ref": "#/context/definitions/schemas/deadline"
+            }
+          },
+          "schedule": {
+            "schema": {
+              "$ref": "#/context/definitions/schemas/schedule"
+            }
+          }
+        },
+        "scope": {
+          "SCO": {
+            "$ref": "#/context/definitions/scopes/SCO"
+          }
+        },
+        "metadata": {
+          "name": "Porcentaje de tiempo de pendiente de usuario",
+          "description": "Porcentaje de tiempo de incidencia en fase pendiente usuario respecto del tiempo total de incidencias comunicadas.",
+          "kind": "Penalizador",
+          "class": "Negocio",
+          "reportable": false
+        }
+      }
+    },
+    "guarantees": [
+      {
+        "id": "CHAP_TRS",
+        "scope": {
+          "priority": {
+            "$ref": "#/context/definitions/scopes/SCO/priority"
+          },
+          "type": {
+            "$ref": "#/context/definitions/scopes/SCO/type"
+          },
+          "serviceLine": {
+            "$ref": "#/context/definitions/scopes/SCO/serviceLine"
+          },
+          "activity": {
+            "$ref": "#/context/definitions/scopes/SCO/activity"
+          }
+        },
+        "of": [
+          {
+            "scope": {
+              "priority": "P1",
+              "type": "*"
+            },
+            "objective": "CHAP_TRS >= 90.00",
+            "with": {
+              "CHAP_TRS": {
+                "deadline": "<= 2",
+                "schedule": "L-DT00:00-23:59"
+              }
+            },
+            "window": {
+              "type": "static",
+              "period": "monthly",
+              "initial": "2014-10-16"
+            },
+            "evidences": [
+              {
+                "CHAP_TRS_evidence": {
+                  "$ref": "#/terms/metrics/CHAP_TRS_evidence"
+                }
+              },
+              {
+                "issue_trs_duration": {
+                  "$ref": "#/terms/metrics/issue_trs_duration"
+                }
+              },
+              {
+                "issue_pu_duration": {
+                  "$ref": "#/terms/metrics/issue_pu_duration"
+                }
+              },
+              {
+                "issue_trl_duration": {
+                  "$ref": "#/terms/metrics/issue_trl_duration"
+                }
+              }
+            ],
+            "penalties": [
+              {
+                "over": {
+                  "porcentajePCAP": {
+                    "$ref": "#/context/definitions/schemas/porcentajePCAP"
+                  }
+                },
+                "of": [
+                  {
+                    "value": "-1",
+                    "condition": "CHAP_TRS >= 0 && CHAP_TRS < 90.00"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scope": {
+              "priority": "P2",
+              "type": "*"
+            },
+            "objective": "CHAP_TRS >= 90.00",
+            "with": {
+              "CHAP_TRS": {
+                "deadline": "<= 7",
+                "schedule": "L-VT08:00-20:00"
+              }
+            },
+            "window": {
+              "type": "static",
+              "period": "monthly",
+              "initial": "2014-10-16"
+            },
+            "evidences": [
+              {
+                "CHAP_TRS_evidence": {
+                  "$ref": "#/terms/metrics/CHAP_TRS_evidence"
+                }
+              },
+              {
+                "issue_trs_duration": {
+                  "$ref": "#/terms/metrics/issue_trs_duration"
+                }
+              },
+              {
+                "issue_pu_duration": {
+                  "$ref": "#/terms/metrics/issue_pu_duration"
+                }
+              },
+              {
+                "issue_trl_duration": {
+                  "$ref": "#/terms/metrics/issue_trl_duration"
+                }
+              }
+            ],
+            "penalties": [
+              {
+                "over": {
+                  "porcentajePCAP": {
+                    "$ref": "#/context/definitions/schemas/porcentajePCAP"
+                  }
+                },
+                "of": [
+                  {
+                    "value": "-0.1",
+                    "condition": "CHAP_TRS >= 0 && CHAP_TRS < 90.00"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scope": {
+              "priority": "P3",
+              "type": "*"
+            },
+            "objective": "CHAP_TRS >= 90.00",
+            "with": {
+              "CHAP_TRS": {
+                "deadline": "<= 24",
+                "schedule": "L-VT08:00-20:00"
+              }
+            },
+            "window": {
+              "type": "static",
+              "period": "monthly",
+              "initial": "2014-10-16"
+            },
+            "evidences": [
+              {
+                "CHAP_TRS_evidence": {
+                  "$ref": "#/terms/metrics/CHAP_TRS_evidence"
+                }
+              },
+              {
+                "issue_trs_duration": {
+                  "$ref": "#/terms/metrics/issue_trs_duration"
+                }
+              },
+              {
+                "issue_pu_duration": {
+                  "$ref": "#/terms/metrics/issue_pu_duration"
+                }
+              },
+              {
+                "issue_trl_duration": {
+                  "$ref": "#/terms/metrics/issue_trl_duration"
+                }
+              }
+            ],
+            "penalties": [
+              {
+                "over": {
+                  "porcentajePCAP": {
+                    "$ref": "#/context/definitions/schemas/porcentajePCAP"
+                  }
+                },
+                "of": [
+                  {
+                    "value": "0",
+                    "condition": "CHAP_TRS >= 0 && CHAP_TRS < 90.00"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scope": {
+              "priority": "P4",
+              "type": "*"
+            },
+            "objective": "CHAP_TRS >= 90.00",
+            "with": {
+              "CHAP_TRS": {
+                "deadline": "<= 24",
+                "schedule": "L-VT08:00-20:00"
+              }
+            },
+            "window": {
+              "type": "static",
+              "period": "monthly",
+              "initial": "2014-10-16"
+            },
+            "evidences": [
+              {
+                "CHAP_TRS_evidence": {
+                  "$ref": "#/terms/metrics/CHAP_TRS_evidence"
+                }
+              },
+              {
+                "issue_trs_duration": {
+                  "$ref": "#/terms/metrics/issue_trs_duration"
+                }
+              },
+              {
+                "issue_pu_duration": {
+                  "$ref": "#/terms/metrics/issue_pu_duration"
+                }
+              },
+              {
+                "issue_trl_duration": {
+                  "$ref": "#/terms/metrics/issue_trl_duration"
+                }
+              }
+            ],
+            "penalties": [
+              {
+                "over": {
+                  "porcentajePCAP": {
+                    "$ref": "#/context/definitions/schemas/porcentajePCAP"
+                  }
+                },
+                "of": [
+                  {
+                    "value": "0",
+                    "condition": "CHAP_TRS >= 0 && CHAP_TRS < 90.00"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "CHAP_TRL",
+        "scope": {
+          "priority": {
+            "$ref": "#/context/definitions/scopes/SCO/priority"
+          },
+          "type": {
+            "$ref": "#/context/definitions/scopes/SCO/type"
+          },
+          "serviceLine": {
+            "$ref": "#/context/definitions/scopes/SCO/serviceLine"
+          },
+          "activity": {
+            "$ref": "#/context/definitions/scopes/SCO/activity"
+          }
+        },
+        "of": [
+          {
+            "scope": {
+              "priority": "P1",
+              "type": "*"
+            },
+            "objective": "CHAP_TRL >= 90.00",
+            "with": {
+              "CHAP_TRL": {
+                "deadline": "<= 8",
+                "schedule": "L-DT00:00-23:59"
+              }
+            },
+            "window": {
+              "type": "static",
+              "period": "monthly",
+              "initial": "2014-10-16"
+            },
+            "evidences": [
+              {
+                "CHAP_TRL_evidence": {
+                  "$ref": "#/terms/metrics/CHAP_TRL_evidence"
+                }
+              },
+              {
+                "issue_trs_duration": {
+                  "$ref": "#/terms/metrics/issue_trs_duration"
+                }
+              },
+              {
+                "issue_pu_duration": {
+                  "$ref": "#/terms/metrics/issue_pu_duration"
+                }
+              },
+              {
+                "issue_trl_duration": {
+                  "$ref": "#/terms/metrics/issue_trl_duration"
+                }
+              }
+            ],
+            "penalties": [
+              {
+                "over": {
+                  "porcentajePCAP": {
+                    "$ref": "#/context/definitions/schemas/porcentajePCAP"
+                  }
+                },
+                "of": [
+                  {
+                    "value": "-1",
+                    "condition": "CHAP_TRL >= 0 && CHAP_TRL < 90.00"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scope": {
+              "priority": "P2",
+              "type": "*"
+            },
+            "objective": "CHAP_TRL >= 90.00",
+            "with": {
+              "CHAP_TRL": {
+                "deadline": "<= 240",
+                "schedule": "L-VT08:00-20:00"
+              }
+            },
+            "window": {
+              "type": "static",
+              "period": "monthly",
+              "initial": "2014-10-16"
+            },
+            "evidences": [
+              {
+                "CHAP_TRL_evidence": {
+                  "$ref": "#/terms/metrics/CHAP_TRL_evidence"
+                }
+              },
+              {
+                "issue_trs_duration": {
+                  "$ref": "#/terms/metrics/issue_trs_duration"
+                }
+              },
+              {
+                "issue_pu_duration": {
+                  "$ref": "#/terms/metrics/issue_pu_duration"
+                }
+              },
+              {
+                "issue_trl_duration": {
+                  "$ref": "#/terms/metrics/issue_trl_duration"
+                }
+              }
+            ],
+            "penalties": [
+              {
+                "over": {
+                  "porcentajePCAP": {
+                    "$ref": "#/context/definitions/schemas/porcentajePCAP"
+                  }
+                },
+                "of": [
+                  {
+                    "value": "-0.1",
+                    "condition": "CHAP_TRL >= 0 && CHAP_TRL < 90.00"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scope": {
+              "priority": "P3",
+              "type": "*"
+            },
+            "objective": "CHAP_TRL >= 90.00",
+            "with": {
+              "CHAP_TRL": {
+                "deadline": "<= 280",
+                "schedule": "L-VT08:00-20:00"
+              }
+            },
+            "window": {
+              "type": "static",
+              "period": "monthly",
+              "initial": "2014-10-16"
+            },
+            "evidences": [
+              {
+                "CHAP_TRL_evidence": {
+                  "$ref": "#/terms/metrics/CHAP_TRL_evidence"
+                }
+              },
+              {
+                "issue_trs_duration": {
+                  "$ref": "#/terms/metrics/issue_trs_duration"
+                }
+              },
+              {
+                "issue_pu_duration": {
+                  "$ref": "#/terms/metrics/issue_pu_duration"
+                }
+              },
+              {
+                "issue_trl_duration": {
+                  "$ref": "#/terms/metrics/issue_trl_duration"
+                }
+              }
+            ],
+            "penalties": [
+              {
+                "over": {
+                  "porcentajePCAP": {
+                    "$ref": "#/context/definitions/schemas/porcentajePCAP"
+                  }
+                },
+                "of": [
+                  {
+                    "value": "0",
+                    "condition": "CHAP_TRL >= 0 && CHAP_TRL < 90.00"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scope": {
+              "priority": "P4",
+              "type": "*"
+            },
+            "objective": "CHAP_TRL >= 90.00",
+            "with": {
+              "CHAP_TRL": {
+                "deadline": "<= 280",
+                "schedule": "L-VT08:00-20:00"
+              }
+            },
+            "window": {
+              "type": "static",
+              "period": "monthly",
+              "initial": "2014-10-16"
+            },
+            "evidences": [
+              {
+                "CHAP_TRL_evidence": {
+                  "$ref": "#/terms/metrics/CHAP_TRL_evidence"
+                }
+              },
+              {
+                "issue_trs_duration": {
+                  "$ref": "#/terms/metrics/issue_trs_duration"
+                }
+              },
+              {
+                "issue_pu_duration": {
+                  "$ref": "#/terms/metrics/issue_pu_duration"
+                }
+              },
+              {
+                "issue_trl_duration": {
+                  "$ref": "#/terms/metrics/issue_trl_duration"
+                }
+              }
+            ],
+            "penalties": [
+              {
+                "over": {
+                  "porcentajePCAP": {
+                    "$ref": "#/context/definitions/schemas/porcentajePCAP"
+                  }
+                },
+                "of": [
+                  {
+                    "value": "0",
+                    "condition": "CHAP_TRL >= 0 && CHAP_TRL < 90.00"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "CHAP_PU",
+        "scope": {
+          "priority": {
+            "$ref": "#/context/definitions/scopes/SCO/priority"
+          },
+          "type": {
+            "$ref": "#/context/definitions/scopes/SCO/type"
+          },
+          "serviceLine": {
+            "$ref": "#/context/definitions/scopes/SCO/serviceLine"
+          },
+          "activity": {
+            "$ref": "#/context/definitions/scopes/SCO/activity"
+          }
+        },
+        "of": [
+          {
+            "scope": {
+              "priority": "P1",
+              "type": "*"
+            },
+            "objective": "CHAP_PU >= 50.00",
+            "with": {
+              "CHAP_PU": {
+                "deadline": "<= 3",
+                "schedule": "L-DT00:00-23:59"
+              }
+            },
+            "window": {
+              "type": "static",
+              "period": "monthly",
+              "initial": "2014-10-16"
+            },
+            "evidences": [
+              {
+                "CHAP_PU_evidence": {
+                  "$ref": "#/terms/metrics/CHAP_PU_evidence"
+                }
+              },
+              {
+                "issue_trs_duration": {
+                  "$ref": "#/terms/metrics/issue_trs_duration"
+                }
+              },
+              {
+                "issue_pu_duration": {
+                  "$ref": "#/terms/metrics/issue_pu_duration"
+                }
+              },
+              {
+                "issue_trl_duration": {
+                  "$ref": "#/terms/metrics/issue_trl_duration"
+                }
+              }
+            ],
+            "penalties": [
+              {
+                "over": {
+                  "porcentajePCAP": {
+                    "$ref": "#/context/definitions/schemas/porcentajePCAP"
+                  }
+                },
+                "of": [
+                  {
+                    "value": "-1",
+                    "condition": "CHAP_PU >= 0 && CHAP_PU < 90.00"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scope": {
+              "priority": "P2",
+              "type": "*"
+            },
+            "objective": "CHAP_PU >= 50.00",
+            "with": {
+              "CHAP_PU": {
+                "deadline": "<= 6",
+                "schedule": "L-VT08:00-20:00"
+              }
+            },
+            "window": {
+              "type": "static",
+              "period": "monthly",
+              "initial": "2014-10-16"
+            },
+            "evidences": [
+              {
+                "CHAP_PU_evidence": {
+                  "$ref": "#/terms/metrics/CHAP_PU_evidence"
+                }
+              },
+              {
+                "issue_trs_duration": {
+                  "$ref": "#/terms/metrics/issue_trs_duration"
+                }
+              },
+              {
+                "issue_pu_duration": {
+                  "$ref": "#/terms/metrics/issue_pu_duration"
+                }
+              },
+              {
+                "issue_trl_duration": {
+                  "$ref": "#/terms/metrics/issue_trl_duration"
+                }
+              }
+            ],
+            "penalties": [
+              {
+                "over": {
+                  "porcentajePCAP": {
+                    "$ref": "#/context/definitions/schemas/porcentajePCAP"
+                  }
+                },
+                "of": [
+                  {
+                    "value": "-0.1",
+                    "condition": "CHAP_PU >= 0 && CHAP_PU < 90.00"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scope": {
+              "priority": "P3",
+              "type": "*"
+            },
+            "objective": "CHAP_PU >= 50.00",
+            "with": {
+              "CHAP_PU": {
+                "deadline": "<= 12",
+                "schedule": "L-VT08:00-20:00"
+              }
+            },
+            "window": {
+              "type": "static",
+              "period": "monthly",
+              "initial": "2014-10-16"
+            },
+            "evidences": [
+              {
+                "CHAP_PU_evidence": {
+                  "$ref": "#/terms/metrics/CHAP_PU_evidence"
+                }
+              },
+              {
+                "issue_trs_duration": {
+                  "$ref": "#/terms/metrics/issue_trs_duration"
+                }
+              },
+              {
+                "issue_pu_duration": {
+                  "$ref": "#/terms/metrics/issue_pu_duration"
+                }
+              },
+              {
+                "issue_trl_duration": {
+                  "$ref": "#/terms/metrics/issue_trl_duration"
+                }
+              }
+            ],
+            "penalties": [
+              {
+                "over": {
+                  "porcentajePCAP": {
+                    "$ref": "#/context/definitions/schemas/porcentajePCAP"
+                  }
+                },
+                "of": [
+                  {
+                    "value": "0",
+                    "condition": "CHAP_PU >= 0 && CHAP_PU < 90.00"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "scope": {
+              "priority": "P4",
+              "type": "*"
+            },
+            "objective": "CHAP_PU >= 50.00",
+            "with": {
+              "CHAP_PU": {
+                "deadline": "<= 24",
+                "schedule": "L-VT08:00-20:00"
+              }
+            },
+            "window": {
+              "type": "static",
+              "period": "monthly",
+              "initial": "2014-10-16"
+            },
+            "evidences": [
+              {
+                "CHAP_PU_evidence": {
+                  "$ref": "#/terms/metrics/CHAP_PU_evidence"
+                }
+              },
+              {
+                "issue_trs_duration": {
+                  "$ref": "#/terms/metrics/issue_trs_duration"
+                }
+              },
+              {
+                "issue_pu_duration": {
+                  "$ref": "#/terms/metrics/issue_pu_duration"
+                }
+              },
+              {
+                "issue_trl_duration": {
+                  "$ref": "#/terms/metrics/issue_trl_duration"
+                }
+              }
+            ],
+            "penalties": [
+              {
+                "over": {
+                  "porcentajePCAP": {
+                    "$ref": "#/context/definitions/schemas/porcentajePCAP"
+                  }
+                },
+                "of": [
+                  {
+                    "value": "0",
+                    "condition": "CHAP_PU >= 0 && CHAP_PU < 90.00"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

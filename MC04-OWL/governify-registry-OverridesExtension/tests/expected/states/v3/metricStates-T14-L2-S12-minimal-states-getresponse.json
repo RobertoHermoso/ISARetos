@@ -1,0 +1,80 @@
+{
+    "stateType": "metrics",
+    "agreementId": "T14-L2-S12-minimal",
+    "scope": {
+        "nodeETC": "< 20",
+        "activity": "Actividad no planificada",
+        "node": "Jaen",
+        "serviceLine": "Línea de servicio de operación"
+    },
+    "period": {
+        "to": "2016-07-15T21:59:59.999Z",
+        "from": "2016-04-15T22:00:00.000Z"
+    },
+    "window": {
+        "timeZone": "Europe/Madrid",
+        "type": "static",
+        "period": "quarterly",
+        "initial": "2014-10-15T22:00:00.000Z"
+    },
+    "id": "SPU_IO_K18",
+    "records": [ 
+        {
+            "value": "0.0",
+            "time": "2017-01-20T16:16:55Z",
+            "logsState": 14,
+            "evidences": [ 
+                {
+                    "issue_resource": "",
+                    "issue_priority": "P1",
+                    "issue_idle_time": "NaN",
+                    "issue_center": "",
+                    "issue_node": "",
+                    "issue_resolutor": "SPU",
+                    "SPU_IO_K18_evidence": "true",
+                    "issue_typology": "LE",
+                    "issue_start": null,
+                    "issue_source": "",
+                    "issue_subject": "KPI=SPU_IO_K18,Nodo=Jaen,ETC del Nodo=15,N Recursos=0",
+                    "id": "1000062",
+                    "issue_area_K18": "",
+                    "issue_end": null
+                }, 
+                {
+                    "issue_resource": "",
+                    "issue_priority": "P1",
+                    "issue_idle_time": "NaN",
+                    "issue_center": "",
+                    "issue_node": "",
+                    "issue_resolutor": "SPU",
+                    "SPU_IO_K18_evidence": "true",
+                    "issue_typology": "LE",
+                    "issue_start": null,
+                    "issue_source": "",
+                    "issue_subject": "KPI=SPU_IO_K18,Nodo=Jaen,ETC del Nodo=15,N Recursos=0",
+                    "id": "1000053",
+                    "issue_area_K18": "",
+                    "issue_end": null
+                }, 
+                {
+                    "issue_resource": "",
+                    "issue_priority": "P1",
+                    "issue_idle_time": "NaN",
+                    "issue_center": "",
+                    "issue_node": "",
+                    "issue_resolutor": "SPU",
+                    "SPU_IO_K18_evidence": "true",
+                    "issue_typology": "LE",
+                    "issue_start": null,
+                    "issue_source": "",
+                    "issue_subject": "KPI=SPU_IO_K18,Nodo=Jaen,ETC del Nodo=15,N Recursos=0",
+                    "id": "1000071",
+                    "issue_area_K18": "",
+                    "issue_end": null
+                }
+            ],
+            "parameters": {}
+        }
+    ],
+    "__v": 0
+}

@@ -1,0 +1,31 @@
+{
+  "SPU_IO_K01": {
+    "stateType": "metrics",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K01",
+    "scope": {
+      "priority": "P2",
+      "activity": "Actividad no planificada",
+      "serviceLine": "Línea de servicio de operación",
+      "NODO": "CORDOBA"
+    },
+    "period": {
+      "to": "2016-05-15T21:59:59.999Z",
+      "from": "2016-04-15T22:00:00.000Z"
+    },
+    "window": {
+      "timeZone": "Europe/Madrid",
+      "type": "static",
+      "period": "monthly",
+      "initial": "2014-10-15T22:00:00.000Z"
+    },
+    "value": "100.0",
+    "evidences": [{
+      "id": "13131313131313"
+    }],
+    "parameters": {
+      "schedule": "L-VT08:00-20:00",
+      "deadline": "<= 4"
+    }
+  }
+}

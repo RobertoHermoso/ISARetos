@@ -1,0 +1,12 @@
+{
+    "scope": {
+        "priority": "P2",
+        "activity": "Actividad no planificada",
+        "serviceLine": "Línea de servicio de operación",
+        "NODO": "CORDOBA"
+    },
+    "period": {
+        "to": "2016-05-15T21:59:59.999Z",
+        "from": "2016-04-15T22:00:00.000Z"
+    }
+}

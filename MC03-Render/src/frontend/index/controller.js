@@ -35,7 +35,7 @@ $scope.addCat = function addCat(cat){
 }
 
 
-//Haer una función que saque el número de colores totoles, una especie de mapa
+
     function updateColors(cat){
         var colors = cat.color.split("and")
         colors.forEach(element => {
@@ -46,8 +46,6 @@ $scope.addCat = function addCat(cat){
             $scope.colors[color] += 1;
         
         });
-
-
     }
 
     

@@ -40,7 +40,7 @@ $http({
     method: 'POST',
     url: 'https://api.github.com/graphql',
     headers: {
-        'Authorization': 'bearer 2cc343672ac488ce34dd215362ea143e4b471c73',
+        'Authorization': 'bearer e32b8d8f2ead4e4b85839fa70c9300d88382b615',
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36',
         'Accept': 'application/vnd.github.starfox-preview+json'
     },

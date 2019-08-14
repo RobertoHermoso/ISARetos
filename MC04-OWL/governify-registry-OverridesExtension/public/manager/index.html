@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Simulator Governify">
+        <meta name="keywords" content="Governify, ISA Group">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="author" content="ISA Group">
+        <meta name="theme-color" content="#104899">
+        <title>Agreement Manager</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.gridster/0.5.6/jquery.gridster.min.css">
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="screen,projection">
+        <script src="https://www.google.com/jsapi"></script>
+    </head>
+    <body>
+        <section class="container">
+            <div class="row">
+                <div class="col s12" id="data">
+                    <div class="col s12 card-panel">
+                        <h5 class="center-align blue">Agreement Manager</h5>
+                        <ul class="collapsible" data-collapsible="expandable">
+                            <li id="upload_new_log" class="">
+                                <div>
+                                    <div>
+                                        <div class="row">
+                                            <div class="col l6 m12 s12 file-field input-field">
+                                                <select id="agreementSelector">
+                                                    <option value="" disabled selected>Select an agreement</option>
+                                                </select>
+                                                <label>Agreement</label>
+                                            </div>
+                                            <div class="col l6 m12 s12">
+                                                <a id="exec_button_pre" class="waves-effect waves-light blue darken-4 btn wow fadeInUp  modal-trigger" href="#modalLoadConfirm" type="button">Load</a>
+                                            </div>
+
+                                        </div> 
+                                        <div class="row">
+                                            <div class="col l12 m12 s12">
+                                                <input type="checkbox" id="forceDelete" class="filled-in" />
+                                                <label for="forceDelete">Delete if it already exists</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>                
+                </div>
+            </div>
+        </section>
+
+        <!-- Modals -->
+        <div id="modalLoadConfirm" class="modal">
+            <div class="modal-content">
+                <h4>Agreement load</h4>
+                <p>Are you sure you want to upload <b id="agreementToLoad">(no agreement selected)</b> ? </p>
+                <p>This operation will reset the current state of the agreement.</p>
+            </div>
+            <div class="modal-footer">
+                <a id="cancel_button" class="waves-effect waves-light grey btn wow fadeInUp modal-action modal-close" >Cancel</a>
+                <a id="exec_button" class="waves-effect waves-light blue darken-4 btn wow fadeInUp modal-action modal-close" >Load agreement</a>
+            </div>
+        </div>
+
+        <div id="modalInsertLaunched" class="modal">
+            <div class="modal-content">
+                <h4>Inserción de logs</h4>
+                <p>El proceso ha sido lanzado correctamente.</p>
+                <p>Se enviará un correo electrónico a <b id="emailInModal"></b> cuando se termine el proceso.</p>
+                <!--<p>Tiempo estimado de procesamiento: <b id="timeInModal"></b></p>-->
+            </div>
+            <div class="modal-footer">
+                <a id="cancel_button" class="waves-effect waves-light grey btn wow fadeInUp modal-action modal-close" >OK</a>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.0/notify.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.6.1/js-yaml.min.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>

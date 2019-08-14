@@ -1,0 +1,5 @@
+{
+    "measures": "http://nginx/v3/SPU_IO.json",
+    "holidays": "http://nginx/v3/holidays.json",
+    "logStatus": "/count"
+}

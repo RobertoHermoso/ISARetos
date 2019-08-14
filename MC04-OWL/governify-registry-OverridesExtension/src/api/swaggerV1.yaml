@@ -1,0 +1,1558 @@
+---
+swagger: "2.0"
+info:
+  description: >-
+    <div class="postman-run-button"
+      data-postman-action="collection/import"
+      data-postman-var-1="4cc14a96eab965c49970"
+      data-postman-param="env%5Blocal%5D=W3sidHlwZSI6InRleHQiLCJlbmFibGVkIjp0cnVlLCJrZXkiOiJzdXBlcnZpc29yLmhvc3QiLCJ2YWx1ZSI6ImxvY2FsaG9zdDo1MDAwIiwiaG92ZXJlZCI6ZmFsc2V9LHsidHlwZSI6InRleHQiLCJlbmFibGVkIjp0cnVlLCJrZXkiOiJtb25pdG9yLmhvc3QiLCJ2YWx1ZSI6ImxvY2FsaG9zdDo1MDAxIiwiaG92ZXJlZCI6ZmFsc2V9LHsidHlwZSI6InRleHQiLCJlbmFibGVkIjp0cnVlLCJrZXkiOiJnb3Zlcm5pZnktcmVnaXN0cnkuaG9zdCIsInZhbHVlIjoibG9jYWxob3N0OjgwODAiLCJob3ZlcmVkIjpmYWxzZX0seyJrZXkiOiJnb3Zlcm5pZnktY29tcHV0ZXItcHBpbm90Lmhvc3QiLCJ2YWx1ZSI6ImxvY2FsaG9zdDo4MTgxIiwidHlwZSI6InRleHQiLCJlbmFibGVkIjp0cnVlLCJob3ZlcmVkIjpmYWxzZX1d"></div>
+    <script type="text/javascript">
+      (function (p,o,s,t,m,a,n) {
+        !p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); });
+        !o.getElementById(s+t) && o.getElementsByTagName("head")[0].appendChild((
+          (n = o.createElement("script")),
+          (n.id = s+t), (n.async = 1), (n.src = m), n
+        ));
+      }(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
+    </script>
+  version: "1"
+  title: "Governify Registry"
+  termsOfService: "www.isa.us.es"
+  contact:
+    name: "ISA Research Group"
+    url: "www.isa.us.es"
+    email: "isagroup.us@gmail.com"
+  license:
+    name: "MIT"
+    url: "http://opensource.org/licenses/MIT"
+host: "registry.governify.io"
+basePath: "/api/v1"
+tags:
+- name: "agreement-registry"
+  description: "Agreement registry"
+- name: "state-registry"
+  description: "State registry"
+schemes:
+- "http"
+- "https"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+
+  /agreements:
+    get:
+      tags:
+      - "agreement-registry"
+      description: "XXX"
+      operationId: "agreementsGET"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/agreement"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+    delete:
+      tags:
+      - "agreement-registry"
+      description: "XXX"
+      operationId: "agreementsDELETE"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/agreement"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "AgreementRegistry"
+    post:
+      tags:
+      - "agreement-registry"
+      description: "XXX"
+      operationId: "agreementsPOST"
+      parameters:
+      - name: "agreement"
+        in: "body"
+        description: "XXX"
+        required: true
+        schema:
+          $ref: "#/definitions/agreement"
+      responses:
+        200:
+          description: "Success"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "AgreementRegistry"
+
+  /agreements/{agreement}:
+    get:
+      tags:
+      - "agreement-registry"
+      description: "XXX"
+      operationId: "agreementsAgreementGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/agreement"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "AgreementRegistry"
+    delete:
+      tags:
+      - "agreement-registry"
+      description: "XXX"
+      operationId: "agreementsAgreementDELETE"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/agreement"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "AgreementRegistry"
+      
+  /agreements/{agreement}/context:
+    get:
+      tags:
+      - "agreement-registry"
+      description: "XXX"
+      operationId: "agreementsAgreementContextGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/context"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "AgreementRegistry"
+  /agreements/{agreement}/context/definitions:
+    get:
+      tags:
+      - "agreement-registry"
+      description: "XXX"
+      operationId: "agreementsAgreementContextDefinitionsGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/context"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "AgreementRegistry"
+  /agreements/{agreement}/context/definitions/logs:
+    get:
+      tags:
+      - "agreement-registry"
+      description: "XXX"
+      operationId: "agreementsAgreementContextDefinitionsLogsGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/log"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "AgreementRegistry"
+  /agreements/{agreement}/context/definitions/schemas:
+    get:
+      tags:
+      - "agreement-registry"
+      description: "XXX"
+      operationId: "agreementsAgreementContextDefinitionsSchemasGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/schema"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "AgreementRegistry"
+  /agreements/{agreement}/context/definitions/scopes:
+    get:
+      tags:
+      - "agreement-registry"
+      description: "XXX"
+      operationId: "agreementsAgreementContextDefinitionsScopesGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/scopes"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "AgreementRegistry"
+  /agreements/{agreement}/context/infrastructure:
+    get:
+      tags:
+      - "agreement-registry"
+      description: "XXX"
+      operationId: "agreementsAgreementContextInfrastructureGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/infrastructure"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "AgreementRegistry"
+  /agreements/{agreement}/context/validity:
+    get:
+      tags:
+      - "agreement-registry"
+      description: "XXX"
+      operationId: "agreementsAgreementContextValidityGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/validity"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "AgreementRegistry"
+  /agreements/{agreement}/terms:
+    get:
+      tags:
+      - "agreement-registry"
+      description: "XXX"
+      operationId: "agreementsAgreementTermsGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/terms"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "AgreementRegistry"
+  /agreements/{agreement}/terms/guarantees:
+    get:
+      tags:
+      - "agreement-registry"
+      description: "XXX"
+      operationId: "agreementsAgreementTermsGuaranteesGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/guarantee"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "AgreementRegistry"
+  /agreements/{agreement}/terms/guarantees/{guarantee}:
+    get:
+      tags:
+      - "agreement-registry"
+      description: "XXX"
+      operationId: "agreementsAgreementTermsGuaranteesGuaranteeGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      - name: "guarantee"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/guarantee"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "AgreementRegistry"
+  /agreements/{agreement}/terms/metrics:
+    get:
+      tags:
+      - "agreement-registry"
+      description: "XXX"
+      operationId: "agreementsAgreementTermsMetricsGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/metric"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "AgreementRegistry"
+  /agreements/{agreement}/terms/metrics/{metric}:
+    get:
+      tags:
+      - "agreement-registry"
+      description: "XXX"
+      operationId: "agreementsAgreementTermsMetricsMetricGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      - name: "metric"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/metric"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "AgreementRegistry"
+  /agreements/{agreement}/terms/pricing:
+    get:
+      tags:
+      - "agreement-registry"
+      description: "XXX"
+      operationId: "agreementsAgreementTermsPricingGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/pricing"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "AgreementRegistry"
+  /agreements/{agreement}/terms/pricing/billing:
+    get:
+      tags:
+      - "agreement-registry"
+      description: "XXX"
+      operationId: "agreementsAgreementTermsPricingBillingGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/billing"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "AgreementRegistry"
+  /agreements/{agreement}/terms/pricing/billing/penalties:
+    get:
+      tags:
+      - "agreement-registry"
+      description: "XXX"
+      operationId: "agreementsAgreementTermsPricingBillingPenaltiesGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/compensation"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "AgreementRegistry"
+  /agreements/{agreement}/terms/pricing/billing/penalties/{penalty}:
+    get:
+      tags:
+      - "agreement-registry"
+      description: "XXX"
+      operationId: "agreementsAgreementTermsPricingBillingPenaltiesPenaltyGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      - name: "penalty"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/compensation"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "AgreementRegistry"
+  /agreements/{agreement}/terms/pricing/billing/rewards:
+    get:
+      tags:
+      - "agreement-registry"
+      description: "XXX"
+      operationId: "agreementsAgreementTermsPricingBillingRewardsGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/compensation"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "AgreementRegistry"
+  /agreements/{agreement}/terms/pricing/billing/rewards/{reward}:
+    get:
+      tags:
+      - "agreement-registry"
+      description: "XXX"
+      operationId: "agreementsAgreementTermsPricingBillingRewardsRewardGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      - name: "reward"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/compensation"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "AgreementRegistry"
+  /agreements/{agreement}/terms/quotas:
+    get:
+      tags:
+      - "agreement-registry"
+      description: "XXX"
+      operationId: "agreementsAgreementTermsQuotasGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/quotas"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "AgreementRegistry"
+  /agreements/{agreement}/terms/rates:
+    get:
+      tags:
+      - "agreement-registry"
+      description: "XXX"
+      operationId: "agreementsAgreementTermsRatesGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/rates"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "AgreementRegistry"
+  /states:
+    get:
+      tags:
+      - "state-registry"
+      description: "XXX"
+      operationId: "statesGET"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/agreement_state"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "StateRegistry"
+    delete:
+      tags:
+      - "state-registry"
+      description: "XXX"
+      operationId: "statesDELETE"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/agreement_state"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "StateRegistry"
+  /states/{agreement}:
+    get:
+      tags:
+      - "state-registry"
+      description: "XXX"
+      operationId: "statesAgreementGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/agreement_state"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "StateRegistry"
+    delete:
+      tags:
+      - "state-registry"
+      description: "XXX"
+      operationId: "statesAgreementDELETE"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/agreement_state"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "StateRegistry"
+  /states/{agreement}/reload:
+    post:
+      tags:
+      - "state-registry"
+      description: "XXX"
+      operationId: "statesAgreementRELOAD"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      - name: "parameters"
+        in: "body"
+        description: "XXX"
+        required: false
+        schema:
+          $ref: "#/definitions/parameters"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: string
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "StateRegistry"
+  /states/{agreement}/guarantees:
+    get:
+      tags:
+      - "state-registry"
+      description: "XXX"
+      operationId: "statesAgreementGuaranteesGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      - name: "from"
+        in: "query"
+        description: "XXX"
+        required: false
+        type: string
+      - name: "to"
+        in: "query"
+        description: "XXX"
+        required: false
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/guarantee_state"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "StateRegistry"
+  /states/{agreement}/guarantees/{guarantee}:
+    get:
+      tags:
+      - "state-registry"
+      description: "XXX"
+      operationId: "statesAgreementGuaranteesGuaranteeGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      - name: "guarantee"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      - name: "from"
+        in: "query"
+        description: "XXX"
+        required: false
+        type: string
+      - name: "to"
+        in: "query"
+        description: "XXX"
+        required: false
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/guarantee_state"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "StateRegistry"
+  /states/{agreement}/guarantees/{guarantee}/penalty:
+    post:
+      tags:
+      - "state-registry"
+      description: "** PLEASE NOTE: Currently, this method is only supported over Guarantees defined with a MONTHLY period **"
+      operationId: "statesAgreementGuaranteesGuaranteePenaltiyPOST"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      - name: "guarantee"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      - name: "query"
+        in: "body"
+        description: "XXX"
+        required: true
+        schema:
+          type: object
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/guarantee_state"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "StateRegistry"
+  /states/{agreement}/metrics:
+    post:
+      tags:
+      - "state-registry"
+      description: "XXX"
+      operationId: "statesAgreementMetricsPOST"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      - name: scope
+        in: body
+        description: "XXX"
+        required: true
+        #PASS to definitions
+        schema:
+          type: object
+          properties:
+            scope:
+              type: object
+            window:
+              type: object
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/metrics_state"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "StateRegistry"
+  /states/{agreement}/metrics/{metric}:
+    post:
+      tags:
+      - "state-registry"
+      description: "XXX"
+      operationId: "statesAgreementMetricsMetricPOST"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      - name: "metric"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      - name: scope
+        in: body
+        description: "XXX"
+        required: true
+        #PASS to definitions
+        schema:
+          type: object
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/metric_state"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "StateRegistry"
+    put:
+      tags:
+      - "state-registry"
+      description: "XXX"
+      operationId: "statesAgreementMetricsMetricPUT"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      - name: "metric"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      - name: "metricValue"
+        in: "body"
+        description: "XXX"
+        required: true
+        schema:
+          type: object
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/metric_state"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "StateRegistry"
+  /states/{agreement}/metrics/{metric}/history:
+    post:
+      tags:
+      - "state-registry"
+      description: "XXX"
+      operationId: "statesAgreementMetricsMetricHistoryPOST"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      - name: "metric"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      - name: scope
+        in: body
+        description: "XXX"
+        required: true
+        #PASS to definitions
+        schema:
+          type: object
+          properties:
+            scope:
+              type: object
+            window:
+              type: object
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/metric_state"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "StateRegistry"
+  /states/{agreement}/metrics/{metric}/increase:
+    post:
+      tags:
+      - "state-registry"
+      description: "XXX"
+      operationId: "statesAgreementMetricsMetricIncreasePOST"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      - name: "metric"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      - name: scope
+        in: body
+        description: "XXX"
+        required: true
+        #PASS to definitions
+        schema:
+          type: object
+          properties:
+            scope:
+              type: object
+            window:
+              type: object
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/metric_state"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "StateRegistry"
+  /states/{agreement}/pricing:
+    get:
+      tags:
+      - "state-registry"
+      description: "XXX"
+      operationId: "statesAgreementPricingGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/guarantees_state"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "StateRegistry"
+  /states/{agreement}/pricing/billing/penalties:
+    post:
+      tags:
+      - "state-registry"
+      description: "XXX"
+      operationId: "statesAgreementPricingBillingPenaltiesPOST"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      - name: "query"
+        in: "body"
+        description: "XXX"
+        required: true
+        schema:
+          type: object
+          properties:
+            period:
+              type: object
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/guarantees_state"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "StateRegistry"
+  /states/{agreement}/quotas:
+    get:
+      tags:
+      - "state-registry"
+      description: "XXX"
+      operationId: "statesAgreementQuotasGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/quotas_state"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "StateRegistry"
+  /states/{agreement}/quotas/{quota}:
+    get:
+      tags:
+      - "state-registry"
+      description: "XXX"
+      operationId: "statesAgreementQuotasQuotaGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      - name: "quota"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/quota_state"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "StateRegistry"
+
+  /states/{agreement}/rates:
+    get:
+      tags:
+      - "state-registry"
+      description: "XXX"
+      operationId: "statesAgreementRatesGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/rates_state"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/inline_response_400"
+      x-swagger-router-controller: "StateRegistry"
+  /states/{agreement}/rates/{rate}:
+    get:
+      tags:
+      - "state-registry"
+      description: "XXX"
+      operationId: "statesAgreementRatesRateGET"
+      parameters:
+      - name: "agreement"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      - name: "rate"
+        in: "path"
+        description: "XXX"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/rate_state"
+      x-swagger-router-controller: "StateRegistry"
+
+definitions:
+  agreement:
+    type: object
+    properties:
+      id:
+        type: string
+      version:
+        type: string
+      type:
+        type: string
+      context:
+        $ref: "#/definitions/context"
+      terms:
+        $ref: "#/definitions/terms"
+
+  context:
+    type: object
+    properties:
+      provider:
+        type: string
+      consumer:
+        type: string
+      validity:
+        $ref: "#/definitions/validity"
+      definitions:
+        $ref: "#/definitions/definitions"
+      infrastructure:
+        $ref: "#/definitions/infrastructure"
+
+  validity:
+    type: object
+    required:
+      - initial
+      - timeZone
+    properties:
+      initial:
+        type: string
+      timeZone:
+        type: string
+      end:
+        type: string
+
+  infrastructure:
+    type: object
+
+  definitions:
+    type: object
+    properties:
+      schemas:
+        $ref: "#/definitions/schema"
+      scopes:
+        $ref: "#/definitions/scopes"
+      logs:
+        $ref: "#/definitions/log"
+
+  schema:
+    type: object
+
+  scopes:
+    type: object
+
+  scope:
+    type: object
+
+  # scopes:
+  #   type: array
+  #   items:
+  #     $ref: "#/definitions/scope"
+  # scope:
+  #   type: object
+  #   properties:
+  #     service:
+  #       type: string
+  #     definitions:
+  #       type: array
+  #       items:
+  #         $ref: "#/definitions/scope_definition"
+
+  # scope_definition:
+  #   type: object
+  #   properties:
+  #     id:
+  #       type: string
+  #     name:
+  #       type: string
+  #     description:
+  #       type: string
+  #     type:
+  #       type: string
+  #     format:
+  #       type: string
+  #     minimum:
+  #       type: string
+  #     maximum:
+  #       type: string
+  #     default:
+  #       type: string
+
+  log:
+    type: object
+    # properties:
+    #   id:
+    #     type: string
+    #   default:
+    #     type: boolean
+    #   uri:
+    #     type: string
+    #   scopes:
+    #     type: array
+    #     items:
+    #       $ref: "#/definitions/log_scope"
+
+  # log_scope:
+  #   type: object
+
+  terms:
+    type: object
+    properties:
+      guarantees:
+        type: array
+        items:
+          $ref: "#/definitions/guarantee"
+      configurations:
+        type: object
+        additionalProperties:
+          $ref: '#/definitions/configuration'
+      metrics:
+        $ref: "#/definitions/metric"
+      pricing:
+        $ref: "#/definitions/pricing"
+      quotas:
+        $ref: "#/definitions/quotas"
+      rates:
+        $ref: "#/definitions/rates"
+
+  configuration:
+    type: object
+    properties:
+      scope:
+        type: object
+      of:
+        type: array
+        items:
+          $ref: '#/definitions/scopedConfiguration'
+  scopedConfiguration:
+    type: object
+    properties:
+      scope:
+        type: object
+      value:
+        type: string
+
+  pricing:
+    type: object
+    properties:
+      cost:
+        type: number
+        format: double
+      currency:
+        type: string
+      billing:
+        $ref: "#/definitions/billing"
+
+  billing:
+    type: object
+    properties:
+      period:
+        type: string
+      initial:
+        type: string
+      penalties:
+        type: array
+        items:
+          $ref: "#/definitions/compensation"
+      rewards:
+        type: array
+        items:
+          $ref: "#/definitions/compensation"
+
+  metric:
+    type: object
+
+  rates:
+    type: array
+    items:
+      $ref: "#/definitions/rate"
+
+  rate:
+    type: object
+
+  quotas:
+    type: array
+    items:
+      $ref: "#/definitions/quota"
+
+  quota:
+    type: object
+    properties:
+      id:
+        type: string
+      scope:
+        type: object
+      over:
+        type: object
+      of:
+        type: array
+        items:
+          $ref: '#/definitions/scopedQuota'
+
+  scopedQuota:
+    type: object
+    properties:
+      scope:
+        type: object
+      limits:
+        type: array
+        items:
+          $ref: '#/definitions/limit'
+
+  limit:
+    type: object
+    properties:
+      max:
+        type: number
+      period:
+        type: string
+
+  guarantee:
+    type: object
+    properties:
+      id:
+        type: string
+      scope:
+        $ref: "#/definitions/guarantee_scope"
+      of:
+        type: array
+        items:
+          $ref: "#/definitions/scoped_guarantee"
+
+  guarantee_scope:
+    type: object
+
+  scoped_guarantee:
+    type: object
+    properties:
+      scope:
+        $ref: "#/definitions/guarantee_scope"
+      objective:
+        type: string
+      with:
+        $ref: "#/definitions/with"
+      window:
+        $ref: "#/definitions/window"
+      evidences:
+        type: array
+        items:
+          $ref: "#/definitions/evidence"
+      penalties:
+        type: array
+        items:
+          $ref: "#/definitions/compensation"
+      rewards:
+        type: array
+        items:
+          $ref: "#/definitions/compensation"
+
+  with:
+    type: object
+
+  window:
+    type: object
+    required:
+      - type
+      - period
+    properties:
+      initial:
+        type: string
+      end:
+        type: string
+      type:
+        type: string
+      period:
+        type: string
+
+  evidence:
+    type: object
+
+  compensation:
+    type: object
+    properties:
+      over:
+        $ref: "#/definitions/over"
+      of:
+        type: array
+        items:
+          $ref: "#/definitions/compensation_of"
+      aggegatedBy:
+        type: string
+      groupBy:
+        type: object
+        additionalProperties:
+          $ref: "#/definitions/groupByObj"
+      upTo:
+        type: number
+        format: double
+
+  compensation_of:
+    type: object
+    properties:
+      value:
+        type: string
+      condition:
+        type: string
+
+  over:
+    type: object
+
+  groupByObj:
+    type: object
+
+  agreement_state:
+    type: object
+
+  metrics_state:
+    type: object
+
+  metric_state:
+    type: object
+
+  rates_state:
+    type: object
+
+  rate_state:
+    type: object
+
+  quotas_state:
+    type: object
+
+  quota_state:
+    type: object
+
+  guarantees_state:
+    type: object
+
+  guarantee_state:
+    type: object
+    properties:
+      guarantee:
+        type: string
+      scope:
+        $ref: "#/definitions/scope"
+      logs:
+        $ref: "#/definitions/log"
+      period:
+        $ref: "#/definitions/period"
+      evidences:
+        type: array
+        items:
+          $ref: "#/definitions/evidence_state"
+      fulfilled:
+        type: "boolean"
+      penalties:
+        $ref: "#/definitions/penalty_state"
+
+  period:
+    type: object
+    properties:
+      from:
+        type: string
+      to:
+        type: string
+
+  evidence_state:
+    type: object
+    properties:
+      evidence:
+        type: "boolean"
+      issue_init:
+        type: string
+      issue_end:
+        type: string
+      issue_duration:
+        type: string
+
+  penalty_state:
+    type: object
+
+  parameters:
+    type: object
+
+  inline_response_400:
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+
+responses:
+  error:
+    description: "Bad request"
+    schema:
+      $ref: "#/definitions/inline_response_400"

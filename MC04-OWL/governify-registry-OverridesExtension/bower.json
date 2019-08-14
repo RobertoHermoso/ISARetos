@@ -1,0 +1,26 @@
+{
+    "name": "governify-registry",
+    "description": "Central repository for agreements",
+    "main": "index.js",
+    "authors": [
+        {
+            "name": "ISA group",
+            "web": "http://www.isa.us.es/"
+        }
+    ],
+    "license": "GPL-2.0",
+    "keywords": [
+        "governify",
+        "registry",
+        "agreements"
+    ],
+    "homepage": "https://github.com/isa-group/governify-registry",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "public/bower_components/",
+        "test",
+        "tests"
+    ]
+}

@@ -1,0 +1,77 @@
+{
+  "metric": "SPU_IO_K01",
+  "scope": {
+    "activity": "Actividad no planificada",
+    "serviceLine": "Línea de servicio de operación",
+    "node": "*",
+    "priority": "P1"
+  },
+  "parameters": {
+    "schedule": "L-DT00:00-23:59",
+    "deadline": "<= 2"
+  },
+  "evidences": [
+    {
+      "id": "SPU_IO_K01_evidence",
+      "computer": "http://localhost:8080/api/v4/indicators/SPU_IO_K01_evidence/"
+    },
+    {
+      "id": "issue_start",
+      "computer": "http://localhost:8080/api/v4/indicators/issue_start/"
+    },
+    {
+      "id": "issue_end",
+      "computer": "http://localhost:8080/api/v4/indicators/issue_end/"
+    },
+    {
+      "id": "issue_duration",
+      "computer": "http://localhost:8080/api/v4/indicators/issue_duration/"
+    },
+    {
+      "id": "issue_idle_time",
+      "computer": "http://localhost:8080/api/v4/indicators/issue_idle_time/"
+    },
+    {
+      "id": "issue_subject",
+      "computer": "http://localhost:8080/api/v4/indicators/issue_subject/"
+    },
+    {
+      "id": "issue_source",
+      "computer": "http://localhost:8080/api/v4/indicators/issue_source/"
+    },
+    {
+      "id": "issue_typology",
+      "computer": "http://localhost:8080/api/v4/indicators/issue_typology/"
+    },
+    {
+      "id": "issue_priority",
+      "computer": "http://localhost:8080/api/v4/indicators/issue_priority/"
+    },
+    {
+      "id": "issue_resource",
+      "computer": "http://localhost:8080/api/v4/indicators/issue_resource/"
+    },
+    {
+      "id": "issue_node",
+      "computer": "http://localhost:8080/api/v4/indicators/issue_node/"
+    },
+    {
+      "id": "issue_center",
+      "computer": "http://localhost:8080/api/v4/indicators/issue_center/"
+    },
+    {
+      "id": "issue_resolutor",
+      "computer": "http://localhost:8080/api/v4/indicators/issue_resolutor/"
+    }
+  ],
+  "window": {
+    "initial": "2014-10-15T22:00:00.000Z",
+    "period": "monthly",
+    "type": "static",
+    "timeZone": "Europe/Madrid"
+  },
+  "period": {
+    "from": "*",
+    "to": "*"
+  }
+}

@@ -1,0 +1,23 @@
+version: '3'
+services:
+  influxdb:
+    image: influxdb
+    container_name: influxdb
+    ports:
+      - '127.0.0.1:8083:8083'
+      - '127.0.0.1:8086:8086'
+      - '127.0.0.1:8089:8089'
+    volumes:
+      - 'influxvol:/var/lib/influxdb'
+      - '.\influxdb_conf:/etc/influxdb'
+  grafana:
+    container_name: grafana-container
+    image: grafana/grafana
+    volumes:
+      - './grafana:/var/lib/grafana'
+    ports:
+      - '127.0.0.1:3000:3000'
+    links:
+      - 'influxdb:influxdb'
+volumes:
+  influxvol: null

@@ -1,0 +1,1924 @@
+{
+  "description": "Measures for SPU ANS",
+  "name": "SPU",
+  "definitions": [
+    {
+      "kind": "DerivedMultiInstanceMeasure",
+      "id": "SPU_IO_K01",
+      "name": "Porcentaje incidencias resueltas en plazo",
+      "description": "Porcentaje de incidencias resueltas en plazo respecto del total de incidencias comunicadas",
+      "function": " value * 100",
+      "includeEvidences": false,
+      "usedMeasureMap": {
+        "value": {
+          "kind": "AggregatedMeasure",
+          "aggregationFunction": "Average",
+          "groupedBy": [
+            {
+              "kind": "DataMeasure",
+              "dataContentSelection": {
+                "selection": "NODO",
+                "dataobjectId": "NODO"
+              },
+              "first": false
+            }
+          ],
+          "baseMeasure": {
+            "kind": "DerivedSingleInstanceMeasure",
+            "function": " time ${deadline}",
+            "includeEvidences": false,
+            "usedMeasureMap": {
+              "time": {
+                "kind": "TimeMeasure",
+                "unitOfMeasure": "hours",
+                "from": {
+                  "kind": "TimeInstantCondition",
+                  "appliesTo": "Data",
+                  "changesToState": {
+                    "dataObjectState": {
+                      "name": "ESTADO == 'Abierta' && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+                    }
+                  }
+                },
+                "to": {
+                  "kind": "TimeInstantCondition",
+                  "appliesTo": "Data",
+                  "changesToState": {
+                    "dataObjectState": {
+                      "name": "!(ESTADO == 'Abierta' && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia'))"
+                    }
+                  }
+                },
+                "timeMeasureType": "CYCLIC",
+                "singleInstanceAggFunction": "Sum",
+                "considerOnly": "${schedule}",
+                "computeUnfinished": false
+              }
+            }
+          },
+          "filter": {
+            "kind": "DerivedSingleInstanceMeasure",
+            "id": "filter",
+            "function": "!Double.isNaN(time) && solicitudesPadre == '' && (estado == 'Cerrada' || estado == 'Cancelada' || estado == 'Anulada')",
+            "includeEvidences": false,
+            "usedMeasureMap": {
+              "estado": {
+                "kind": "DataMeasure",
+                "dataContentSelection": {
+                  "selection": "ESTADO",
+                  "dataobjectId": "ESTADO"
+                },
+                "first": false
+              },
+              "solicitudesPadre": {
+                "kind": "DataMeasure",
+                "dataContentSelection": {
+                  "selection": "PADRE",
+                  "dataobjectId": "PADRE"
+                },
+                "first": false
+              },
+              "time": {
+                "kind": "TimeMeasure",
+                "unitOfMeasure": "hours",
+                "from": {
+                  "kind": "TimeInstantCondition",
+                  "appliesTo": "Data",
+                  "changesToState": {
+                    "dataObjectState": {
+                      "name": "ESTADO == 'Abierta' && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+                    }
+                  }
+                },
+                "to": {
+                  "kind": "TimeInstantCondition",
+                  "appliesTo": "Data",
+                  "changesToState": {
+                    "dataObjectState": {
+                      "name": "!(ESTADO == 'Abierta' && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia'))"
+                    }
+                  }
+                },
+                "timeMeasureType": "CYCLIC",
+                "singleInstanceAggFunction": "Sum",
+                "considerOnly": "${schedule}",
+                "computeUnfinished": false
+              }
+            }
+          },
+          "includeUnfinished": false,
+          "includeEvidences": false,
+          "aggregates": false,
+          "groupedBySelections": [
+            {
+              "selection": "NODO",
+              "dataobjectId": "NODO"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "DerivedSingleInstanceMeasure",
+      "id": "SPU_IO_K01_evidence",
+      "function": " time ${deadline}",
+      "includeEvidences": false,
+      "usedMeasureMap": {
+        "time": {
+          "kind": "TimeMeasure",
+          "unitOfMeasure": "hours",
+          "from": {
+            "kind": "TimeInstantCondition",
+            "appliesTo": "Data",
+            "changesToState": {
+              "dataObjectState": {
+                "name": "ESTADO == 'Abierta' && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+              }
+            }
+          },
+          "to": {
+            "kind": "TimeInstantCondition",
+            "appliesTo": "Data",
+            "changesToState": {
+              "dataObjectState": {
+                "name": "!(ESTADO == 'Abierta' && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia'))"
+              }
+            }
+          },
+          "timeMeasureType": "CYCLIC",
+          "singleInstanceAggFunction": "Sum",
+          "considerOnly": "${schedule}",
+          "computeUnfinished": false
+        }
+      }
+    },
+    {
+      "kind": "DerivedMultiInstanceMeasure",
+      "id": "SPU_IO_K05",
+      "name": "Porcentaje incidencias sin categorizar el motivo de cierre",
+      "description": "Porcentaje de incidencias cerradas sin indicar un motivo de cierre concreto y categorizado que muestre la soluciÃ³n aplicada para la incidencia.",
+      "function": " value * 100",
+      "includeEvidences": false,
+      "usedMeasureMap": {
+        "value": {
+          "kind": "AggregatedMeasure",
+          "aggregationFunction": "Average",
+          "groupedBy": [
+            {
+              "kind": "DataMeasure",
+              "dataContentSelection": {
+                "selection": "NODO",
+                "dataobjectId": "NODO"
+              },
+              "first": false
+            }
+          ],
+          "baseMeasure": {
+            "kind": "DerivedSingleInstanceMeasure",
+            "function": "(motivoCierre == '' || motivoCierre == ' ') && (asignatarioDeResolucionUltima != null) && (asignatarioDeResolucionUltima == 'SAS OFIMATICA-LAN' || asignatarioDeResolucionUltima == 'RESOLUTOR-PUESTO-USUARIO')",
+            "includeEvidences": false,
+            "usedMeasureMap": {
+              "motivoCierre": {
+                "kind": "DataMeasure",
+                "dataContentSelection": {
+                  "selection": "MOTIVOCIERRE"
+                },
+                "first": false
+              },
+              "asignatarioDeResolucionUltima": {
+                "kind": "DataMeasure",
+                "dataContentSelection": {
+                  "selection": "RESOLUTOR"
+                },
+                "precondition": {
+                  "TimeInstantCondition": {
+                    "appliesTo": "Data",
+                    "changesToState": {
+                      "dataObjectState": {
+                        "name": "ESTADO == 'Fijada' && TIPOLOGIA.startsWith('Incidencia')"
+                      }
+                    }
+                  }
+                },
+                "first": false
+              }
+            }
+          },
+          "filter": {
+            "kind": "DerivedSingleInstanceMeasure",
+            "function": "solicitudesPadre == '' && (estado == 'Cerrada') && (asignatarioDeResolucionUltima != null) && (asignatarioDeResolucionUltima == 'SAS OFIMATICA-LAN' || asignatarioDeResolucionUltima == 'RESOLUTOR-PUESTO-USUARIO')",
+            "includeEvidences": false,
+            "usedMeasureMap": {
+              "estado": {
+                "kind": "DataMeasure",
+                "dataContentSelection": {
+                  "selection": "ESTADO",
+                  "dataobjectId": "ESTADO"
+                },
+                "first": false
+              },
+              "solicitudesPadre": {
+                "kind": "DataMeasure",
+                "dataContentSelection": {
+                  "selection": "PADRE",
+                  "dataobjectId": "PADRE"
+                },
+                "first": false
+              },
+              "asignatarioDeResolucionUltima": {
+                "kind": "DataMeasure",
+                "dataContentSelection": {
+                  "selection": "RESOLUTOR"
+                },
+                "precondition": {
+                  "TimeInstantCondition": {
+                    "appliesTo": "Data",
+                    "changesToState": {
+                      "dataObjectState": {
+                        "name": "ESTADO == 'Fijada' && TIPOLOGIA.startsWith('Incidencia')"
+                      }
+                    }
+                  }
+                },
+                "first": false
+              }
+            }
+          },
+          "includeUnfinished": false,
+          "includeEvidences": false,
+          "aggregates": false,
+          "groupedBySelections": [
+            {
+              "selection": "NODO",
+              "dataobjectId": "NODO"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "DerivedSingleInstanceMeasure",
+      "id": "SPU_IO_K05_evidence",
+      "function": "(motivoCierre == '' || motivoCierre == ' ')  && (asignatarioDeResolucionUltima != null) && (asignatarioDeResolucionUltima == 'SAS OFIMATICA-LAN' || asignatarioDeResolucionUltima == 'RESOLUTOR-PUESTO-USUARIO')",
+      "includeEvidences": false,
+      "usedMeasureMap": {
+        "motivoCierre": {
+          "kind": "DataMeasure",
+          "dataContentSelection": {
+            "selection": "MOTIVOCIERRE"
+          },
+          "first": false
+        },
+        "asignatarioDeResolucionUltima": {
+          "kind": "DataMeasure",
+          "dataContentSelection": {
+            "selection": "RESOLUTOR"
+          },
+          "precondition": {
+            "TimeInstantCondition": {
+              "appliesTo": "Data",
+              "changesToState": {
+                "dataObjectState": {
+                  "name": "ESTADO == 'Fijada' && TIPOLOGIA.startsWith('Incidencia')"
+                }
+              }
+            }
+          },
+          "first": false
+        }
+      }
+    },
+    {
+      "kind": "DerivedMultiInstanceMeasure",
+      "id": "SPU_IO_K06",
+      "name": "Porcentaje incidencias reabiertas",
+      "description": "Porcentaje de incidencias que se deben reabrir debido a que en su momento no fueron correctamente solucionadas, es decir, mal cerradas.",
+      "function": " value * 100",
+      "includeEvidences": false,
+      "usedMeasureMap": {
+        "value": {
+          "kind": "AggregatedMeasure",
+          "aggregationFunction": "Average",
+          "groupedBy": [
+            {
+              "kind": "DataMeasure",
+              "dataContentSelection": {
+                "selection": "NODO",
+                "dataobjectId": "NODO"
+              },
+              "first": false
+            }
+          ],
+          "baseMeasure": {
+            "kind": "DerivedSingleInstanceMeasure",
+            "function": "actividadesDeReaperturaDespuesDeResolucionSPU > 0",
+            "includeEvidences": false,
+            "usedMeasureMap": {
+              "actividadesDeReaperturaDespuesDeResolucionSPU": {
+                "kind": "CountMeasure",
+                "when": {
+                  "kind": "TimeInstantCondition",
+                  "appliesTo": "Process",
+                  "changesToState": {
+                    "complexState": {
+                      "first": {
+                        "kind": "TimeInstantCondition",
+                        "appliesTo": "Data",
+                        "changesToState": {
+                          "dataObjectState": {
+                            "name": "ESTADO == 'Fijada' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+                          }
+                        }
+                      },
+                      "last": {
+                        "kind": "TimeInstantCondition",
+                        "appliesTo": "Data",
+                        "changesToState": {
+                          "dataObjectState": {
+                            "name": "ESTADO == 'Abierta' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia') && REAPERTURAINC == 0"
+                          }
+                        }
+                      },
+                      "type": "LEADSTO"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "filter": {
+            "kind": "DerivedSingleInstanceMeasure",
+            "function": "solicitudesPadre == '' && (estado == 'Cerrada') && accionesDeResolucionPorSPU > 0",
+            "includeEvidences": false,
+            "usedMeasureMap": {
+              "estado": {
+                "kind": "DataMeasure",
+                "dataContentSelection": {
+                  "selection": "ESTADO",
+                  "dataobjectId": "ESTADO"
+                },
+                "first": false
+              },
+              "solicitudesPadre": {
+                "kind": "DataMeasure",
+                "dataContentSelection": {
+                  "selection": "PADRE",
+                  "dataobjectId": "PADRE"
+                },
+                "first": false
+              },
+              "accionesDeResolucionPorSPU": {
+                "kind": "CountMeasure",
+                "when": {
+                  "kind": "TimeInstantCondition",
+                  "appliesTo": "Data",
+                  "changesToState": {
+                    "dataObjectState": {
+                      "name": "ESTADO == 'Fijada' && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "includeUnfinished": false,
+          "includeEvidences": false,
+          "aggregates": false,
+          "groupedBySelections": [
+            {
+              "selection": "NODO",
+              "dataobjectId": "NODO"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "DerivedSingleInstanceMeasure",
+      "id": "SPU_IO_K06_evidence",
+      "function": "actividadesDeReaperturaDespuesDeResolucionSPU > 0",
+      "includeEvidences": false,
+      "usedMeasureMap": {
+        "actividadesDeReaperturaDespuesDeResolucionSPU": {
+          "kind": "CountMeasure",
+          "when": {
+            "kind": "TimeInstantCondition",
+            "appliesTo": "Process",
+            "changesToState": {
+              "complexState": {
+                "first": {
+                  "kind": "TimeInstantCondition",
+                  "appliesTo": "Data",
+                  "changesToState": {
+                    "dataObjectState": {
+                      "name": "ESTADO == 'Fijada' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+                    }
+                  }
+                },
+                "last": {
+                  "kind": "TimeInstantCondition",
+                  "appliesTo": "Data",
+                  "changesToState": {
+                    "dataObjectState": {
+                      "name": "ESTADO == 'Abierta' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia') && REAPERTURAINC == 0"
+                    }
+                  }
+                },
+                "type": "LEADSTO"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "DerivedMultiInstanceMeasure",
+      "id": "SPU_IO_K06_t",
+      "name": "Porcentaje incidencias reabiertas por centros",
+      "description": "Porcentaje de incidencias que se deben reabrir debido a que en su momento no fueron correctamente solucionadas, es decir, mal cerradas.",
+      "function": " value * 100",
+      "includeEvidences": false,
+      "usedMeasureMap": {
+        "value": {
+          "kind": "AggregatedMeasure",
+          "aggregationFunction": "Average",
+          "groupedBy": [
+            {
+              "kind": "DataMeasure",
+              "dataContentSelection": {
+                "selection": "NODO",
+                "dataobjectId": "NODO"
+              },
+              "first": false
+            },
+            {
+              "kind": "DataMeasure",
+              "dataContentSelection": {
+                "selection": "CENTRO",
+                "dataobjectId": "CENTRO"
+              },
+              "first": false
+            }
+          ],
+          "baseMeasure": {
+            "kind": "DerivedSingleInstanceMeasure",
+            "function": "actividadesDeReaperturaDespuesDeResolucionSPU > 0",
+            "includeEvidences": false,
+            "usedMeasureMap": {
+              "actividadesDeReaperturaDespuesDeResolucionSPU": {
+                "kind": "CountMeasure",
+                "when": {
+                  "kind": "TimeInstantCondition",
+                  "appliesTo": "Process",
+                  "changesToState": {
+                    "complexState": {
+                      "first": {
+                        "kind": "TimeInstantCondition",
+                        "appliesTo": "Data",
+                        "changesToState": {
+                          "dataObjectState": {
+                            "name": "ESTADO == 'Fijada' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+                          }
+                        }
+                      },
+                      "last": {
+                        "kind": "TimeInstantCondition",
+                        "appliesTo": "Data",
+                        "changesToState": {
+                          "dataObjectState": {
+                            "name": "ESTADO == 'Abierta' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia') && REAPERTURAINC == 0"
+                          }
+                        }
+                      },
+                      "type": "LEADSTO"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "filter": {
+            "kind": "DerivedSingleInstanceMeasure",
+            "function": "solicitudesPadre == '' && (estado == 'Cerrada') && accionesDeResolucionPorSPU > 0",
+            "includeEvidences": false,
+            "usedMeasureMap": {
+              "estado": {
+                "kind": "DataMeasure",
+                "dataContentSelection": {
+                  "selection": "ESTADO",
+                  "dataobjectId": "ESTADO"
+                },
+                "first": false
+              },
+              "solicitudesPadre": {
+                "kind": "DataMeasure",
+                "dataContentSelection": {
+                  "selection": "PADRE",
+                  "dataobjectId": "PADRE"
+                },
+                "first": false
+              },
+              "accionesDeResolucionPorSPU": {
+                "kind": "CountMeasure",
+                "when": {
+                  "kind": "TimeInstantCondition",
+                  "appliesTo": "Data",
+                  "changesToState": {
+                    "dataObjectState": {
+                      "name": "ESTADO == 'Fijada' && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "includeUnfinished": false,
+          "includeEvidences": false,
+          "aggregates": false,
+          "groupedBySelections": [
+            {
+              "selection": "NODO",
+              "dataobjectId": "NODO"
+            },
+            {
+              "selection": "CENTRO",
+              "dataobjectId": "CENTRO"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "DerivedSingleInstanceMeasure",
+      "id": "SPU_IO_K06_t_evidence",
+      "function": "actividadesDeReaperturaDespuesDeResolucionSPU > 0",
+      "includeEvidences": false,
+      "usedMeasureMap": {
+        "actividadesDeReaperturaDespuesDeResolucionSPU": {
+          "kind": "CountMeasure",
+          "when": {
+            "kind": "TimeInstantCondition",
+            "appliesTo": "Process",
+            "changesToState": {
+              "complexState": {
+                "first": {
+                  "kind": "TimeInstantCondition",
+                  "appliesTo": "Data",
+                  "changesToState": {
+                    "dataObjectState": {
+                      "name": "ESTADO == 'Fijada' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+                    }
+                  }
+                },
+                "last": {
+                  "kind": "TimeInstantCondition",
+                  "appliesTo": "Data",
+                  "changesToState": {
+                    "dataObjectState": {
+                      "name": "ESTADO == 'Abierta' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia') && REAPERTURAINC == 0"
+                    }
+                  }
+                },
+                "type": "LEADSTO"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "DerivedMultiInstanceMeasure",
+      "id": "SPU_IO_K10",
+      "name": "Porcentaje incidencias reclamadas con el ANS cumplido",
+      "description": "Porcentaje de incidencias que son reclamadas por el SAS donde se han superado los tiempos objetivos de resoluciÃ³n de los ANS",
+      "function": " value * 100",
+      "includeEvidences": false,
+      "usedMeasureMap": {
+        "value": {
+          "kind": "AggregatedMeasure",
+          "aggregationFunction": "Average",
+          "groupedBy": [
+            {
+              "kind": "DataMeasure",
+              "dataContentSelection": {
+                "selection": "NODO",
+                "dataobjectId": "NODO"
+              },
+              "first": false
+            }
+          ],
+          "baseMeasure": {
+            "kind": "DerivedSingleInstanceMeasure",
+            "id": "SPU_IO_K10_evidence",
+            "function": " !Double.isNaN(tiempoHastaReclamacion) && !(tiempoHastaReclamacion${deadline})",
+            "includeEvidences": false,
+            "usedMeasureMap": {
+              "tiempoHastaReclamacion": {
+                "kind": "TimeMeasure",
+                "unitOfMeasure": "hours",
+                "from": {
+                  "kind": "TimeInstantCondition",
+                  "appliesTo": "Data",
+                  "changesToState": {
+                    "dataObjectState": {
+                      "name": "ESTADO == 'Abierta' && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+                    }
+                  }
+                },
+                "to": {
+                  "kind": "TimeInstantCondition",
+                  "appliesTo": "Data",
+                  "changesToState": {
+                    "dataObjectState": {
+                      "name": "RECLAMACION > 0"
+                    }
+                  }
+                },
+                "timeMeasureType": "LINEAR",
+                "singleInstanceAggFunction": "Sum",
+                "considerOnly": "${schedule}",
+                "precondition": {
+                  "DataPropertyCondition": {
+                    "appliesTo": "Data",
+                    "restriction": "ESTADO == 'Abierta' && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+                  }
+                },
+                "computeUnfinished": false
+              }
+            }
+          },
+          "filter": {
+            "kind": "DerivedSingleInstanceMeasure",
+            "id": "filter",
+            "function": "!Double.isNaN(time) && solicitudesPadre == '' && (estado == 'Cerrada' || estado == 'Cancelada' || estado == 'Anulada')",
+            "includeEvidences": false,
+            "usedMeasureMap": {
+              "estado": {
+                "kind": "DataMeasure",
+                "dataContentSelection": {
+                  "selection": "ESTADO",
+                  "dataobjectId": "ESTADO"
+                },
+                "first": false
+              },
+              "solicitudesPadre": {
+                "kind": "DataMeasure",
+                "dataContentSelection": {
+                  "selection": "PADRE",
+                  "dataobjectId": "PADRE"
+                },
+                "first": false
+              },
+              "time": {
+                "kind": "TimeMeasure",
+                "unitOfMeasure": "hours",
+                "from": {
+                  "kind": "TimeInstantCondition",
+                  "appliesTo": "Data",
+                  "changesToState": {
+                    "dataObjectState": {
+                      "name": "ESTADO == 'Abierta' && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+                    }
+                  }
+                },
+                "to": {
+                  "kind": "TimeInstantCondition",
+                  "appliesTo": "Data",
+                  "changesToState": {
+                    "dataObjectState": {
+                      "name": "!(ESTADO == 'Abierta' && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia'))"
+                    }
+                  }
+                },
+                "timeMeasureType": "CYCLIC",
+                "singleInstanceAggFunction": "Sum",
+                "considerOnly": "${schedule}",
+                "computeUnfinished": false
+              }
+            }
+          },
+          "includeUnfinished": false,
+          "includeEvidences": false,
+          "aggregates": false,
+          "groupedBySelections": [
+            {
+              "selection": "NODO",
+              "dataobjectId": "NODO"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "DerivedSingleInstanceMeasure",
+      "id": "SPU_IO_K10_evidence",
+      "function": " !Double.isNaN(tiempoHastaReclamacion) && !(tiempoHastaReclamacion${deadline})",
+      "includeEvidences": false,
+      "usedMeasureMap": {
+        "tiempoHastaReclamacion": {
+          "kind": "TimeMeasure",
+          "unitOfMeasure": "hours",
+          "from": {
+            "kind": "TimeInstantCondition",
+            "appliesTo": "Data",
+            "changesToState": {
+              "dataObjectState": {
+                "name": "ESTADO == 'Abierta' && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+              }
+            }
+          },
+          "to": {
+            "kind": "TimeInstantCondition",
+            "appliesTo": "Data",
+            "changesToState": {
+              "dataObjectState": {
+                "name": "RECLAMACION > 0"
+              }
+            }
+          },
+          "timeMeasureType": "LINEAR",
+          "singleInstanceAggFunction": "Sum",
+          "considerOnly": "${schedule}",
+          "precondition": {
+            "DataPropertyCondition": {
+              "appliesTo": "Data",
+              "restriction": "ESTADO == 'Abierta' && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+            }
+          },
+          "computeUnfinished": false
+        }
+      }
+    },
+    {
+      "kind": "DerivedMultiInstanceMeasure",
+      "id": "SPU_IO_K14",
+      "name": "Porcentaje incidencias pendientes de resolver > 1 semana",
+      "description": "Porcentaje de incidencias pendientes de resolver con mÃ¡s de una semana",
+      "function": " value * 100",
+      "includeEvidences": false,
+      "usedMeasureMap": {
+        "value": {
+          "kind": "AggregatedMeasure",
+          "aggregationFunction": "Average",
+          "groupedBy": [
+            {
+              "kind": "DataMeasure",
+              "dataContentSelection": {
+                "selection": "NODO",
+                "dataobjectId": "NODO"
+              },
+              "first": false
+            }
+          ],
+          "baseMeasure": {
+            "kind": "DerivedSingleInstanceMeasure",
+            "id": "SPU_IO_K14_evidence",
+            "function": " !Double.isNaN(time) && !(time ${deadline})",
+            "includeEvidences": false,
+            "usedMeasureMap": {
+              "time": {
+                "kind": "TimeMeasure",
+                "unitOfMeasure": "workingdays",
+                "from": {
+                  "kind": "TimeInstantCondition",
+                  "appliesTo": "Data",
+                  "changesToState": {
+                    "dataObjectState": {
+                      "name": "(ESTADO == 'Abierta' || ESTADO == 'Retrasada') && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+                    }
+                  }
+                },
+                "to": {
+                  "kind": "TimeInstantCondition",
+                  "appliesTo": "Data",
+                  "changesToState": {
+                    "dataObjectState": {
+                      "name": "!((ESTADO == 'Abierta' || ESTADO == 'Retrasada') && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia'))"
+                    }
+                  }
+                },
+                "timeMeasureType": "CYCLIC",
+                "singleInstanceAggFunction": "Sum",
+                "considerOnly": "${schedule}",
+                "computeUnfinished": true
+              }
+            }
+          },
+          "filter": {
+            "kind": "DerivedSingleInstanceMeasure",
+            "function": "solicitudesPadre == '' && count > 0",
+            "includeEvidences": false,
+            "usedMeasureMap": {
+              "solicitudesPadre": {
+                "kind": "DataMeasure",
+                "dataContentSelection": {
+                  "selection": "PADRE",
+                  "dataobjectId": "PADRE"
+                },
+                "first": false
+              },
+              "count": {
+                "kind": "CountMeasure",
+                "when": {
+                  "kind": "TimeInstantCondition",
+                  "appliesTo": "Data",
+                  "changesToState": {
+                    "dataObjectState": {
+                      "name": "PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "includeUnfinished": true,
+          "includeEvidences": false,
+          "aggregates": false,
+          "groupedBySelections": [
+            {
+              "selection": "NODO",
+              "dataobjectId": "NODO"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "DerivedSingleInstanceMeasure",
+      "id": "SPU_IO_K14_evidence",
+      "function": " !Double.isNaN(time) && !(time ${deadline})",
+      "includeEvidences": false,
+      "usedMeasureMap": {
+        "time": {
+          "kind": "TimeMeasure",
+          "unitOfMeasure": "workingdays",
+          "from": {
+            "kind": "TimeInstantCondition",
+            "appliesTo": "Data",
+            "changesToState": {
+              "dataObjectState": {
+                "name": "(ESTADO == 'Abierta' || ESTADO == 'Retrasada') && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+              }
+            }
+          },
+          "to": {
+            "kind": "TimeInstantCondition",
+            "appliesTo": "Data",
+            "changesToState": {
+              "dataObjectState": {
+                "name": "!((ESTADO == 'Abierta' || ESTADO == 'Retrasada') && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia'))"
+              }
+            }
+          },
+          "timeMeasureType": "CYCLIC",
+          "singleInstanceAggFunction": "Sum",
+          "considerOnly": "${schedule}",
+          "computeUnfinished": true
+        }
+      }
+    },
+    {
+      "kind": "AggregatedMeasure",
+      "id": "SPU_IO_K18",
+      "name": "Factor de rotaciÃ³n del personal (FRP)",
+      "description": "NÃºmero de cambios de personal que no se han solicitado a la empresa adjudicataria en el perÃ­odo de medida establecido.",
+      "aggregationFunction": "Sum",
+      "groupedBy": [
+        {
+          "kind": "DataMeasure",
+          "dataContentSelection": {
+            "selection": "ASUNTO_NODO",
+            "dataobjectId": "ASUNTO_NODO"
+          },
+          "first": false
+        }
+      ],
+      "baseMeasure": {
+        "kind": "DataMeasure",
+        "dataContentSelection": {
+          "selection": "ASUNTO_N",
+          "dataobjectId": "ASUNTO_N"
+        },
+        "first": false
+      },
+      "filter": {
+        "kind": "DerivedSingleInstanceMeasure",
+        "function": "kpi == 'SPU_IO_K18' && etcDelNodo ${nodeETC} && (estado =='Cerrado' || estado=='Cerrada') && resolucion == 'Aceptado' && resolutor == 'SPU' && tipologia == 'LE'",
+        "includeEvidences": false,
+        "usedMeasureMap": {
+          "resolutor": {
+            "kind": "DataMeasure",
+            "dataContentSelection": {
+              "selection": "RESOLUTOR",
+              "dataobjectId": "RESOLUTOR"
+            },
+            "first": false
+          },
+          "estado": {
+            "kind": "DataMeasure",
+            "dataContentSelection": {
+              "selection": "ESTADO",
+              "dataobjectId": "ESTADO"
+            },
+            "first": false
+          },
+          "resolucion": {
+            "kind": "DataMeasure",
+            "dataContentSelection": {
+              "selection": "RESOLUCION",
+              "dataobjectId": "RESOLUCION"
+            },
+            "first": false
+          },
+          "kpi": {
+            "kind": "DataMeasure",
+            "dataContentSelection": {
+              "selection": "ASUNTO_KPI",
+              "dataobjectId": "ASUNTO_KPI"
+            },
+            "first": false
+          },
+          "etcDelNodo": {
+            "kind": "DataMeasure",
+            "dataContentSelection": {
+              "selection": "ASUNTO_ETC",
+              "dataobjectId": "ASUNTO_ETC"
+            },
+            "first": false
+          },
+          "tipologia": {
+            "kind": "DataMeasure",
+            "dataContentSelection": {
+              "selection": "TIPOLOGIA",
+              "dataobjectId": "TIPOLOGIA"
+            },
+            "first": false
+          }
+        }
+      },
+      "includeUnfinished": false,
+      "includeEvidences": false,
+      "aggregates": false,
+      "groupedBySelections": [
+        {
+          "selection": "ASUNTO_NODO",
+          "dataobjectId": "ASUNTO_NODO"
+        }
+      ]
+    },
+    {
+      "kind": "DerivedSingleInstanceMeasure",
+      "id": "SPU_IO_K18_evidence",
+      "function": "kpi == 'SPU_IO_K18' && etcDelNodo ${nodeETC} && (estado =='Cerrado' || estado=='Cerrada') && resolucion == 'Aceptado' && resolutor == 'SPU' && tipologia == 'LE'",
+      "includeEvidences": false,
+      "usedMeasureMap": {
+        "resolutor": {
+          "kind": "DataMeasure",
+          "dataContentSelection": {
+            "selection": "RESOLUTOR",
+            "dataobjectId": "RESOLUTOR"
+          },
+          "first": false
+        },
+        "estado": {
+          "kind": "DataMeasure",
+          "dataContentSelection": {
+            "selection": "ESTADO",
+            "dataobjectId": "ESTADO"
+          },
+          "first": false
+        },
+        "resolucion": {
+          "kind": "DataMeasure",
+          "dataContentSelection": {
+            "selection": "RESOLUCION",
+            "dataobjectId": "RESOLUCION"
+          },
+          "first": false
+        },
+        "kpi": {
+          "kind": "DataMeasure",
+          "dataContentSelection": {
+            "selection": "ASUNTO_KPI",
+            "dataobjectId": "ASUNTO_KPI"
+          },
+          "first": false
+        },
+        "etcDelNodo": {
+          "kind": "DataMeasure",
+          "dataContentSelection": {
+            "selection": "ASUNTO_ETC",
+            "dataobjectId": "ASUNTO_ETC"
+          },
+          "first": false
+        },
+        "tipologia": {
+          "kind": "DataMeasure",
+          "dataContentSelection": {
+            "selection": "TIPOLOGIA",
+            "dataobjectId": "TIPOLOGIA"
+          },
+          "first": false
+        }
+      }
+    },
+    {
+      "kind": "DerivedMultiInstanceMeasure",
+      "id": "SPU_IO_K20",
+      "name": "Porcentaje tiempo de parada respecto del total SLA",
+      "description": "Tiempo que estÃ¡n las incidencias paradas respecto al tiempo total disponible por el proveedor",
+      "function": "Double.isNaN(tiempoParado) ? 0 : tiempoParado / tiempoEmpleado * 100",
+      "includeEvidences": false,
+      "usedMeasureMap": {
+        "tiempoParado": {
+          "kind": "AggregatedMeasure",
+          "aggregationFunction": "Sum",
+          "groupedBy": [
+            {
+              "kind": "DataMeasure",
+              "dataContentSelection": {
+                "selection": "NODO",
+                "dataobjectId": "NODO"
+              },
+              "first": false
+            }
+          ],
+          "baseMeasure": {
+            "kind": "TimeMeasure",
+            "unitOfMeasure": "hours",
+            "from": {
+              "kind": "TimeInstantCondition",
+              "appliesTo": "Data",
+              "changesToState": {
+                "dataObjectState": {
+                  "name": "ESTADO == 'Retrasada' && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+                }
+              }
+            },
+            "to": {
+              "kind": "TimeInstantCondition",
+              "appliesTo": "Data",
+              "changesToState": {
+                "dataObjectState": {
+                  "name": "!(ESTADO == 'Retrasada' && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia'))"
+                }
+              }
+            },
+            "timeMeasureType": "CYCLIC",
+            "singleInstanceAggFunction": "Sum",
+            "considerOnly": "${schedule}",
+            "computeUnfinished": false
+          },
+          "filter": {
+            "kind": "DerivedSingleInstanceMeasure",
+            "id": "filter",
+            "function": "!Double.isNaN(time) && solicitudesPadre == '' && (estado == 'Cerrada' || estado == 'Cancelada' || estado == 'Anulada')",
+            "includeEvidences": false,
+            "usedMeasureMap": {
+              "estado": {
+                "kind": "DataMeasure",
+                "dataContentSelection": {
+                  "selection": "ESTADO",
+                  "dataobjectId": "ESTADO"
+                },
+                "first": false
+              },
+              "solicitudesPadre": {
+                "kind": "DataMeasure",
+                "dataContentSelection": {
+                  "selection": "PADRE",
+                  "dataobjectId": "PADRE"
+                },
+                "first": false
+              },
+              "time": {
+                "kind": "TimeMeasure",
+                "unitOfMeasure": "hours",
+                "from": {
+                  "kind": "TimeInstantCondition",
+                  "appliesTo": "Data",
+                  "changesToState": {
+                    "dataObjectState": {
+                      "name": "(ESTADO == 'Retrasada' || ESTADO == 'Abierta' ) && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+                    }
+                  }
+                },
+                "to": {
+                  "kind": "TimeInstantCondition",
+                  "appliesTo": "Data",
+                  "changesToState": {
+                    "dataObjectState": {
+                      "name": "!((ESTADO == 'Retrasada' || ESTADO == 'Abierta') && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia'))"
+                    }
+                  }
+                },
+                "timeMeasureType": "CYCLIC",
+                "singleInstanceAggFunction": "Sum",
+                "considerOnly": "${schedule}",
+                "computeUnfinished": false
+              }
+            }
+          },
+          "includeUnfinished": false,
+          "includeEvidences": false,
+          "aggregates": false,
+          "groupedBySelections": [
+            {
+              "selection": "NODO",
+              "dataobjectId": "NODO"
+            }
+          ]
+        },
+        "tiempoEmpleado": {
+          "kind": "AggregatedMeasure",
+          "aggregationFunction": "Sum",
+          "groupedBy": [
+            {
+              "kind": "DataMeasure",
+              "dataContentSelection": {
+                "selection": "NODO",
+                "dataobjectId": "NODO"
+              },
+              "first": false
+            }
+          ],
+          "baseMeasure": {
+            "kind": "TimeMeasure",
+            "unitOfMeasure": "hours",
+            "from": {
+              "kind": "TimeInstantCondition",
+              "appliesTo": "Data",
+              "changesToState": {
+                "dataObjectState": {
+                  "name": "(ESTADO == 'Retrasada' || ESTADO == 'Abierta' ) && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+                }
+              }
+            },
+            "to": {
+              "kind": "TimeInstantCondition",
+              "appliesTo": "Data",
+              "changesToState": {
+                "dataObjectState": {
+                  "name": "!((ESTADO == 'Retrasada' || ESTADO == 'Abierta') && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia'))"
+                }
+              }
+            },
+            "timeMeasureType": "CYCLIC",
+            "singleInstanceAggFunction": "Sum",
+            "considerOnly": "${schedule}",
+            "computeUnfinished": false
+          },
+          "filter": {
+            "kind": "DerivedSingleInstanceMeasure",
+            "id": "filter",
+            "function": "!Double.isNaN(time) && solicitudesPadre == '' && (estado == 'Cerrada' || estado == 'Cancelada' || estado == 'Anulada')",
+            "includeEvidences": false,
+            "usedMeasureMap": {
+              "estado": {
+                "kind": "DataMeasure",
+                "dataContentSelection": {
+                  "selection": "ESTADO",
+                  "dataobjectId": "ESTADO"
+                },
+                "first": false
+              },
+              "solicitudesPadre": {
+                "kind": "DataMeasure",
+                "dataContentSelection": {
+                  "selection": "PADRE",
+                  "dataobjectId": "PADRE"
+                },
+                "first": false
+              },
+              "time": {
+                "kind": "TimeMeasure",
+                "unitOfMeasure": "hours",
+                "from": {
+                  "kind": "TimeInstantCondition",
+                  "appliesTo": "Data",
+                  "changesToState": {
+                    "dataObjectState": {
+                      "name": "(ESTADO == 'Retrasada' || ESTADO == 'Abierta' ) && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+                    }
+                  }
+                },
+                "to": {
+                  "kind": "TimeInstantCondition",
+                  "appliesTo": "Data",
+                  "changesToState": {
+                    "dataObjectState": {
+                      "name": "!((ESTADO == 'Retrasada' || ESTADO == 'Abierta') && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia'))"
+                    }
+                  }
+                },
+                "timeMeasureType": "CYCLIC",
+                "singleInstanceAggFunction": "Sum",
+                "considerOnly": "${schedule}",
+                "computeUnfinished": false
+              }
+            }
+          },
+          "includeUnfinished": false,
+          "includeEvidences": false,
+          "aggregates": false,
+          "groupedBySelections": [
+            {
+              "selection": "NODO",
+              "dataobjectId": "NODO"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "AggregatedMeasure",
+      "id": "SPU_IO_K80",
+      "name": "Demanda nueva solicitada de incidencias",
+      "description": "Numero de incidencias nuevas dadas de alta",
+      "aggregationFunction": "Sum",
+      "groupedBy": [
+        {
+          "kind": "DataMeasure",
+          "dataContentSelection": {
+            "selection": "NODO",
+            "dataobjectId": "NODO"
+          },
+          "precondition": {
+            "TimeInstantCondition": {
+              "appliesTo": "Data",
+              "changesToState": {
+                "dataObjectState": {
+                  "name": "ESTADO == 'Abierta' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+                }
+              }
+            }
+          },
+          "first": true
+        },
+        {
+          "kind": "DataMeasure",
+          "dataContentSelection": {
+            "selection": "CENTRO",
+            "dataobjectId": "CENTRO"
+          },
+          "precondition": {
+            "TimeInstantCondition": {
+              "appliesTo": "Data",
+              "changesToState": {
+                "dataObjectState": {
+                  "name": "ESTADO == 'Abierta' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+                }
+              }
+            }
+          },
+          "first": true
+        }
+      ],
+      "baseMeasure": {
+        "kind": "DerivedSingleInstanceMeasure",
+        "function": "solicitudesPadre == '' && asignacionSPU > 0 && prioridad == '${priority}'",
+        "includeEvidences": false,
+        "usedMeasureMap": {
+          "solicitudesPadre": {
+            "kind": "DataMeasure",
+            "dataContentSelection": {
+              "selection": "PADRE",
+              "dataobjectId": "PADRE"
+            },
+            "first": false
+          },
+          "asignacionSPU": {
+            "kind": "CountMeasure",
+            "when": {
+              "kind": "TimeInstantCondition",
+              "appliesTo": "Data",
+              "changesToState": {
+                "dataObjectState": {
+                  "name": "ESTADO == 'Abierta' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+                }
+              }
+            }
+          },
+          "prioridad": {
+            "kind": "DataMeasure",
+            "dataContentSelection": {
+              "selection": "PRIORIDAD",
+              "dataobjectId": "PRIORIDAD"
+            },
+            "precondition": {
+              "TimeInstantCondition": {
+                "appliesTo": "Data",
+                "changesToState": {
+                  "dataObjectState": {
+                    "name": "ESTADO == 'Abierta' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+                  }
+                }
+              }
+            },
+            "first": true
+          }
+        }
+      },
+      "filter": {
+        "kind": "DerivedSingleInstanceMeasure",
+        "function": "solicitudesPadre == '' && asignacionSPU > 0 && prioridad == '${priority}'",
+        "includeEvidences": false,
+        "usedMeasureMap": {
+          "solicitudesPadre": {
+            "kind": "DataMeasure",
+            "dataContentSelection": {
+              "selection": "PADRE",
+              "dataobjectId": "PADRE"
+            },
+            "first": false
+          },
+          "asignacionSPU": {
+            "kind": "CountMeasure",
+            "when": {
+              "kind": "TimeInstantCondition",
+              "appliesTo": "Data",
+              "changesToState": {
+                "dataObjectState": {
+                  "name": "ESTADO == 'Abierta' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+                }
+              }
+            }
+          },
+          "prioridad": {
+            "kind": "DataMeasure",
+            "dataContentSelection": {
+              "selection": "PRIORIDAD",
+              "dataobjectId": "PRIORIDAD"
+            },
+            "precondition": {
+              "TimeInstantCondition": {
+                "appliesTo": "Data",
+                "changesToState": {
+                  "dataObjectState": {
+                    "name": "ESTADO == 'Abierta' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+                  }
+                }
+              }
+            },
+            "first": true
+          }
+        }
+      },
+      "includeUnfinished": false,
+      "periodReferencePoint": {
+        "kind": "DataMeasure",
+        "dataContentSelection": {
+          "selection": "timestamp",
+          "dataobjectId": "timestamp"
+        },
+        "precondition": {
+          "TimeInstantCondition": {
+            "appliesTo": "Data",
+            "changesToState": {
+              "dataObjectState": {
+                "name": "ESTADO == 'Abierta' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+              }
+            }
+          }
+        },
+        "first": true
+      },
+      "includeEvidences": false,
+      "aggregates": false,
+      "groupedBySelections": [
+        {
+          "selection": "NODO",
+          "dataobjectId": "NODO"
+        },
+        {
+          "selection": "CENTRO",
+          "dataobjectId": "CENTRO"
+        }
+      ]
+    },
+    {
+      "kind": "AggregatedMeasure",
+      "id": "SPU_IO_K81",
+      "name": "Demanda resuelta incidencias",
+      "description": "Numero de incidencias resueltas en el periodo",
+      "aggregationFunction": "Sum",
+      "groupedBy": [
+        {
+          "kind": "DataMeasure",
+          "dataContentSelection": {
+            "selection": "NODO",
+            "dataobjectId": "NODO"
+          },
+          "precondition": {
+            "TimeInstantCondition": {
+              "appliesTo": "Data",
+              "changesToState": {
+                "complexState": {
+                  "first": {
+                    "kind": "TimeInstantCondition",
+                    "appliesTo": "Data",
+                    "changesToState": {
+                      "dataObjectState": {
+                        "name": "ESTADO == 'Abierta' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO')"
+                      }
+                    }
+                  },
+                  "last": {
+                    "kind": "TimeInstantCondition",
+                    "appliesTo": "Data",
+                    "changesToState": {
+                      "dataObjectState": {
+                        "name": "((ESTADO == 'Cerrada' || ESTADO=='Cancelada' || ESTADO=='Anulada') && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')) || (!(RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia'))"
+                      }
+                    }
+                  },
+                  "type": "LEADSTOCYCLIC"
+                }
+              }
+            }
+          },
+          "first": false
+        },
+        {
+          "kind": "DataMeasure",
+          "dataContentSelection": {
+            "selection": "CENTRO",
+            "dataobjectId": "CENTRO"
+          },
+          "precondition": {
+            "TimeInstantCondition": {
+              "appliesTo": "Data",
+              "changesToState": {
+                "complexState": {
+                  "first": {
+                    "kind": "TimeInstantCondition",
+                    "appliesTo": "Data",
+                    "changesToState": {
+                      "dataObjectState": {
+                        "name": "ESTADO == 'Abierta' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO')"
+                      }
+                    }
+                  },
+                  "last": {
+                    "kind": "TimeInstantCondition",
+                    "appliesTo": "Data",
+                    "changesToState": {
+                      "dataObjectState": {
+                        "name": "((ESTADO == 'Cerrada' || ESTADO=='Cancelada' || ESTADO=='Anulada') && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')) || (!(RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia'))"
+                      }
+                    }
+                  },
+                  "type": "LEADSTOCYCLIC"
+                }
+              }
+            }
+          },
+          "first": false
+        }
+      ],
+      "baseMeasure": {
+        "kind": "DerivedSingleInstanceMeasure",
+        "function": "solicitudesPadre == '' && (estado == 'Cerrada' || estado == 'Cancelada' || estado == 'Anulada') && desasignacionSPU > 0 && prioridad == '${priority}'",
+        "includeEvidences": false,
+        "usedMeasureMap": {
+          "estado": {
+            "kind": "DataMeasure",
+            "dataContentSelection": {
+              "selection": "ESTADO",
+              "dataobjectId": "ESTADO"
+            },
+            "first": false
+          },
+          "desasignacionSPU": {
+            "kind": "CountMeasure",
+            "when": {
+              "kind": "TimeInstantCondition",
+              "appliesTo": "Data",
+              "changesToState": {
+                "complexState": {
+                  "first": {
+                    "kind": "TimeInstantCondition",
+                    "appliesTo": "Data",
+                    "changesToState": {
+                      "dataObjectState": {
+                        "name": "ESTADO == 'Abierta' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO')"
+                      }
+                    }
+                  },
+                  "last": {
+                    "kind": "TimeInstantCondition",
+                    "appliesTo": "Data",
+                    "changesToState": {
+                      "dataObjectState": {
+                        "name": "((ESTADO == 'Cerrada' || ESTADO=='Cancelada' || ESTADO=='Anulada') && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')) || (!(RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia'))"
+                      }
+                    }
+                  },
+                  "type": "LEADSTOCYCLIC"
+                }
+              }
+            }
+          },
+          "solicitudesPadre": {
+            "kind": "DataMeasure",
+            "dataContentSelection": {
+              "selection": "PADRE",
+              "dataobjectId": "PADRE"
+            },
+            "first": false
+          },
+          "prioridad": {
+            "kind": "DataMeasure",
+            "dataContentSelection": {
+              "selection": "PRIORIDAD",
+              "dataobjectId": "PRIORIDAD"
+            },
+            "precondition": {
+              "TimeInstantCondition": {
+                "appliesTo": "Data",
+                "changesToState": {
+                  "complexState": {
+                    "first": {
+                      "kind": "TimeInstantCondition",
+                      "appliesTo": "Data",
+                      "changesToState": {
+                        "dataObjectState": {
+                          "name": "ESTADO == 'Abierta' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO')"
+                        }
+                      }
+                    },
+                    "last": {
+                      "kind": "TimeInstantCondition",
+                      "appliesTo": "Data",
+                      "changesToState": {
+                        "dataObjectState": {
+                          "name": "((ESTADO == 'Cerrada' || ESTADO=='Cancelada' || ESTADO=='Anulada') && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')) || (!(RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia'))"
+                        }
+                      }
+                    },
+                    "type": "LEADSTOCYCLIC"
+                  }
+                }
+              }
+            },
+            "first": false
+          }
+        }
+      },
+      "filter": {
+        "kind": "DerivedSingleInstanceMeasure",
+        "function": "solicitudesPadre == '' && (estado == 'Cerrada' || estado == 'Cancelada' || estado == 'Anulada') && desasignacionSPU > 0 && prioridad == '${priority}'",
+        "includeEvidences": false,
+        "usedMeasureMap": {
+          "estado": {
+            "kind": "DataMeasure",
+            "dataContentSelection": {
+              "selection": "ESTADO",
+              "dataobjectId": "ESTADO"
+            },
+            "first": false
+          },
+          "desasignacionSPU": {
+            "kind": "CountMeasure",
+            "when": {
+              "kind": "TimeInstantCondition",
+              "appliesTo": "Data",
+              "changesToState": {
+                "complexState": {
+                  "first": {
+                    "kind": "TimeInstantCondition",
+                    "appliesTo": "Data",
+                    "changesToState": {
+                      "dataObjectState": {
+                        "name": "ESTADO == 'Abierta' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO')"
+                      }
+                    }
+                  },
+                  "last": {
+                    "kind": "TimeInstantCondition",
+                    "appliesTo": "Data",
+                    "changesToState": {
+                      "dataObjectState": {
+                        "name": "((ESTADO == 'Cerrada' || ESTADO=='Cancelada' || ESTADO=='Anulada') && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')) || (!(RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia'))"
+                      }
+                    }
+                  },
+                  "type": "LEADSTOCYCLIC"
+                }
+              }
+            }
+          },
+          "solicitudesPadre": {
+            "kind": "DataMeasure",
+            "dataContentSelection": {
+              "selection": "PADRE",
+              "dataobjectId": "PADRE"
+            },
+            "first": false
+          },
+          "prioridad": {
+            "kind": "DataMeasure",
+            "dataContentSelection": {
+              "selection": "PRIORIDAD",
+              "dataobjectId": "PRIORIDAD"
+            },
+            "precondition": {
+              "TimeInstantCondition": {
+                "appliesTo": "Data",
+                "changesToState": {
+                  "complexState": {
+                    "first": {
+                      "kind": "TimeInstantCondition",
+                      "appliesTo": "Data",
+                      "changesToState": {
+                        "dataObjectState": {
+                          "name": "ESTADO == 'Abierta' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO')"
+                        }
+                      }
+                    },
+                    "last": {
+                      "kind": "TimeInstantCondition",
+                      "appliesTo": "Data",
+                      "changesToState": {
+                        "dataObjectState": {
+                          "name": "((ESTADO == 'Cerrada' || ESTADO=='Cancelada' || ESTADO=='Anulada') && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')) || (!(RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia'))"
+                        }
+                      }
+                    },
+                    "type": "LEADSTOCYCLIC"
+                  }
+                }
+              }
+            },
+            "first": false
+          }
+        }
+      },
+      "includeUnfinished": false,
+      "periodReferencePoint": {
+        "kind": "DataMeasure",
+        "dataContentSelection": {
+          "selection": "timestamp",
+          "dataobjectId": "timestamp"
+        },
+        "precondition": {
+          "TimeInstantCondition": {
+            "appliesTo": "Data",
+            "changesToState": {
+              "complexState": {
+                "first": {
+                  "kind": "TimeInstantCondition",
+                  "appliesTo": "Data",
+                  "changesToState": {
+                    "dataObjectState": {
+                      "name": "ESTADO == 'Abierta' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO')"
+                    }
+                  }
+                },
+                "last": {
+                  "kind": "TimeInstantCondition",
+                  "appliesTo": "Data",
+                  "changesToState": {
+                    "dataObjectState": {
+                      "name": "((ESTADO == 'Cerrada' || ESTADO=='Cancelada' || ESTADO=='Anulada') && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')) || (!(RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia'))"
+                    }
+                  }
+                },
+                "type": "LEADSTOCYCLIC"
+              }
+            }
+          }
+        },
+        "first": false
+      },
+      "includeEvidences": false,
+      "aggregates": false,
+      "groupedBySelections": [
+        {
+          "selection": "NODO",
+          "dataobjectId": "NODO"
+        },
+        {
+          "selection": "CENTRO",
+          "dataobjectId": "CENTRO"
+        }
+      ]
+    },
+    {
+      "kind": "DataMeasure",
+      "id": "issue_subject",
+      "dataContentSelection": {
+        "selection": "ASUNTO"
+      },
+      "first": false
+    },
+    {
+      "kind": "DataMeasure",
+      "id": "issue_start",
+      "dataContentSelection": {
+        "selection": "timestamp"
+      },
+      "precondition": {
+        "TimeInstantCondition": {
+          "appliesTo": "Data",
+          "changesToState": {
+            "dataObjectState": {
+              "name": "ESTADO == 'Abierta'"
+            }
+          }
+        }
+      },
+      "first": true
+    },
+    {
+      "kind": "DataMeasure",
+      "id": "issue_end",
+      "dataContentSelection": {
+        "selection": "timestamp"
+      },
+      "precondition": {
+        "TimeInstantCondition": {
+          "appliesTo": "Data",
+          "changesToState": {
+            "dataObjectState": {
+              "name": "ESTADO == 'Anulada' || ESTADO == 'Cerrada' || ESTADO == 'Cancelada'"
+            }
+          }
+        }
+      },
+      "first": false
+    },
+    {
+      "kind": "TimeMeasure",
+      "id": "issue_duration",
+      "unitOfMeasure": "seconds",
+      "from": {
+        "kind": "TimeInstantCondition",
+        "appliesTo": "Data",
+        "changesToState": {
+          "dataObjectState": {
+            "name": "ESTADO == 'Abierta' && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+          }
+        }
+      },
+      "to": {
+        "kind": "TimeInstantCondition",
+        "appliesTo": "Data",
+        "changesToState": {
+          "dataObjectState": {
+            "name": "!(ESTADO == 'Abierta' && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia'))"
+          }
+        }
+      },
+      "timeMeasureType": "CYCLIC",
+      "singleInstanceAggFunction": "Sum",
+      "considerOnly": "${schedule}",
+      "computeUnfinished": false
+    },
+    {
+      "kind": "TimeMeasure",
+      "id": "issue_duration_K05",
+      "unitOfMeasure": "seconds",
+      "from": {
+        "kind": "TimeInstantCondition",
+        "appliesTo": "Data",
+        "changesToState": {
+          "dataObjectState": {
+            "name": "ESTADO == 'Abierta' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+          }
+        }
+      },
+      "to": {
+        "kind": "TimeInstantCondition",
+        "appliesTo": "Data",
+        "changesToState": {
+          "dataObjectState": {
+            "name": "!(ESTADO == 'Abierta' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia'))"
+          }
+        }
+      },
+      "timeMeasureType": "CYCLIC",
+      "singleInstanceAggFunction": "Sum",
+      "considerOnly": "${schedule}",
+      "computeUnfinished": false
+    },
+    {
+      "kind": "DataMeasure",
+      "id": "issue_area_K18",
+      "dataContentSelection": {
+        "selection": "AREA"
+      },
+      "first": false
+    },
+    {
+      "kind": "TimeMeasure",
+      "id": "issue_idle_time",
+      "unitOfMeasure": "seconds",
+      "from": {
+        "kind": "TimeInstantCondition",
+        "appliesTo": "Data",
+        "changesToState": {
+          "dataObjectState": {
+            "name": "ESTADO == 'Retrasada' && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+          }
+        }
+      },
+      "to": {
+        "kind": "TimeInstantCondition",
+        "appliesTo": "Data",
+        "changesToState": {
+          "dataObjectState": {
+            "name": "!(ESTADO == 'Retrasada' && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia'))"
+          }
+        }
+      },
+      "timeMeasureType": "CYCLIC",
+      "singleInstanceAggFunction": "Sum",
+      "considerOnly": "${schedule}",
+      "computeUnfinished": false
+    },
+    {
+      "kind": "DataMeasure",
+      "id": "issue_source",
+      "dataContentSelection": {
+        "selection": "ORIGEN"
+      },
+      "first": false
+    },
+    {
+      "kind": "DataMeasure",
+      "id": "issue_typology",
+      "dataContentSelection": {
+        "selection": "TIPOLOGIA"
+      },
+      "first": false
+    },
+    {
+      "kind": "DataMeasure",
+      "id": "issue_priority",
+      "dataContentSelection": {
+        "selection": "PRIORIDAD"
+      },
+      "first": false
+    },
+    {
+      "kind": "DataMeasure",
+      "id": "issue_resource",
+      "dataContentSelection": {
+        "selection": "RECURSO"
+      },
+      "first": false
+    },
+    {
+      "kind": "DataMeasure",
+      "id": "issue_node",
+      "dataContentSelection": {
+        "selection": "NODO"
+      },
+      "first": false
+    },
+    {
+      "kind": "DataMeasure",
+      "id": "issue_center",
+      "dataContentSelection": {
+        "selection": "CENTRO"
+      },
+      "first": false
+    },
+    {
+      "kind": "DataMeasure",
+      "id": "issue_resolutor",
+      "dataContentSelection": {
+        "selection": "RESOLUTOR"
+      },
+      "first": false
+    },
+    {
+      "kind": "TimeMeasure",
+      "id": "TIEMPOIMP",
+      "unitOfMeasure": "seconds",
+      "from": {
+        "kind": "TimeInstantCondition",
+        "appliesTo": "Data",
+        "changesToState": {
+          "dataObjectState": {
+            "name": "ESTADO == 'Pte de implantar' && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia')"
+          }
+        }
+      },
+      "to": {
+        "kind": "TimeInstantCondition",
+        "appliesTo": "Data",
+        "changesToState": {
+          "dataObjectState": {
+            "name": "!(ESTADO == 'Pte de implantar' && PRIORIDAD == '${priority}' && (RESOLUTOR == 'SAS OFIMATICA-LAN' || RESOLUTOR == 'RESOLUTOR-PUESTO-USUARIO') && TIPOLOGIA.startsWith('Incidencia'))"
+          }
+        }
+      },
+      "timeMeasureType": "CYCLIC",
+      "singleInstanceAggFunction": "Sum",
+      "considerOnly": "${schedule}",
+      "computeUnfinished": false
+    }
+  ]
+}

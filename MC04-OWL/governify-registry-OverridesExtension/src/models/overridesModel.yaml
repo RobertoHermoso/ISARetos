@@ -1,0 +1,34 @@
+---
+agreement:
+  type: string
+guarantee:
+  type: string
+overrides:
+  type: array
+  items:
+    "$ref": "#/override"
+override:
+  type: object
+  properties:
+    scope:
+      type: object
+    period:
+      type: object
+      properties:
+        from:
+          type: string
+        to:
+          type: string
+    id:
+      type: string
+    evidences:
+      type: array
+      items:
+        "$ref": "#/evidence_ref"
+    comment:
+      type: string
+evidence_ref:
+  type: object
+  properties:
+    evidence:
+      type: boolean

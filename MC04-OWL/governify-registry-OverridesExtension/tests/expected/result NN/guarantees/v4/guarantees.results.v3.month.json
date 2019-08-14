@@ -1,0 +1,2348 @@
+[
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K01",
+    "scope": {
+      "node": "SEVILLA",
+      "serviceLine": "Línea de servicio de operación",
+      "activity": "Actividad no planificada",
+      "priority": "P2"
+    },
+    "period": {
+      "from": "2016-01-15T23:00:00.000Z",
+      "to": "2016-02-15T22:59:59.999Z"
+    },
+    "value": false,
+    "metrics": {
+      "SPU_IO_K01": "72.72727272727273"
+    },
+    "evidences": [
+      {
+        "issue_resource": "NO_RECEPCIONADO",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "PUERTA BLANCA",
+        "issue_node": "SEVILLA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "SPU_IO_K01_evidence": "true",
+        "issue_typology": "Incidencia.Sistema.Cliente",
+        "issue_duration": "3600.0",
+        "issue_start": "2016-01-20T08:00:00.000Z",
+        "issue_source": "TELEFONO",
+        "issue_subject": "la maquina",
+        "id": "4444444",
+        "issue_end": "2016-01-20T09:00:00.000Z"
+      },
+      {
+        "issue_resource": "NO_RECEPCIONADO",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "PUERTA BLANCA",
+        "issue_node": "SEVILLA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "SPU_IO_K01_evidence": "true",
+        "issue_typology": "Incidencia.Sistema.Cliente",
+        "issue_duration": "1800.0",
+        "issue_start": "2016-01-20T11:00:00.000Z",
+        "issue_source": "TELEFONO",
+        "issue_subject": "la maquina",
+        "id": "11111111",
+        "issue_end": "2016-01-20T12:00:00.000Z"
+      },
+      {
+        "issue_resource": "SW_COMERCIAL",
+        "issue_priority": "P2",
+        "issue_idle_time": "46800.0",
+        "issue_center": "H. U. DE JEREZ",
+        "issue_node": "SEVILLA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "SPU_IO_K01_evidence": "false",
+        "issue_typology": "Incidencia.Sistema.Cliente",
+        "issue_duration": "46800.0",
+        "issue_start": "2016-01-20T07:00:00.000Z",
+        "issue_source": "TELEFONO",
+        "issue_subject": "Error al c",
+        "id": "16161611616",
+        "issue_end": "2016-01-23T10:00:00.000Z"
+      },
+      {
+        "issue_resource": "SW_COMERCIAL",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "H. U. VIRGEN DEL ROCIO",
+        "issue_node": "SEVILLA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "SPU_IO_K01_evidence": "false",
+        "issue_typology": "Incidencia.Sistema.Cliente",
+        "issue_duration": "331200.0",
+        "issue_start": "2016-01-20T11:00:00.000Z",
+        "issue_source": "TELEFONO",
+        "issue_subject": "Error al c",
+        "id": "13131313",
+        "issue_end": "2016-01-30T11:30:00.000Z"
+      },
+      {
+        "issue_resource": "GENERICO Axarquia",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "H. C. AXARQUIA",
+        "issue_node": "SEVILLA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "SPU_IO_K01_evidence": "true",
+        "issue_typology": "Incidencia.Hardware.Raton",
+        "issue_duration": "10800.0",
+        "issue_start": "2016-01-20T11:00:00.000Z",
+        "issue_source": "WEBSVC",
+        "issue_subject": "la usuaria",
+        "id": "8888888",
+        "issue_end": "2016-01-20T14:00:00.000Z"
+      },
+      {
+        "issue_resource": "NO_RECEPCIONADO",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "H. U. VIRGEN DEL ROCIO",
+        "issue_node": "SEVILLA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "SPU_IO_K01_evidence": "true",
+        "issue_typology": "Incidencia.Sistema.Cliente",
+        "issue_duration": "3600.0",
+        "issue_start": "2016-01-20T08:00:00.000Z",
+        "issue_source": "TELEFONO",
+        "issue_subject": "la maquina",
+        "id": "9866666666",
+        "issue_end": "2016-01-20T09:00:00.000Z"
+      },
+      {
+        "issue_resource": "NO_RECEPCIONADO",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "PUERTA BLANCA",
+        "issue_node": "SEVILLA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "SPU_IO_K01_evidence": "true",
+        "issue_typology": "Incidencia.Sistema.Cliente",
+        "issue_duration": "3600.0",
+        "issue_start": "2016-01-20T08:00:00.000Z",
+        "issue_source": "TELEFONO",
+        "issue_subject": "la maquina",
+        "id": "984444444",
+        "issue_end": "2016-01-20T09:00:00.000Z"
+      },
+      {
+        "issue_resource": "NO_RECEPCIONADO",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "PUERTA BLANCA",
+        "issue_node": "SEVILLA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "SPU_IO_K01_evidence": "true",
+        "issue_typology": "Incidencia.Sistema.Cliente",
+        "issue_duration": "3600.0",
+        "issue_start": "2016-01-20T11:00:00.000Z",
+        "issue_source": "TELEFONO",
+        "issue_subject": "la maquina",
+        "id": "5555555",
+        "issue_end": "2016-01-20T12:00:00.000Z"
+      },
+      {
+        "issue_resource": "NO_RECEPCIONADO",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "H. U. VIRGEN DEL ROCIO",
+        "issue_node": "SEVILLA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "SPU_IO_K01_evidence": "true",
+        "issue_typology": "Incidencia.Sistema.Cliente",
+        "issue_duration": "3600.0",
+        "issue_start": "2016-01-20T11:00:00.000Z",
+        "issue_source": "TELEFONO",
+        "issue_subject": "la maquina",
+        "id": "985555555",
+        "issue_end": "2016-01-20T12:00:00.000Z"
+      },
+      {
+        "issue_resource": "GENERICO Axarquia",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "H. C. AXARQUIA",
+        "issue_node": "SEVILLA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "SPU_IO_K01_evidence": "false",
+        "issue_typology": "Incidencia.Hardware.Raton",
+        "issue_duration": "331200.0",
+        "issue_start": "2016-01-20T11:00:00.000Z",
+        "issue_source": "WEBSVC",
+        "issue_subject": "la usuaria",
+        "id": "777777",
+        "issue_end": "2016-01-30T15:00:00.000Z"
+      },
+      {
+        "issue_resource": "H. U. VIRGEN DEL ROCIO",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "H. U. VIRGEN DEL ROCIO",
+        "issue_node": "SEVILLA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "SPU_IO_K01_evidence": "true",
+        "issue_typology": "Incidencia.Hardware.Raton",
+        "issue_duration": "1800.0",
+        "issue_start": "2016-01-20T11:00:00.000Z",
+        "issue_source": "WEBSVC",
+        "issue_subject": "la usuaria",
+        "id": "121212122",
+        "issue_end": "2016-01-20T11:30:00.000Z"
+      }
+    ],
+    "penalties": {
+      "porcentajePTOT": -3
+    }
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K01",
+    "scope": {
+      "node": "GRANADA",
+      "serviceLine": "Línea de servicio de operación",
+      "activity": "Actividad no planificada",
+      "priority": "P2"
+    },
+    "period": {
+      "from": "2016-03-15T23:00:00.000Z",
+      "to": "2016-04-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K01": "100.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "GENERICO Axarquia",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "H. C. AXARQUIA",
+        "issue_node": "GRANADA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "SPU_IO_K01_evidence": "true",
+        "issue_typology": "Incidencia.Hardware.Raton",
+        "issue_duration": "0.0",
+        "issue_start": "2016-03-20T13:07:07.000Z",
+        "issue_source": "WEBSVC",
+        "issue_subject": "la usuaria",
+        "id": "1212121212121",
+        "issue_end": "2016-03-20T14:46:46.000Z"
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K01",
+    "scope": {
+      "node": "HUELVA",
+      "serviceLine": "Línea de servicio de operación",
+      "activity": "Actividad no planificada",
+      "priority": "P2"
+    },
+    "period": {
+      "from": "2016-02-15T23:00:00.000Z",
+      "to": "2016-03-15T22:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K01": "100.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "GENERICO Axarquia",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "H. C. AXARQUIA",
+        "issue_node": "HUELVA",
+        "SPU_IO_K01_evidence": "true",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "issue_typology": "Incidencia.Hardware.Raton",
+        "issue_start": "2016-02-20T11:30:00.000Z",
+        "issue_duration": "0.0",
+        "issue_source": "WEBSVC",
+        "issue_subject": "la usuaria",
+        "id": "2222222",
+        "issue_end": "2016-02-20T12:30:00.000Z"
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K01",
+    "scope": {
+      "node": "CORDOBA",
+      "serviceLine": "Línea de servicio de operación",
+      "activity": "Actividad no planificada",
+      "priority": "P2"
+    },
+    "period": {
+      "from": "2016-04-15T22:00:00.000Z",
+      "to": "2016-05-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K01": "100.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "GENERICO Axarquia",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "H. C. AXARQUIA",
+        "issue_node": "CORDOBA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "SPU_IO_K01_evidence": "true",
+        "issue_typology": "Incidencia.Hardware.Raton",
+        "issue_duration": "2379.0",
+        "issue_start": "2016-04-20T13:07:07.000Z",
+        "issue_source": "WEBSVC",
+        "issue_subject": "la usuaria",
+        "id": "13131313131313",
+        "issue_end": "2016-04-20T14:32:46.000Z"
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K06",
+    "scope": {
+      "node": "HUELVA",
+      "serviceLine": "Línea de servicio de operación",
+      "activity": "Actividad no planificada",
+      "priority": "P2"
+    },
+    "period": {
+      "from": "2016-02-15T23:00:00.000Z",
+      "to": "2016-03-15T22:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K06": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "GENERICO Axarquia",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "H. C. AXARQUIA",
+        "issue_node": "HUELVA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "issue_typology": "Incidencia.Hardware.Raton",
+        "issue_start": "2016-02-20T11:30:00.000Z",
+        "issue_duration": "1800.0",
+        "issue_source": "WEBSVC",
+        "SPU_IO_K06_evidence": "false",
+        "issue_subject": "la usuaria",
+        "id": "2222222",
+        "issue_end": "2016-02-20T12:30:00.000Z"
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K06",
+    "scope": {
+      "node": "GRANADA",
+      "serviceLine": "Línea de servicio de operación",
+      "activity": "Actividad no planificada",
+      "priority": "P2"
+    },
+    "period": {
+      "from": "2016-03-15T23:00:00.000Z",
+      "to": "2016-04-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K06": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "GENERICO Axarquia",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "H. C. AXARQUIA",
+        "issue_node": "GRANADA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "issue_typology": "Incidencia.Hardware.Raton",
+        "issue_duration": "2379.0",
+        "issue_start": "2016-03-20T13:07:07.000Z",
+        "issue_source": "WEBSVC",
+        "SPU_IO_K06_evidence": "false",
+        "issue_subject": "la usuaria",
+        "id": "1212121212121",
+        "issue_end": "2016-03-20T14:46:46.000Z"
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K06",
+    "scope": {
+      "node": "CORDOBA",
+      "serviceLine": "Línea de servicio de operación",
+      "activity": "Actividad no planificada",
+      "priority": "P2"
+    },
+    "period": {
+      "from": "2016-04-15T22:00:00.000Z",
+      "to": "2016-05-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K06": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "GENERICO Axarquia",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "H. C. AXARQUIA",
+        "issue_node": "CORDOBA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "issue_typology": "Incidencia.Hardware.Raton",
+        "issue_duration": "2379.0",
+        "issue_start": "2016-04-20T13:07:07.000Z",
+        "issue_source": "WEBSVC",
+        "SPU_IO_K06_evidence": "false",
+        "issue_subject": "la usuaria",
+        "id": "13131313131313",
+        "issue_end": "2016-04-20T14:32:46.000Z"
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K06",
+    "scope": {
+      "node": "SEVILLA",
+      "serviceLine": "Línea de servicio de operación",
+      "activity": "Actividad no planificada",
+      "priority": "P2"
+    },
+    "period": {
+      "from": "2016-01-15T23:00:00.000Z",
+      "to": "2016-02-15T22:59:59.999Z"
+    },
+    "value": false,
+    "metrics": {
+      "SPU_IO_K06": "42.857142857142854"
+    },
+    "evidences": [
+      {
+        "issue_resource": "NO_RECEPCIONADO",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "PUERTA BLANCA",
+        "issue_node": "SEVILLA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "issue_typology": "Incidencia.Sistema.Cliente",
+        "issue_start": "2016-01-20T08:00:00.000Z",
+        "issue_duration": "3600.0",
+        "issue_source": "TELEFONO",
+        "SPU_IO_K06_evidence": "true",
+        "issue_subject": "la maquina",
+        "id": "4444444",
+        "issue_end": "2016-01-20T09:00:00.000Z"
+      },
+      {
+        "issue_resource": "NO_RECEPCIONADO",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "PUERTA BLANCA",
+        "issue_node": "SEVILLA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "issue_typology": "Incidencia.Sistema.Cliente",
+        "issue_start": "2016-01-20T11:00:00.000Z",
+        "issue_duration": "1800.0",
+        "issue_source": "TELEFONO",
+        "SPU_IO_K06_evidence": "false",
+        "issue_subject": "la maquina",
+        "id": "11111111",
+        "issue_end": "2016-01-20T12:00:00.000Z"
+      },
+      {
+        "issue_resource": "SW_COMERCIAL",
+        "issue_priority": "P2",
+        "issue_idle_time": "90000.0",
+        "issue_center": "H. U. DE JEREZ",
+        "issue_node": "SEVILLA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "issue_typology": "Incidencia.Sistema.Cliente",
+        "issue_start": "2016-01-20T07:00:00.000Z",
+        "issue_duration": "90000.0",
+        "issue_source": "TELEFONO",
+        "SPU_IO_K06_evidence": "false",
+        "issue_subject": "Error al c",
+        "id": "16161611616",
+        "issue_end": "2016-01-23T10:00:00.000Z"
+      },
+      {
+        "issue_resource": "NO_RECEPCIONADO",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "H. U. VIRGEN DEL ROCIO",
+        "issue_node": "SEVILLA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "issue_typology": "Incidencia.Sistema.Cliente",
+        "issue_start": "2016-01-20T08:00:00.000Z",
+        "issue_duration": "3600.0",
+        "issue_source": "TELEFONO",
+        "SPU_IO_K06_evidence": "true",
+        "issue_subject": "la maquina",
+        "id": "9866666666",
+        "issue_end": "2016-01-20T09:00:00.000Z"
+      },
+      {
+        "issue_resource": "NO_RECEPCIONADO",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "PUERTA BLANCA",
+        "issue_node": "SEVILLA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "issue_typology": "Incidencia.Sistema.Cliente",
+        "issue_start": "2016-01-20T08:00:00.000Z",
+        "issue_duration": "3600.0",
+        "issue_source": "TELEFONO",
+        "SPU_IO_K06_evidence": "true",
+        "issue_subject": "la maquina",
+        "id": "984444444",
+        "issue_end": "2016-01-20T09:00:00.000Z"
+      },
+      {
+        "issue_resource": "NO_RECEPCIONADO",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "PUERTA BLANCA",
+        "issue_node": "SEVILLA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "issue_typology": "Incidencia.Sistema.Cliente",
+        "issue_start": "2016-01-20T11:00:00.000Z",
+        "issue_duration": "3600.0",
+        "issue_source": "TELEFONO",
+        "SPU_IO_K06_evidence": "false",
+        "issue_subject": "la maquina",
+        "id": "5555555",
+        "issue_end": "2016-01-20T12:00:00.000Z"
+      },
+      {
+        "issue_resource": "NO_RECEPCIONADO",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "H. U. VIRGEN DEL ROCIO",
+        "issue_node": "SEVILLA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "issue_typology": "Incidencia.Sistema.Cliente",
+        "issue_start": "2016-01-20T11:00:00.000Z",
+        "issue_duration": "3600.0",
+        "issue_source": "TELEFONO",
+        "SPU_IO_K06_evidence": "false",
+        "issue_subject": "la maquina",
+        "id": "985555555",
+        "issue_end": "2016-01-20T12:00:00.000Z"
+      }
+    ],
+    "penalties": {
+      "porcentajePTOT": -3
+    }
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K18",
+    "scope": {
+      "serviceLine": "Línea de servicio de operación",
+      "node": "Almeria",
+      "activity": "Actividad no planificada",
+      "nodeETC": "< 20"
+    },
+    "period": {
+      "from": "2016-01-15T23:00:00.000Z",
+      "to": "2016-04-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K18": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Almeria,ETC del Nodo=5,N Recursos=0",
+        "id": "1000032",
+        "issue_area_K18": "",
+        "issue_end": null
+      },
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Almeria,ETC del Nodo=5,N Recursos=0",
+        "id": "1000023",
+        "issue_area_K18": "",
+        "issue_end": null
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K18",
+    "scope": {
+      "serviceLine": "Línea de servicio de operación",
+      "node": "Granada",
+      "activity": "Actividad no planificada",
+      "nodeETC": "< 20"
+    },
+    "period": {
+      "from": "2016-01-15T23:00:00.000Z",
+      "to": "2016-04-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K18": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Granada,ETC del Nodo=6,N Recursos=0",
+        "id": "1000040",
+        "issue_area_K18": "",
+        "issue_end": null
+      },
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Granada,ETC del Nodo=6,N Recursos=0",
+        "id": "1000031",
+        "issue_area_K18": "",
+        "issue_end": null
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K18",
+    "scope": {
+      "serviceLine": "Línea de servicio de operación",
+      "node": "Huelva",
+      "activity": "Actividad no planificada",
+      "nodeETC": "< 20"
+    },
+    "period": {
+      "from": "2016-04-15T22:00:00.000Z",
+      "to": "2016-07-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K18": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Huelva,ETC del Nodo=8,N Recursos=0",
+        "id": "1000055",
+        "issue_area_K18": "",
+        "issue_end": null
+      },
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Huelva,ETC del Nodo=8,N Recursos=0",
+        "id": "1000046",
+        "issue_area_K18": "",
+        "issue_end": null
+      },
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Huelva,ETC del Nodo=8,N Recursos=0",
+        "id": "1000064",
+        "issue_area_K18": "",
+        "issue_end": null
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K18",
+    "scope": {
+      "serviceLine": "Línea de servicio de operación",
+      "node": "Jaen",
+      "activity": "Actividad no planificada",
+      "nodeETC": "< 20"
+    },
+    "period": {
+      "from": "2016-04-15T22:00:00.000Z",
+      "to": "2016-07-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K18": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Jaen,ETC del Nodo=15,N Recursos=0",
+        "id": "1000062",
+        "issue_area_K18": "",
+        "issue_end": null
+      },
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Jaen,ETC del Nodo=15,N Recursos=0",
+        "id": "1000053",
+        "issue_area_K18": "",
+        "issue_end": null
+      },
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Jaen,ETC del Nodo=15,N Recursos=0",
+        "id": "1000071",
+        "issue_area_K18": "",
+        "issue_end": null
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K18",
+    "scope": {
+      "serviceLine": "Línea de servicio de operación",
+      "node": "Almeria",
+      "activity": "Actividad no planificada",
+      "nodeETC": "< 20"
+    },
+    "period": {
+      "from": "2016-04-15T22:00:00.000Z",
+      "to": "2016-07-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K18": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Almeria,ETC del Nodo=5,N Recursos=0",
+        "id": "1000068",
+        "issue_area_K18": "",
+        "issue_end": null
+      },
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Almeria,ETC del Nodo=5,N Recursos=0",
+        "id": "1000050",
+        "issue_area_K18": "",
+        "issue_end": null
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K18",
+    "scope": {
+      "serviceLine": "Línea de servicio de operación",
+      "node": "Huelva",
+      "activity": "Actividad no planificada",
+      "nodeETC": "< 20"
+    },
+    "period": {
+      "from": "2016-01-15T23:00:00.000Z",
+      "to": "2016-04-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K18": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Huelva,ETC del Nodo=8,N Recursos=0",
+        "id": "1000028",
+        "issue_area_K18": "",
+        "issue_end": null
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K18",
+    "scope": {
+      "serviceLine": "Línea de servicio de operación",
+      "node": "Malaga",
+      "activity": "Actividad no planificada",
+      "nodeETC": ">= 20"
+    },
+    "period": {
+      "from": "2016-04-15T22:00:00.000Z",
+      "to": "2016-07-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K18": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Malaga,ETC del Nodo=25,N Recursos=0",
+        "id": "1000066",
+        "issue_area_K18": "",
+        "issue_end": null
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K18",
+    "scope": {
+      "serviceLine": "Línea de servicio de operación",
+      "node": "Sevilla",
+      "activity": "Actividad no planificada",
+      "nodeETC": ">= 20"
+    },
+    "period": {
+      "from": "2016-04-15T22:00:00.000Z",
+      "to": "2016-07-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K18": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Sevilla,ETC del Nodo=30,N Recursos=0",
+        "id": "1000069",
+        "issue_area_K18": "",
+        "issue_end": null
+      },
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Sevilla,ETC del Nodo=30,N Recursos=0",
+        "id": "1000051",
+        "issue_area_K18": "",
+        "issue_end": null
+      },
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Sevilla,ETC del Nodo=30,N Recursos=0",
+        "id": "1000060",
+        "issue_area_K18": "",
+        "issue_end": null
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K18",
+    "scope": {
+      "serviceLine": "Línea de servicio de operación",
+      "node": "Cordoba",
+      "activity": "Actividad no planificada",
+      "nodeETC": ">= 20"
+    },
+    "period": {
+      "from": "2016-04-15T22:00:00.000Z",
+      "to": "2016-07-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K18": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Cordoba,ETC del Nodo=20,N Recursos=0",
+        "id": "1000061",
+        "issue_area_K18": "",
+        "issue_end": null
+      },
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Cordoba,ETC del Nodo=20,N Recursos=0",
+        "id": "1000052",
+        "issue_area_K18": "",
+        "issue_end": null
+      },
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Cordoba,ETC del Nodo=20,N Recursos=0",
+        "id": "1000070",
+        "issue_area_K18": "",
+        "issue_end": null
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K18",
+    "scope": {
+      "serviceLine": "Línea de servicio de operación",
+      "node": "SSCC",
+      "activity": "Actividad no planificada",
+      "nodeETC": ">= 20"
+    },
+    "period": {
+      "from": "2016-04-15T22:00:00.000Z",
+      "to": "2016-07-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K18": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=SSCC,ETC del Nodo=21,N Recursos=0",
+        "id": "1000054",
+        "issue_area_K18": "",
+        "issue_end": null
+      },
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=SSCC,ETC del Nodo=21,N Recursos=0",
+        "id": "1000072",
+        "issue_area_K18": "",
+        "issue_end": null
+      },
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=SSCC,ETC del Nodo=21,N Recursos=0",
+        "id": "1000063",
+        "issue_area_K18": "",
+        "issue_end": null
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K18",
+    "scope": {
+      "serviceLine": "Línea de servicio de operación",
+      "node": "Granada",
+      "activity": "Actividad no planificada",
+      "nodeETC": "< 20"
+    },
+    "period": {
+      "from": "2016-07-15T22:00:00.000Z",
+      "to": "2016-10-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K18": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Granada,ETC del Nodo=6,N Recursos=0",
+        "id": "1000076",
+        "issue_area_K18": "",
+        "issue_end": null
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K18",
+    "scope": {
+      "serviceLine": "Línea de servicio de operación",
+      "node": "Jaen",
+      "activity": "Actividad no planificada",
+      "nodeETC": "< 20"
+    },
+    "period": {
+      "from": "2016-01-15T23:00:00.000Z",
+      "to": "2016-04-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K18": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Jaen,ETC del Nodo=15,N Recursos=0",
+        "id": "1000026",
+        "issue_area_K18": "",
+        "issue_end": null
+      },
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Jaen,ETC del Nodo=15,N Recursos=0",
+        "id": "1000044",
+        "issue_area_K18": "",
+        "issue_end": null
+      },
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Jaen,ETC del Nodo=15,N Recursos=0",
+        "id": "1000035",
+        "issue_area_K18": "",
+        "issue_end": null
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K18",
+    "scope": {
+      "serviceLine": "Línea de servicio de operación",
+      "node": "Huelva",
+      "activity": "Actividad no planificada",
+      "nodeETC": "< 20"
+    },
+    "period": {
+      "from": "2016-07-15T22:00:00.000Z",
+      "to": "2016-10-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K18": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Huelva,ETC del Nodo=8,N Recursos=0",
+        "id": "1000073",
+        "issue_area_K18": "",
+        "issue_end": null
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K18",
+    "scope": {
+      "serviceLine": "Línea de servicio de operación",
+      "node": "SSCC",
+      "activity": "Actividad no planificada",
+      "nodeETC": ">= 20"
+    },
+    "period": {
+      "from": "2016-01-15T23:00:00.000Z",
+      "to": "2016-04-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K18": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=SSCC,ETC del Nodo=21,N Recursos=0",
+        "id": "1000036",
+        "issue_area_K18": "",
+        "issue_end": null
+      },
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=SSCC,ETC del Nodo=21,N Recursos=0",
+        "id": "1000027",
+        "issue_area_K18": "",
+        "issue_end": null
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K18",
+    "scope": {
+      "serviceLine": "Línea de servicio de operación",
+      "node": "Jaen",
+      "activity": "Actividad no planificada",
+      "nodeETC": "< 20"
+    },
+    "period": {
+      "from": "2016-07-15T22:00:00.000Z",
+      "to": "2016-10-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K18": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Jaen,ETC del Nodo=15,N Recursos=0",
+        "id": "1000080",
+        "issue_area_K18": "",
+        "issue_end": null
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K18",
+    "scope": {
+      "serviceLine": "Línea de servicio de operación",
+      "node": "Sevilla",
+      "activity": "Actividad no planificada",
+      "nodeETC": ">= 20"
+    },
+    "period": {
+      "from": "2016-01-15T23:00:00.000Z",
+      "to": "2016-04-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K18": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Sevilla,ETC del Nodo=30,N Recursos=0",
+        "id": "1000033",
+        "issue_area_K18": "",
+        "issue_end": null
+      },
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Sevilla,ETC del Nodo=30,N Recursos=0",
+        "id": "1000042",
+        "issue_area_K18": "",
+        "issue_end": null
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K18",
+    "scope": {
+      "serviceLine": "Línea de servicio de operación",
+      "node": "Almeria",
+      "activity": "Actividad no planificada",
+      "nodeETC": "< 20"
+    },
+    "period": {
+      "from": "2016-07-15T22:00:00.000Z",
+      "to": "2016-10-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K18": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Almeria,ETC del Nodo=5,N Recursos=0",
+        "id": "1000077",
+        "issue_area_K18": "",
+        "issue_end": null
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K18",
+    "scope": {
+      "serviceLine": "Línea de servicio de operación",
+      "node": "Malaga",
+      "activity": "Actividad no planificada",
+      "nodeETC": ">= 20"
+    },
+    "period": {
+      "from": "2016-01-15T23:00:00.000Z",
+      "to": "2016-04-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K18": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Malaga,ETC del Nodo=25,N Recursos=0",
+        "id": "1000039",
+        "issue_area_K18": "",
+        "issue_end": null
+      },
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Malaga,ETC del Nodo=25,N Recursos=0",
+        "id": "1000021",
+        "issue_area_K18": "",
+        "issue_end": null
+      },
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Malaga,ETC del Nodo=25,N Recursos=0",
+        "id": "1000030",
+        "issue_area_K18": "",
+        "issue_end": null
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K18",
+    "scope": {
+      "serviceLine": "Línea de servicio de operación",
+      "node": "Cadiz",
+      "activity": "Actividad no planificada",
+      "nodeETC": ">= 20"
+    },
+    "period": {
+      "from": "2016-07-15T22:00:00.000Z",
+      "to": "2016-10-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K18": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Cadiz,ETC del Nodo=22,N Recursos=0",
+        "id": "1000074",
+        "issue_area_K18": "",
+        "issue_end": null
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K18",
+    "scope": {
+      "serviceLine": "Línea de servicio de operación",
+      "node": "Cadiz",
+      "activity": "Actividad no planificada",
+      "nodeETC": ">= 20"
+    },
+    "period": {
+      "from": "2016-01-15T23:00:00.000Z",
+      "to": "2016-04-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K18": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Cadiz,ETC del Nodo=22,N Recursos=0",
+        "id": "1000038",
+        "issue_area_K18": "",
+        "issue_end": null
+      },
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Cadiz,ETC del Nodo=22,N Recursos=0",
+        "id": "1000020",
+        "issue_area_K18": "",
+        "issue_end": null
+      },
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Cadiz,ETC del Nodo=22,N Recursos=0",
+        "id": "1000029",
+        "issue_area_K18": "",
+        "issue_end": null
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K18",
+    "scope": {
+      "serviceLine": "Línea de servicio de operación",
+      "node": "Malaga",
+      "activity": "Actividad no planificada",
+      "nodeETC": ">= 20"
+    },
+    "period": {
+      "from": "2016-07-15T22:00:00.000Z",
+      "to": "2016-10-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K18": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Malaga,ETC del Nodo=25,N Recursos=0",
+        "id": "1000075",
+        "issue_area_K18": "",
+        "issue_end": null
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K18",
+    "scope": {
+      "serviceLine": "Línea de servicio de operación",
+      "node": "Cadiz",
+      "activity": "Actividad no planificada",
+      "nodeETC": ">= 20"
+    },
+    "period": {
+      "from": "2016-04-15T22:00:00.000Z",
+      "to": "2016-07-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K18": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Cadiz,ETC del Nodo=22,N Recursos=0",
+        "id": "1000047",
+        "issue_area_K18": "",
+        "issue_end": null
+      },
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Cadiz,ETC del Nodo=22,N Recursos=0",
+        "id": "1000065",
+        "issue_area_K18": "",
+        "issue_end": null
+      },
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Cadiz,ETC del Nodo=22,N Recursos=0",
+        "id": "1000056",
+        "issue_area_K18": "",
+        "issue_end": null
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K18",
+    "scope": {
+      "serviceLine": "Línea de servicio de operación",
+      "node": "Sevilla",
+      "activity": "Actividad no planificada",
+      "nodeETC": ">= 20"
+    },
+    "period": {
+      "from": "2016-07-15T22:00:00.000Z",
+      "to": "2016-10-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K18": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Sevilla,ETC del Nodo=30,N Recursos=0",
+        "id": "1000078",
+        "issue_area_K18": "",
+        "issue_end": null
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K18",
+    "scope": {
+      "serviceLine": "Línea de servicio de operación",
+      "node": "Granada",
+      "activity": "Actividad no planificada",
+      "nodeETC": "< 20"
+    },
+    "period": {
+      "from": "2016-04-15T22:00:00.000Z",
+      "to": "2016-07-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K18": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Granada,ETC del Nodo=6,N Recursos=0",
+        "id": "1000049",
+        "issue_area_K18": "",
+        "issue_end": null
+      },
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Granada,ETC del Nodo=6,N Recursos=0",
+        "id": "1000067",
+        "issue_area_K18": "",
+        "issue_end": null
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K18",
+    "scope": {
+      "serviceLine": "Línea de servicio de operación",
+      "node": "SSCC",
+      "activity": "Actividad no planificada",
+      "nodeETC": ">= 20"
+    },
+    "period": {
+      "from": "2016-07-15T22:00:00.000Z",
+      "to": "2016-10-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K18": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=SSCC,ETC del Nodo=21,N Recursos=0",
+        "id": "1000081",
+        "issue_area_K18": "",
+        "issue_end": null
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K06_t",
+    "scope": {
+      "center": "H. U. DE JEREZ",
+      "node": "SEVILLA",
+      "serviceLine": "Línea de servicio de operación",
+      "activity": "Actividad no planificada",
+      "priority": "P2"
+    },
+    "period": {
+      "from": "2016-01-15T23:00:00.000Z",
+      "to": "2016-02-15T22:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K06_t": "0.0"
+    },
+    "evidences": [
+      {
+        "SPU_IO_K06_t_evidence": "false",
+        "issue_resource": "SW_COMERCIAL",
+        "issue_priority": "P2",
+        "issue_idle_time": "90000.0",
+        "issue_center": "H. U. DE JEREZ",
+        "issue_node": "SEVILLA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "issue_typology": "Incidencia.Sistema.Cliente",
+        "issue_start": "2016-01-20T07:00:00.000Z",
+        "issue_duration": "90000.0",
+        "issue_source": "TELEFONO",
+        "issue_subject": "Error al c",
+        "id": "16161611616",
+        "issue_end": "2016-01-23T10:00:00.000Z"
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K06_t",
+    "scope": {
+      "center": "H. C. AXARQUIA",
+      "node": "GRANADA",
+      "serviceLine": "Línea de servicio de operación",
+      "activity": "Actividad no planificada",
+      "priority": "P2"
+    },
+    "period": {
+      "from": "2016-03-15T23:00:00.000Z",
+      "to": "2016-04-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K06_t": "0.0"
+    },
+    "evidences": [
+      {
+        "SPU_IO_K06_t_evidence": "false",
+        "issue_resource": "GENERICO Axarquia",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "H. C. AXARQUIA",
+        "issue_node": "GRANADA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "issue_typology": "Incidencia.Hardware.Raton",
+        "issue_start": "2016-03-20T13:07:07.000Z",
+        "issue_duration": "2379.0",
+        "issue_source": "WEBSVC",
+        "issue_subject": "la usuaria",
+        "id": "1212121212121",
+        "issue_end": "2016-03-20T14:46:46.000Z"
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K06_C",
+    "scope": {
+      "center": "PUERTA BLANCA",
+      "node": "SEVILLA",
+      "serviceLine": "Línea de servicio de operación",
+      "activity": "Actividad no planificada",
+      "priority": "P2"
+    },
+    "period": {
+      "from": "2016-01-15T23:00:00.000Z",
+      "to": "2016-02-15T22:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K06_last_penalty": 0,
+      "SPU_IO_K06_current_penalty": -3
+    },
+    "evidences": [],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K06_t",
+    "scope": {
+      "center": "H. C. AXARQUIA",
+      "node": "CORDOBA",
+      "serviceLine": "Línea de servicio de operación",
+      "activity": "Actividad no planificada",
+      "priority": "P2"
+    },
+    "period": {
+      "from": "2016-04-15T22:00:00.000Z",
+      "to": "2016-05-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K06_t": "0.0"
+    },
+    "evidences": [
+      {
+        "SPU_IO_K06_t_evidence": "false",
+        "issue_resource": "GENERICO Axarquia",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "H. C. AXARQUIA",
+        "issue_node": "CORDOBA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "issue_typology": "Incidencia.Hardware.Raton",
+        "issue_duration": "2379.0",
+        "issue_start": "2016-04-20T13:07:07.000Z",
+        "issue_source": "WEBSVC",
+        "issue_subject": "la usuaria",
+        "id": "13131313131313",
+        "issue_end": "2016-04-20T14:32:46.000Z"
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K06_C",
+    "scope": {
+      "center": "H. U. VIRGEN DEL ROCIO",
+      "node": "SEVILLA",
+      "serviceLine": "Línea de servicio de operación",
+      "activity": "Actividad no planificada",
+      "priority": "P2"
+    },
+    "period": {
+      "from": "2016-01-15T23:00:00.000Z",
+      "to": "2016-02-15T22:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K06_last_penalty": 0,
+      "SPU_IO_K06_current_penalty": -3
+    },
+    "evidences": [],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K06_t",
+    "scope": {
+      "center": "PUERTA BLANCA",
+      "node": "SEVILLA",
+      "serviceLine": "Línea de servicio de operación",
+      "activity": "Actividad no planificada",
+      "priority": "P2"
+    },
+    "period": {
+      "from": "2016-01-15T23:00:00.000Z",
+      "to": "2016-02-15T22:59:59.999Z"
+    },
+    "value": false,
+    "metrics": {
+      "SPU_IO_K06_t": "50.0"
+    },
+    "evidences": [
+      {
+        "SPU_IO_K06_t_evidence": "true",
+        "issue_resource": "NO_RECEPCIONADO",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "PUERTA BLANCA",
+        "issue_node": "SEVILLA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "issue_typology": "Incidencia.Sistema.Cliente",
+        "issue_start": "2016-01-20T08:00:00.000Z",
+        "issue_duration": "3600.0",
+        "issue_source": "TELEFONO",
+        "issue_subject": "la maquina",
+        "id": "4444444",
+        "issue_end": "2016-01-20T09:00:00.000Z"
+      },
+      {
+        "SPU_IO_K06_t_evidence": "false",
+        "issue_resource": "NO_RECEPCIONADO",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "PUERTA BLANCA",
+        "issue_node": "SEVILLA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "issue_typology": "Incidencia.Sistema.Cliente",
+        "issue_start": "2016-01-20T11:00:00.000Z",
+        "issue_duration": "1800.0",
+        "issue_source": "TELEFONO",
+        "issue_subject": "la maquina",
+        "id": "11111111",
+        "issue_end": "2016-01-20T12:00:00.000Z"
+      },
+      {
+        "SPU_IO_K06_t_evidence": "true",
+        "issue_resource": "NO_RECEPCIONADO",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "PUERTA BLANCA",
+        "issue_node": "SEVILLA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "issue_typology": "Incidencia.Sistema.Cliente",
+        "issue_start": "2016-01-20T08:00:00.000Z",
+        "issue_duration": "3600.0",
+        "issue_source": "TELEFONO",
+        "issue_subject": "la maquina",
+        "id": "984444444",
+        "issue_end": "2016-01-20T09:00:00.000Z"
+      },
+      {
+        "SPU_IO_K06_t_evidence": "false",
+        "issue_resource": "NO_RECEPCIONADO",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "PUERTA BLANCA",
+        "issue_node": "SEVILLA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "issue_typology": "Incidencia.Sistema.Cliente",
+        "issue_start": "2016-01-20T11:00:00.000Z",
+        "issue_duration": "3600.0",
+        "issue_source": "TELEFONO",
+        "issue_subject": "la maquina",
+        "id": "5555555",
+        "issue_end": "2016-01-20T12:00:00.000Z"
+      }
+    ],
+    "penalties": {
+      "porcentajePTOT": -3
+    }
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K06_t",
+    "scope": {
+      "center": "H. C. AXARQUIA",
+      "node": "HUELVA",
+      "serviceLine": "Línea de servicio de operación",
+      "activity": "Actividad no planificada",
+      "priority": "P2"
+    },
+    "period": {
+      "from": "2016-02-15T23:00:00.000Z",
+      "to": "2016-03-15T22:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K06_t": "0.0"
+    },
+    "evidences": [
+      {
+        "SPU_IO_K06_t_evidence": "false",
+        "issue_resource": "GENERICO Axarquia",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "H. C. AXARQUIA",
+        "issue_node": "HUELVA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "issue_typology": "Incidencia.Hardware.Raton",
+        "issue_duration": "1800.0",
+        "issue_start": "2016-02-20T11:30:00.000Z",
+        "issue_source": "WEBSVC",
+        "issue_subject": "la usuaria",
+        "id": "2222222",
+        "issue_end": "2016-02-20T12:30:00.000Z"
+      }
+    ],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K06_t",
+    "scope": {
+      "center": "H. U. VIRGEN DEL ROCIO",
+      "node": "SEVILLA",
+      "serviceLine": "Línea de servicio de operación",
+      "activity": "Actividad no planificada",
+      "priority": "P2"
+    },
+    "period": {
+      "from": "2016-01-15T23:00:00.000Z",
+      "to": "2016-02-15T22:59:59.999Z"
+    },
+    "value": false,
+    "metrics": {
+      "SPU_IO_K06_t": "50.0"
+    },
+    "evidences": [
+      {
+        "SPU_IO_K06_t_evidence": "true",
+        "issue_resource": "NO_RECEPCIONADO",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "H. U. VIRGEN DEL ROCIO",
+        "issue_node": "SEVILLA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "issue_typology": "Incidencia.Sistema.Cliente",
+        "issue_start": "2016-01-20T08:00:00.000Z",
+        "issue_duration": "3600.0",
+        "issue_source": "TELEFONO",
+        "issue_subject": "la maquina",
+        "id": "9866666666",
+        "issue_end": "2016-01-20T09:00:00.000Z"
+      },
+      {
+        "SPU_IO_K06_t_evidence": "false",
+        "issue_resource": "NO_RECEPCIONADO",
+        "issue_priority": "P2",
+        "issue_idle_time": "NaN",
+        "issue_center": "H. U. VIRGEN DEL ROCIO",
+        "issue_node": "SEVILLA",
+        "issue_resolutor": "RESOLUTOR-PUESTO-USUARIO",
+        "issue_typology": "Incidencia.Sistema.Cliente",
+        "issue_start": "2016-01-20T11:00:00.000Z",
+        "issue_duration": "3600.0",
+        "issue_source": "TELEFONO",
+        "issue_subject": "la maquina",
+        "id": "985555555",
+        "issue_end": "2016-01-20T12:00:00.000Z"
+      }
+    ],
+    "penalties": {
+      "porcentajePTOT": -3
+    }
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K06_C",
+    "scope": {
+      "center": "PUERTA BLANCA",
+      "node": "SEVILLA",
+      "serviceLine": "Línea de servicio de operación",
+      "activity": "Actividad no planificada",
+      "priority": "P2"
+    },
+    "period": {
+      "from": "2016-02-15T23:00:00.000Z",
+      "to": "2016-03-15T22:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K06_last_penalty": -3,
+      "SPU_IO_K06_current_penalty": 0
+    },
+    "evidences": [],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K06_C",
+    "scope": {
+      "center": "H. U. VIRGEN DEL ROCIO",
+      "node": "SEVILLA",
+      "serviceLine": "Línea de servicio de operación",
+      "activity": "Actividad no planificada",
+      "priority": "P2"
+    },
+    "period": {
+      "from": "2016-02-15T23:00:00.000Z",
+      "to": "2016-03-15T22:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K06_last_penalty": -3,
+      "SPU_IO_K06_current_penalty": 0
+    },
+    "evidences": [],
+    "penalties": null
+  },
+  {
+    "stateType": "guarantees",
+    "agreementId": "T14-L2-S12-minimal",
+    "id": "SPU_IO_K18",
+    "scope": {
+      "serviceLine": "Línea de servicio de operación",
+      "node": "Cordoba",
+      "activity": "Actividad no planificada",
+      "nodeETC": ">= 20"
+    },
+    "period": {
+      "from": "2016-01-15T23:00:00.000Z",
+      "to": "2016-04-15T21:59:59.999Z"
+    },
+    "value": true,
+    "metrics": {
+      "SPU_IO_K18": "0.0"
+    },
+    "evidences": [
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Cordoba,ETC del Nodo=20,N Recursos=0",
+        "id": "1000025",
+        "issue_area_K18": "",
+        "issue_end": null
+      },
+      {
+        "issue_resource": "",
+        "issue_priority": "P1",
+        "issue_idle_time": "NaN",
+        "issue_center": "",
+        "issue_node": "",
+        "issue_resolutor": "SPU",
+        "SPU_IO_K18_evidence": "true",
+        "issue_typology": "LE",
+        "issue_start": null,
+        "issue_source": "",
+        "issue_subject": "KPI=SPU_IO_K18,Nodo=Cordoba,ETC del Nodo=20,N Recursos=0",
+        "id": "1000043",
+        "issue_area_K18": "",
+        "issue_end": null
+      }
+    ],
+    "penalties": null
+  }
+]

@@ -1,0 +1,2378 @@
+[{
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K01",
+        "scope": {
+            "NODO": "SEVILLA",
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada",
+            "priority": "P2"
+        },
+        "period": {
+            "from": "2016-01-15T23:00:00.000Z",
+            "to": "2016-02-15T22:59:59.999Z"
+        },
+        "value": false,
+        "metrics": {
+            "SPU_IO_K01": "72.72727272727273"
+        },
+        "evidences": [{
+                "id": "4444444"
+            },
+            {
+                "id": "11111111"
+            },
+            {
+                "id": "16161611616"
+            },
+            {
+                "id": "13131313"
+            },
+            {
+                "id": "8888888"
+            },
+            {
+                "id": "9866666666"
+            },
+            {
+                "id": "984444444"
+            },
+            {
+                "id": "5555555"
+            },
+            {
+                "id": "985555555"
+            },
+            {
+                "id": "777777"
+            },
+            {
+                "id": "121212122"
+            }
+        ],
+        "penalties": {
+            "porcentajePTOT": -3
+        }
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K01",
+        "scope": {
+            "NODO": "HUELVA",
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada",
+            "priority": "P2"
+        },
+        "period": {
+            "from": "2016-02-15T23:00:00.000Z",
+            "to": "2016-03-15T22:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K01": "100.0"
+        },
+        "evidences": [{
+            "id": "2222222"
+        }],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K01",
+        "scope": {
+            "NODO": "GRANADA",
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada",
+            "priority": "P2"
+        },
+        "period": {
+            "from": "2016-03-15T23:00:00.000Z",
+            "to": "2016-04-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K01": "100.0"
+        },
+        "evidences": [{
+            "id": "1212121212121"
+        }],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K01",
+        "scope": {
+            "NODO": "CORDOBA",
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada",
+            "priority": "P2"
+        },
+        "period": {
+            "from": "2016-04-15T22:00:00.000Z",
+            "to": "2016-05-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K01": "100.0"
+        },
+        "evidences": [{
+            "id": "13131313131313"
+        }],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K06_t",
+        "scope": {
+            "CENTRO": "H. U. DE JEREZ",
+            "NODO": "SEVILLA",
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada",
+            "priority": "P2"
+        },
+        "period": {
+            "from": "2016-01-15T23:00:00.000Z",
+            "to": "2016-02-15T22:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K06_t": "0.0"
+        },
+        "evidences": [{
+            "id": "16161611616"
+        }],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K06_t",
+        "scope": {
+            "CENTRO": "PUERTA BLANCA",
+            "NODO": "SEVILLA",
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada",
+            "priority": "P2"
+        },
+        "period": {
+            "from": "2016-01-15T23:00:00.000Z",
+            "to": "2016-02-15T22:59:59.999Z"
+        },
+        "value": false,
+        "metrics": {
+            "SPU_IO_K06_t": "50.0"
+        },
+        "evidences": [{
+                "id": "4444444"
+            },
+            {
+                "id": "11111111"
+            },
+            {
+                "id": "984444444"
+            },
+            {
+                "id": "5555555"
+            }
+        ],
+        "penalties": {
+            "porcentajePTOT": -3
+        }
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K06_t",
+        "scope": {
+            "CENTRO": "H. U. VIRGEN DEL ROCIO",
+            "NODO": "SEVILLA",
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada",
+            "priority": "P2"
+        },
+        "period": {
+            "from": "2016-01-15T23:00:00.000Z",
+            "to": "2016-02-15T22:59:59.999Z"
+        },
+        "value": false,
+        "metrics": {
+            "SPU_IO_K06_t": "50.0"
+        },
+        "evidences": [{
+                "id": "9866666666"
+            },
+            {
+                "id": "985555555"
+            }
+        ],
+        "penalties": {
+            "porcentajePTOT": -3
+        }
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K06_t",
+        "scope": {
+            "CENTRO": "H. C. AXARQUIA",
+            "NODO": "HUELVA",
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada",
+            "priority": "P2"
+        },
+        "period": {
+            "from": "2016-02-15T23:00:00.000Z",
+            "to": "2016-03-15T22:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K06_t": "0.0"
+        },
+        "evidences": [{
+            "id": "2222222"
+        }],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K06_t",
+        "scope": {
+            "CENTRO": "H. C. AXARQUIA",
+            "NODO": "GRANADA",
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada",
+            "priority": "P2"
+        },
+        "period": {
+            "from": "2016-03-15T23:00:00.000Z",
+            "to": "2016-04-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K06_t": "0.0"
+        },
+        "evidences": [{
+            "id": "1212121212121"
+        }],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K06_t",
+        "scope": {
+            "CENTRO": "H. C. AXARQUIA",
+            "NODO": "CORDOBA",
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada",
+            "priority": "P2"
+        },
+        "period": {
+            "from": "2016-04-15T22:00:00.000Z",
+            "to": "2016-05-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K06_t": "0.0"
+        },
+        "evidences": [{
+            "id": "13131313131313"
+        }],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K06",
+        "scope": {
+            "NODO": "SEVILLA",
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada",
+            "priority": "P2"
+        },
+        "period": {
+            "from": "2016-01-15T23:00:00.000Z",
+            "to": "2016-02-15T22:59:59.999Z"
+        },
+        "value": false,
+        "metrics": {
+            "SPU_IO_K06": "42.857142857142854"
+        },
+        "evidences": [{
+                "id": "4444444"
+            },
+            {
+                "id": "11111111"
+            },
+            {
+                "id": "16161611616"
+            },
+            {
+                "id": "9866666666"
+            },
+            {
+                "id": "984444444"
+            },
+            {
+                "id": "5555555"
+            },
+            {
+                "id": "985555555"
+            }
+        ],
+        "penalties": {
+            "porcentajePTOT": -3
+        }
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K06",
+        "scope": {
+            "NODO": "HUELVA",
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada",
+            "priority": "P2"
+        },
+        "period": {
+            "from": "2016-02-15T23:00:00.000Z",
+            "to": "2016-03-15T22:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K06": "0.0"
+        },
+        "evidences": [{
+            "id": "2222222"
+        }],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K06",
+        "scope": {
+            "NODO": "GRANADA",
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada",
+            "priority": "P2"
+        },
+        "period": {
+            "from": "2016-03-15T23:00:00.000Z",
+            "to": "2016-04-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K06": "0.0"
+        },
+        "evidences": [{
+            "id": "1212121212121"
+        }],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K06",
+        "scope": {
+            "NODO": "CORDOBA",
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada",
+            "priority": "P2"
+        },
+        "period": {
+            "from": "2016-04-15T22:00:00.000Z",
+            "to": "2016-05-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K06": "0.0"
+        },
+        "evidences": [{
+            "id": "13131313131313"
+        }],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K06_C",
+        "scope": {
+            "CENTRO": "PUERTA BLANCA",
+            "NODO": "SEVILLA",
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada",
+            "priority": "P2"
+        },
+        "period": {
+            "from": "2016-02-15T23:00:00.000Z",
+            "to": "2016-03-15T22:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K06_last_penalty": -3,
+            "SPU_IO_K06_current_penalty": 0
+        },
+        "evidences": [],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K06_C",
+        "scope": {
+            "CENTRO": "H. U. VIRGEN DEL ROCIO",
+            "NODO": "SEVILLA",
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada",
+            "priority": "P2"
+        },
+        "period": {
+            "from": "2016-02-15T23:00:00.000Z",
+            "to": "2016-03-15T22:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K06_last_penalty": -3,
+            "SPU_IO_K06_current_penalty": 0
+        },
+        "evidences": [],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K06_C",
+        "scope": {
+            "CENTRO": "PUERTA BLANCA",
+            "NODO": "SEVILLA",
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada",
+            "priority": "P2"
+        },
+        "period": {
+            "from": "2016-01-15T23:00:00.000Z",
+            "to": "2016-02-15T22:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K06_last_penalty": 0,
+            "SPU_IO_K06_current_penalty": -3
+        },
+        "evidences": [],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K06_C",
+        "scope": {
+            "CENTRO": "H. U. VIRGEN DEL ROCIO",
+            "NODO": "SEVILLA",
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada",
+            "priority": "P2"
+        },
+        "period": {
+            "from": "2016-01-15T23:00:00.000Z",
+            "to": "2016-02-15T22:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K06_last_penalty": 0,
+            "SPU_IO_K06_current_penalty": -3
+        },
+        "evidences": [],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K18",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "ASUNTO_NODO": "Granada",
+            "activity": "Actividad no planificada",
+            "nodeETC": "< 20"
+        },
+        "period": {
+            "from": "2016-01-15T23:00:00.000Z",
+            "to": "2016-04-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K18": "0.0"
+        },
+        "evidences": [{
+                "id": "1000040"
+            },
+            {
+                "id": "1000031"
+            }
+        ],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K18",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "ASUNTO_NODO": "Huelva",
+            "activity": "Actividad no planificada",
+            "nodeETC": "< 20"
+        },
+        "period": {
+            "from": "2016-01-15T23:00:00.000Z",
+            "to": "2016-04-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K18": "0.0"
+        },
+        "evidences": [{
+            "id": "1000028"
+        }],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K18",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "ASUNTO_NODO": "Jaen",
+            "activity": "Actividad no planificada",
+            "nodeETC": "< 20"
+        },
+        "period": {
+            "from": "2016-01-15T23:00:00.000Z",
+            "to": "2016-04-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K18": "0.0"
+        },
+        "evidences": [{
+                "id": "1000026"
+            },
+            {
+                "id": "1000044"
+            },
+            {
+                "id": "1000035"
+            }
+        ],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K18",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "ASUNTO_NODO": "Almeria",
+            "activity": "Actividad no planificada",
+            "nodeETC": "< 20"
+        },
+        "period": {
+            "from": "2016-01-15T23:00:00.000Z",
+            "to": "2016-04-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K18": "0.0"
+        },
+        "evidences": [{
+                "id": "1000032"
+            },
+            {
+                "id": "1000023"
+            }
+        ],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K18",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "ASUNTO_NODO": "Granada",
+            "activity": "Actividad no planificada",
+            "nodeETC": "< 20"
+        },
+        "period": {
+            "from": "2016-04-15T22:00:00.000Z",
+            "to": "2016-07-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K18": "0.0"
+        },
+        "evidences": [{
+                "id": "1000049"
+            },
+            {
+                "id": "1000067"
+            }
+        ],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K18",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "ASUNTO_NODO": "Huelva",
+            "activity": "Actividad no planificada",
+            "nodeETC": "< 20"
+        },
+        "period": {
+            "from": "2016-04-15T22:00:00.000Z",
+            "to": "2016-07-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K18": "0.0"
+        },
+        "evidences": [{
+                "id": "1000055"
+            },
+            {
+                "id": "1000046"
+            },
+            {
+                "id": "1000064"
+            }
+        ],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K18",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "ASUNTO_NODO": "Jaen",
+            "activity": "Actividad no planificada",
+            "nodeETC": "< 20"
+        },
+        "period": {
+            "from": "2016-04-15T22:00:00.000Z",
+            "to": "2016-07-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K18": "0.0"
+        },
+        "evidences": [{
+                "id": "1000062"
+            },
+            {
+                "id": "1000053"
+            },
+            {
+                "id": "1000071"
+            }
+        ],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K18",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "ASUNTO_NODO": "Almeria",
+            "activity": "Actividad no planificada",
+            "nodeETC": "< 20"
+        },
+        "period": {
+            "from": "2016-04-15T22:00:00.000Z",
+            "to": "2016-07-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K18": "0.0"
+        },
+        "evidences": [{
+                "id": "1000068"
+            },
+            {
+                "id": "1000050"
+            }
+        ],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K18",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "ASUNTO_NODO": "Granada",
+            "activity": "Actividad no planificada",
+            "nodeETC": "< 20"
+        },
+        "period": {
+            "from": "2016-07-15T22:00:00.000Z",
+            "to": "2016-10-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K18": "0.0"
+        },
+        "evidences": [{
+            "id": "1000076"
+        }],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K18",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "ASUNTO_NODO": "Huelva",
+            "activity": "Actividad no planificada",
+            "nodeETC": "< 20"
+        },
+        "period": {
+            "from": "2016-07-15T22:00:00.000Z",
+            "to": "2016-10-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K18": "0.0"
+        },
+        "evidences": [{
+            "id": "1000073"
+        }],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K18",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "ASUNTO_NODO": "Jaen",
+            "activity": "Actividad no planificada",
+            "nodeETC": "< 20"
+        },
+        "period": {
+            "from": "2016-07-15T22:00:00.000Z",
+            "to": "2016-10-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K18": "0.0"
+        },
+        "evidences": [{
+            "id": "1000080"
+        }],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K18",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "ASUNTO_NODO": "Almeria",
+            "activity": "Actividad no planificada",
+            "nodeETC": "< 20"
+        },
+        "period": {
+            "from": "2016-07-15T22:00:00.000Z",
+            "to": "2016-10-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K18": "0.0"
+        },
+        "evidences": [{
+            "id": "1000077"
+        }],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K18",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "ASUNTO_NODO": "Cadiz",
+            "activity": "Actividad no planificada",
+            "nodeETC": ">= 20"
+        },
+        "period": {
+            "from": "2016-01-15T23:00:00.000Z",
+            "to": "2016-04-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K18": "0.0"
+        },
+        "evidences": [{
+                "id": "1000038"
+            },
+            {
+                "id": "1000020"
+            },
+            {
+                "id": "1000029"
+            }
+        ],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K18",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "ASUNTO_NODO": "Malaga",
+            "activity": "Actividad no planificada",
+            "nodeETC": ">= 20"
+        },
+        "period": {
+            "from": "2016-01-15T23:00:00.000Z",
+            "to": "2016-04-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K18": "0.0"
+        },
+        "evidences": [{
+                "id": "1000039"
+            },
+            {
+                "id": "1000021"
+            },
+            {
+                "id": "1000030"
+            }
+        ],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K18",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "ASUNTO_NODO": "Sevilla",
+            "activity": "Actividad no planificada",
+            "nodeETC": ">= 20"
+        },
+        "period": {
+            "from": "2016-01-15T23:00:00.000Z",
+            "to": "2016-04-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K18": "0.0"
+        },
+        "evidences": [{
+                "id": "1000033"
+            },
+            {
+                "id": "1000042"
+            }
+        ],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K18",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "ASUNTO_NODO": "Cordoba",
+            "activity": "Actividad no planificada",
+            "nodeETC": ">= 20"
+        },
+        "period": {
+            "from": "2016-01-15T23:00:00.000Z",
+            "to": "2016-04-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K18": "0.0"
+        },
+        "evidences": [{
+                "id": "1000025"
+            },
+            {
+                "id": "1000043"
+            }
+        ],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K18",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "ASUNTO_NODO": "SSCC",
+            "activity": "Actividad no planificada",
+            "nodeETC": ">= 20"
+        },
+        "period": {
+            "from": "2016-01-15T23:00:00.000Z",
+            "to": "2016-04-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K18": "0.0"
+        },
+        "evidences": [{
+                "id": "1000036"
+            },
+            {
+                "id": "1000027"
+            }
+        ],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K18",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "ASUNTO_NODO": "Cadiz",
+            "activity": "Actividad no planificada",
+            "nodeETC": ">= 20"
+        },
+        "period": {
+            "from": "2016-04-15T22:00:00.000Z",
+            "to": "2016-07-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K18": "0.0"
+        },
+        "evidences": [{
+                "id": "1000047"
+            },
+            {
+                "id": "1000065"
+            },
+            {
+                "id": "1000056"
+            }
+        ],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K18",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "ASUNTO_NODO": "Malaga",
+            "activity": "Actividad no planificada",
+            "nodeETC": ">= 20"
+        },
+        "period": {
+            "from": "2016-04-15T22:00:00.000Z",
+            "to": "2016-07-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K18": "0.0"
+        },
+        "evidences": [{
+            "id": "1000066"
+        }],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K18",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "ASUNTO_NODO": "Sevilla",
+            "activity": "Actividad no planificada",
+            "nodeETC": ">= 20"
+        },
+        "period": {
+            "from": "2016-04-15T22:00:00.000Z",
+            "to": "2016-07-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K18": "0.0"
+        },
+        "evidences": [{
+                "id": "1000069"
+            },
+            {
+                "id": "1000051"
+            },
+            {
+                "id": "1000060"
+            }
+        ],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K18",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "ASUNTO_NODO": "Cordoba",
+            "activity": "Actividad no planificada",
+            "nodeETC": ">= 20"
+        },
+        "period": {
+            "from": "2016-04-15T22:00:00.000Z",
+            "to": "2016-07-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K18": "0.0"
+        },
+        "evidences": [{
+                "id": "1000061"
+            },
+            {
+                "id": "1000052"
+            },
+            {
+                "id": "1000070"
+            }
+        ],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K18",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "ASUNTO_NODO": "SSCC",
+            "activity": "Actividad no planificada",
+            "nodeETC": ">= 20"
+        },
+        "period": {
+            "from": "2016-04-15T22:00:00.000Z",
+            "to": "2016-07-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K18": "0.0"
+        },
+        "evidences": [{
+                "id": "1000054"
+            },
+            {
+                "id": "1000072"
+            },
+            {
+                "id": "1000063"
+            }
+        ],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K18",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "ASUNTO_NODO": "Cadiz",
+            "activity": "Actividad no planificada",
+            "nodeETC": ">= 20"
+        },
+        "period": {
+            "from": "2016-07-15T22:00:00.000Z",
+            "to": "2016-10-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K18": "0.0"
+        },
+        "evidences": [{
+            "id": "1000074"
+        }],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K18",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "ASUNTO_NODO": "Malaga",
+            "activity": "Actividad no planificada",
+            "nodeETC": ">= 20"
+        },
+        "period": {
+            "from": "2016-07-15T22:00:00.000Z",
+            "to": "2016-10-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K18": "0.0"
+        },
+        "evidences": [{
+            "id": "1000075"
+        }],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K18",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "ASUNTO_NODO": "Sevilla",
+            "activity": "Actividad no planificada",
+            "nodeETC": ">= 20"
+        },
+        "period": {
+            "from": "2016-07-15T22:00:00.000Z",
+            "to": "2016-10-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K18": "0.0"
+        },
+        "evidences": [{
+            "id": "1000078"
+        }],
+        "penalties": null
+    },
+    {
+        "stateType": "guarantees",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K18",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "ASUNTO_NODO": "SSCC",
+            "activity": "Actividad no planificada",
+            "nodeETC": ">= 20"
+        },
+        "period": {
+            "from": "2016-07-15T22:00:00.000Z",
+            "to": "2016-10-15T21:59:59.999Z"
+        },
+        "value": true,
+        "metrics": {
+            "SPU_IO_K18": "0.0"
+        },
+        "evidences": [{
+            "id": "1000081"
+        }],
+        "penalties": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K81",
+        "scope": {
+            "priority": "P2",
+            "activity": "*",
+            "serviceLine": "*",
+            "NODO": "SEVILLA",
+            "CENTRO": "H. C. AXARQUIA"
+        },
+        "period": {
+            "to": "2016-02-15T22:59:59.999Z",
+            "from": "2016-01-15T23:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": "2.0",
+        "evidences": [{
+                "id": "8888888"
+            },
+            {
+                "id": "777777"
+            }
+        ],
+        "parameters": {}
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K81",
+        "scope": {
+            "priority": "P2",
+            "activity": "*",
+            "serviceLine": "*",
+            "NODO": "SEVILLA",
+            "CENTRO": "H. U. DE JEREZ"
+        },
+        "period": {
+            "to": "2016-02-15T22:59:59.999Z",
+            "from": "2016-01-15T23:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": "1.0",
+        "evidences": [{
+            "id": "16161611616"
+        }],
+        "parameters": {}
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K81",
+        "scope": {
+            "priority": "P2",
+            "activity": "*",
+            "serviceLine": "*",
+            "NODO": "SEVILLA",
+            "CENTRO": "PUERTA BLANCA"
+        },
+        "period": {
+            "to": "2016-02-15T22:59:59.999Z",
+            "from": "2016-01-15T23:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": "4.0",
+        "evidences": [{
+                "id": "4444444"
+            },
+            {
+                "id": "11111111"
+            },
+            {
+                "id": "984444444"
+            },
+            {
+                "id": "5555555"
+            }
+        ],
+        "parameters": {}
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K81",
+        "scope": {
+            "priority": "P2",
+            "activity": "*",
+            "serviceLine": "*",
+            "NODO": "SEVILLA",
+            "CENTRO": "H. U. VIRGEN DEL ROCIO"
+        },
+        "period": {
+            "to": "2016-02-15T22:59:59.999Z",
+            "from": "2016-01-15T23:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": "4.0",
+        "evidences": [{
+                "id": "13131313"
+            },
+            {
+                "id": "9866666666"
+            },
+            {
+                "id": "985555555"
+            },
+            {
+                "id": "121212122"
+            }
+        ],
+        "parameters": {}
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K81",
+        "scope": {
+            "priority": "P2",
+            "activity": "*",
+            "serviceLine": "*",
+            "NODO": "HUELVA",
+            "CENTRO": "H. C. AXARQUIA"
+        },
+        "period": {
+            "to": "2016-03-15T22:59:59.999Z",
+            "from": "2016-02-15T23:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": "1.0",
+        "evidences": [{
+            "id": "2222222"
+        }],
+        "parameters": {}
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K81",
+        "scope": {
+            "priority": "P2",
+            "activity": "*",
+            "serviceLine": "*",
+            "NODO": "GRANADA",
+            "CENTRO": "H. C. AXARQUIA"
+        },
+        "period": {
+            "to": "2016-04-15T21:59:59.999Z",
+            "from": "2016-03-15T23:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": "1.0",
+        "evidences": [{
+            "id": "1212121212121"
+        }],
+        "parameters": {}
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K81",
+        "scope": {
+            "priority": "P2",
+            "activity": "*",
+            "serviceLine": "*",
+            "NODO": "CORDOBA",
+            "CENTRO": "H. C. AXARQUIA"
+        },
+        "period": {
+            "to": "2016-05-15T21:59:59.999Z",
+            "from": "2016-04-15T22:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": "1.0",
+        "evidences": [{
+            "id": "13131313131313"
+        }],
+        "parameters": {}
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K80",
+        "scope": {
+            "priority": "P2",
+            "activity": "*",
+            "serviceLine": "*",
+            "NODO": "SEVILLA",
+            "CENTRO": "H. U. DE JEREZ"
+        },
+        "period": {
+            "to": "2016-02-15T22:59:59.999Z",
+            "from": "2016-01-15T23:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": "1.0",
+        "evidences": [{
+            "id": "16161611616"
+        }],
+        "parameters": {}
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K80",
+        "scope": {
+            "priority": "P2",
+            "activity": "*",
+            "serviceLine": "*",
+            "NODO": "SEVILLA",
+            "CENTRO": "H. C. AXARQUIA"
+        },
+        "period": {
+            "to": "2016-02-15T22:59:59.999Z",
+            "from": "2016-01-15T23:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": "2.0",
+        "evidences": [{
+                "id": "8888888"
+            },
+            {
+                "id": "777777"
+            }
+        ],
+        "parameters": {}
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K80",
+        "scope": {
+            "priority": "P2",
+            "activity": "*",
+            "serviceLine": "*",
+            "NODO": "SEVILLA",
+            "CENTRO": "PUERTA BLANCA"
+        },
+        "period": {
+            "to": "2016-02-15T22:59:59.999Z",
+            "from": "2016-01-15T23:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": "4.0",
+        "evidences": [{
+                "id": "4444444"
+            },
+            {
+                "id": "11111111"
+            },
+            {
+                "id": "984444444"
+            },
+            {
+                "id": "5555555"
+            }
+        ],
+        "parameters": {}
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K80",
+        "scope": {
+            "priority": "P2",
+            "activity": "*",
+            "serviceLine": "*",
+            "NODO": "SEVILLA",
+            "CENTRO": "H. U. VIRGEN DEL ROCIO"
+        },
+        "period": {
+            "to": "2016-02-15T22:59:59.999Z",
+            "from": "2016-01-15T23:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": "4.0",
+        "evidences": [{
+                "id": "13131313"
+            },
+            {
+                "id": "9866666666"
+            },
+            {
+                "id": "985555555"
+            },
+            {
+                "id": "121212122"
+            }
+        ],
+        "parameters": {}
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K80",
+        "scope": {
+            "priority": "P2",
+            "activity": "*",
+            "serviceLine": "*",
+            "NODO": "HUELVA",
+            "CENTRO": "H. C. AXARQUIA"
+        },
+        "period": {
+            "to": "2016-03-15T22:59:59.999Z",
+            "from": "2016-02-15T23:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": "1.0",
+        "evidences": [{
+            "id": "2222222"
+        }],
+        "parameters": {}
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K80",
+        "scope": {
+            "priority": "P2",
+            "activity": "*",
+            "serviceLine": "*",
+            "NODO": "GRANADA",
+            "CENTRO": "H. C. AXARQUIA"
+        },
+        "period": {
+            "to": "2016-04-15T21:59:59.999Z",
+            "from": "2016-03-15T23:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": "1.0",
+        "evidences": [{
+            "id": "1212121212121"
+        }],
+        "parameters": {}
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K80",
+        "scope": {
+            "priority": "P2",
+            "activity": "*",
+            "serviceLine": "*",
+            "NODO": "CORDOBA",
+            "CENTRO": "H. C. AXARQUIA"
+        },
+        "period": {
+            "to": "2016-05-15T21:59:59.999Z",
+            "from": "2016-04-15T22:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": "1.0",
+        "evidences": [{
+            "id": "13131313131313"
+        }],
+        "parameters": {}
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2014-11-15T22:59:59.999Z",
+            "from": "2014-10-15T22:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2014-12-15T22:59:59.999Z",
+            "from": "2014-11-15T23:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2015-01-15T22:59:59.999Z",
+            "from": "2014-12-15T23:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2015-02-15T22:59:59.999Z",
+            "from": "2015-01-15T23:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2015-03-15T22:59:59.999Z",
+            "from": "2015-02-15T23:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2015-04-15T21:59:59.999Z",
+            "from": "2015-03-15T23:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2015-05-15T21:59:59.999Z",
+            "from": "2015-04-15T22:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2015-06-15T21:59:59.999Z",
+            "from": "2015-05-15T22:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2015-07-15T21:59:59.999Z",
+            "from": "2015-06-15T22:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2015-08-15T21:59:59.999Z",
+            "from": "2015-07-15T22:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2015-09-15T21:59:59.999Z",
+            "from": "2015-08-15T22:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2015-10-15T21:59:59.999Z",
+            "from": "2015-09-15T22:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2015-11-15T22:59:59.999Z",
+            "from": "2015-10-15T22:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2015-12-15T22:59:59.999Z",
+            "from": "2015-11-15T23:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2016-01-15T22:59:59.999Z",
+            "from": "2015-12-15T23:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2016-02-15T22:59:59.999Z",
+            "from": "2016-01-15T23:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": -10,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2016-03-15T22:59:59.999Z",
+            "from": "2016-02-15T23:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2016-04-15T21:59:59.999Z",
+            "from": "2016-03-15T23:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2016-05-15T21:59:59.999Z",
+            "from": "2016-04-15T22:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2016-06-15T21:59:59.999Z",
+            "from": "2016-05-15T22:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2016-07-15T21:59:59.999Z",
+            "from": "2016-06-15T22:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2016-08-15T21:59:59.999Z",
+            "from": "2016-07-15T22:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2016-09-15T21:59:59.999Z",
+            "from": "2016-08-15T22:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2016-10-15T21:59:59.999Z",
+            "from": "2016-09-15T22:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2016-11-15T22:59:59.999Z",
+            "from": "2016-10-15T22:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2016-12-15T22:59:59.999Z",
+            "from": "2016-11-15T23:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2017-01-15T22:59:59.999Z",
+            "from": "2016-12-15T23:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2017-02-15T22:59:59.999Z",
+            "from": "2017-01-15T23:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2017-03-15T22:59:59.999Z",
+            "from": "2017-02-15T23:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2017-04-15T21:59:59.999Z",
+            "from": "2017-03-15T23:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2017-05-15T21:59:59.999Z",
+            "from": "2017-04-15T22:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2017-06-15T21:59:59.999Z",
+            "from": "2017-05-15T22:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2017-07-15T21:59:59.999Z",
+            "from": "2017-06-15T22:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2017-08-15T21:59:59.999Z",
+            "from": "2017-07-15T22:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    },
+    {
+        "stateType": "metrics",
+        "agreementId": "T14-L2-S12-minimal",
+        "id": "SPU_IO_K00",
+        "scope": {
+            "serviceLine": "Línea de servicio de operación",
+            "activity": "Actividad no planificada"
+        },
+        "period": {
+            "to": "2017-09-15T21:59:59.999Z",
+            "from": "2017-08-15T22:00:00.000Z"
+        },
+        "window": {
+            "type": "static",
+            "period": "monthly",
+            "timeZone": "Europe/Madrid",
+            "initial": "2014-10-15T22:00:00.000Z"
+        },
+        "value": 0,
+        "evidences": null,
+        "parameters": null
+    }
+]

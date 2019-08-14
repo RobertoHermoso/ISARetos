@@ -337,37 +337,6 @@
                         "$ref": "#/context/definitions/scopes/development"
                     }
                 }
-            },
-
-            "SHORT_TO_DO_TIME_BUGS": {
-                "computer": {
-                    "name": "/indicators/SHORT_TO_DO_TIME_BUGS",
-                    "url": "http://localhost:8082",
-                    "apiVersion": "1",
-                    "config": {
-                        "schedules": {
-                            "24x7": "L-DT00:00-23:59/H",
-                            "normal": "[{\"from\":\"1/1\",\"to\":\"6/14\",\"schedule\":\"L-VT09:00-18:00/H\"},{\"from\":\"6/15\",\"to\":\"9/15\",\"schedule\":\"L-VT08:30-15:00/H\"},{\"from\":\"9/16\",\"to\":\"12/23\",\"schedule\":\"L-VT09:00-18:00/H\"},{\"from\":\"12/24\",\"to\":\"12/24\",\"schedule\":\"L-VT09:00-13:00/H\"},{\"from\":\"12/25\",\"to\":\"12/30\",\"schedule\":\"L-VT09:00-18:00/H\"},{\"from\":\"12/31\",\"to\":\"12/31\",\"schedule\":\"L-VT09:00-13:00/H\"}]"
-                        },
-                        "holidays": "http://localhost:8081/static/holidays.json"
-                    }
-                },
-                "measure": {
-                    "computing": "actual",
-                    "element": "number",
-                    "filters": {
-                        "type": "bug",
-                        "state": "in_progress",
-                        "transition": {
-                            "fromState": "to_do",
-                            "toState": "in_progress",
-                            "duration": "> 2880"
-                        }
-                    },
-                    "scope": {
-                        "$ref": "#/context/definitions/scopes/development"
-                    }
-                }
             }
         },
         "guarantees": [
@@ -665,7 +634,7 @@
             },
             {
                 "id": "NO_SHORT_CYCLE_TIME_ISSUES",
-                "description": "The cycle time of an issue should not be less than 1 hour PATATA",
+                "description": "The cycle time of an issue should not be less than 1 hour patata",
                 "scope": {
                     "project": {
                         "name": "Project",
@@ -702,49 +671,7 @@
                         }
                     }
                 ]
-            },
-
-            {
-                "id": "NO_SHORT_TO_DO_TIME_BUGS",
-                "description": "The time of a bug in the To do list should be less than 2 days",
-                "scope": {
-                    "project": {
-                        "name": "Project",
-                        "description": "Repository project",
-                        "type": "string",
-                        "default": "1010101010"
-                    },
-                    "name": {
-                        "name": "Name",
-                        "description": "Repository name",
-                        "type": "string",
-                        "default": "1212121212"
-                    },
-                    "owner": {
-                        "name": "Owner",
-                        "description": "Repository owner",
-                        "type": "string",
-                        "default": "2323232323"
-                    }
-                },
-                "of": [
-                    {
-                        "scope": {
-                            "project": "1010101010"
-                        },
-                        "objective": "SHORT_TO_DO_TIME_BUGS == 0",
-                        "with": {
-                            "SHORT_TO_DO_TIME_BUGS": {}
-                        },
-                        "window": {
-                            "type": "static",
-                            "period": "daily",
-                            "initial": "2019-01-01"
-                        }
-                    }
-                ]
             }
-
         ]
     }
 }

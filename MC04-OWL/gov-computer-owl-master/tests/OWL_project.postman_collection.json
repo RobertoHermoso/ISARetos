@@ -1,0 +1,199 @@
+{
+	"info": {
+		"_postman_id": "27559397-e097-4c25-a521-82085b3d9d74",
+		"name": "OWL project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Project scope",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "87adaa08-a85d-4f10-be9b-c0d30e0effa5",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"var jsonData = pm.response.json();",
+							"pm.test(\"Response should be an array\", function () {",
+							"    pm.expect(jsonData).to.be.an(\"array\");",
+							"});",
+							"pm.test(\"Response should contain one element\", function () {",
+							"    pm.expect(jsonData.length).to.be.eql(1);",
+							"});",
+							"pm.test(\"Response should have scope property\", function () {",
+							"    pm.expect(jsonData[0]).to.have.property(\"scope\");",
+							"});",
+							"pm.test(\"Response should have period property\", function () {",
+							"    pm.expect(jsonData[0]).to.have.property(\"period\");",
+							"});",
+							"pm.test(\"Initial date should be the same as input\", function () {",
+							"    pm.expect(jsonData[0].period.from).to.be.eql(\"2019-01-01T12:00:00.000Z\");",
+							"});",
+							"pm.test(\"Ending date should be the same as input\", function () {",
+							"    pm.expect(jsonData[0].period.to).to.be.eql(\"2019-01-31T12:00:00.000Z\");",
+							"});",
+							"pm.test(\"Response should contain one evidence\", function () {",
+							"    pm.expect(jsonData[0].evidences.length).to.be.eql(1);",
+							"});",
+							"pm.test(\"Value should be one\", function () {",
+							"    pm.expect(jsonData[0].value).to.be.eql(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/indicators/NUMBER_OF_STARTED_ISSUES?window.initial=2019-01-01T12:00:00.000Z&window.end=2019-01-31T12:00:00.000Z&window.timeZone=Europe/Madrid&measure={\"element\": \"number\", \"filters\": {\"state\": \"in_progress\"}}&scope.member=*&scope.project=Planning&scope.owner=raffrearaUS&scope.name=owltesting",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"indicators",
+						"NUMBER_OF_STARTED_ISSUES"
+					],
+					"query": [
+						{
+							"key": "window.initial",
+							"value": "2019-01-01T12:00:00.000Z"
+						},
+						{
+							"key": "window.end",
+							"value": "2019-01-31T12:00:00.000Z"
+						},
+						{
+							"key": "window.timeZone",
+							"value": "Europe/Madrid"
+						},
+						{
+							"key": "measure",
+							"value": "{\"element\": \"number\", \"filters\": {\"state\": \"in_progress\"}}"
+						},
+						{
+							"key": "scope.member",
+							"value": "*"
+						},
+						{
+							"key": "scope.project",
+							"value": "Planning"
+						},
+						{
+							"key": "scope.owner",
+							"value": "raffrearaUS"
+						},
+						{
+							"key": "scope.name",
+							"value": "owltesting"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Member scope",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "87adaa08-a85d-4f10-be9b-c0d30e0effa5",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"var jsonData = pm.response.json();",
+							"pm.test(\"Response should be an array\", function () {",
+							"    pm.expect(jsonData).to.be.an(\"array\");",
+							"});",
+							"pm.test(\"Response should contain one element\", function () {",
+							"    pm.expect(jsonData.length).to.be.eql(1);",
+							"});",
+							"pm.test(\"Response should have scope property\", function () {",
+							"    pm.expect(jsonData[0]).to.have.property(\"scope\");",
+							"});",
+							"pm.test(\"Response should have period property\", function () {",
+							"    pm.expect(jsonData[0]).to.have.property(\"period\");",
+							"});",
+							"pm.test(\"Initial date should be the same as input\", function () {",
+							"    pm.expect(jsonData[0].period.from).to.be.eql(\"2019-01-01T12:00:00.000Z\");",
+							"});",
+							"pm.test(\"Ending date should be the same as input\", function () {",
+							"    pm.expect(jsonData[0].period.to).to.be.eql(\"2019-01-31T12:00:00.000Z\");",
+							"});",
+							"pm.test(\"Response should contain one evidence\", function () {",
+							"    pm.expect(jsonData[0].evidences.length).to.be.eql(1);",
+							"});",
+							"pm.test(\"Value should be one\", function () {",
+							"    pm.expect(jsonData[0].value).to.be.eql(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/indicators/NUMBER_OF_STARTED_ISSUES?window.initial=2019-01-01T12:00:00.000Z&window.end=2019-01-31T12:00:00.000Z&window.timeZone=Europe/Madrid&measure={\"element\": \"number\", \"filters\": {\"state\": \"in_progress\"}}&scope.member=*&scope.project=Planning&scope.owner=raffrearaUS&scope.name=owltesting",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"indicators",
+						"NUMBER_OF_STARTED_ISSUES"
+					],
+					"query": [
+						{
+							"key": "window.initial",
+							"value": "2019-01-01T12:00:00.000Z"
+						},
+						{
+							"key": "window.end",
+							"value": "2019-01-31T12:00:00.000Z"
+						},
+						{
+							"key": "window.timeZone",
+							"value": "Europe/Madrid"
+						},
+						{
+							"key": "measure",
+							"value": "{\"element\": \"number\", \"filters\": {\"state\": \"in_progress\"}}"
+						},
+						{
+							"key": "scope.member",
+							"value": "*"
+						},
+						{
+							"key": "scope.project",
+							"value": "Planning"
+						},
+						{
+							"key": "scope.owner",
+							"value": "raffrearaUS"
+						},
+						{
+							"key": "scope.name",
+							"value": "owltesting"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

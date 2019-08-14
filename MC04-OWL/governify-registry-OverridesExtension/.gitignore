@@ -1,0 +1,7 @@
+node_modules/
+.vscode/
+package-lock.json
+*.log
+public/coverage/
+public/docs/
+logs/

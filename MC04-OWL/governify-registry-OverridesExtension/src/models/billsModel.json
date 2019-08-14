@@ -1,0 +1,25 @@
+{
+            "agreementId": {
+                "type": "string"
+            },
+            "period": {
+                "type": "object",
+                "properties": {
+                    "from": {
+                        "type": "string"
+                    },
+                    "to": {
+                        "type": "string"
+                    }
+                }
+            },
+            "billId": {
+                "type": "string"
+            },
+            "state": {
+                "type": "string"
+            },
+            "closeDate": {
+                "type": "string"
+            }
+        }

@@ -1,0 +1,22 @@
+[{
+    "of": [{
+            "condition": "SPU_IO_K01 >= 85.00 && SPU_IO_K01 < 90.00",
+            "value": "-1.5"
+        },
+        {
+            "condition": "SPU_IO_K01 >= 80.00 && SPU_IO_K01 < 85.00",
+            "value": "-2"
+        },
+        {
+            "condition": "SPU_IO_K01 >= 0 && SPU_IO_K01 < 80.00",
+            "value": "-3"
+        }
+    ],
+    "over": {
+        "porcentajePTOT": {
+            "unit": "%",
+            "type": "double",
+            "description": "Porcentaje de penalizacion sobre la facturacion mensual SPU"
+        }
+    }
+}]

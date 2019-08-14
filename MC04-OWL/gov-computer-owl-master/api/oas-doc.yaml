@@ -1,0 +1,28 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: GitHub Computer
+  description: A sample API to compute some metrics
+paths:
+  '/v1/indicators/{id}':
+    get:
+      description: Returns a metric
+      operationId: computeMetric
+      parameters:
+        - name: id
+          in: path
+          description: ID of metric
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: computer response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+servers:
+  - url: /api

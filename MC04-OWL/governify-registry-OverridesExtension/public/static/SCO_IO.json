@@ -1,0 +1,775 @@
+{
+"description": "Measures for SCO SLA",
+"name": "GAUSS",
+"definitions": [
+{
+"kind": "DerivedMultiInstanceMeasure",
+"id": "SCO_TRS",
+"name": "Porcentaje incidencias respondidas en plazo",
+"description": "Porcentaje de incidencias respondidas en plazo respecto del total de incidencias comunicadas",
+"function": " value * 100",
+"includeEvidences": false,
+"usedMeasureMap": {
+"value": {
+"kind": "AggregatedMeasure",
+"aggregationFunction": "Average",
+"groupedBy": [
+{
+"kind": "DataMeasure",
+"dataContentSelection": {
+"selection": "PRIORITY",
+"dataobjectId": "PRIORITY"
+},
+"first": false
+}
+],
+"baseMeasure": {
+"kind": "DerivedSingleInstanceMeasure",
+"id": "SCO_TRS_evidence",
+"function": " time ${deadline}",
+"includeEvidences": false,
+"usedMeasureMap": {
+"time": {
+"kind": "TimeMeasure",
+"id": "issue_trs_duration",
+"unitOfMeasure": "hours",
+"from": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_TRANS_METAPHASE' && VALUE == 'RESOLUCION'"
+}
+}
+},
+"to": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_ASSIGNED'"
+}
+}
+},
+"timeMeasureType": "LINEAR",
+"considerOnly": "${schedule}",
+"computeUnfinished": false,
+"firstTo": true
+}
+}
+},
+"filter": {
+"kind": "DerivedSingleInstanceMeasure",
+"id": "filter",
+"function": "!Double.isNaN(time) && priority == '${priority}' && stype == '${stype}'",
+"includeEvidences": false,
+"usedMeasureMap": {
+"time": {
+"kind": "TimeMeasure",
+"unitOfMeasure": "hours",
+"from": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_TRANS_METAPHASE' && VALUE == 'RESOLUCION'"
+}
+}
+},
+"to": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_ASSIGNED'"
+}
+}
+},
+"timeMeasureType": "LINEAR",
+"considerOnly": "${schedule}",
+"computeUnfinished": false,
+"firstTo": false
+},
+"priority": {
+"kind": "DataMeasure",
+"precondition": {
+"TimeInstantCondition": {
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_ASSIGNED'"
+}
+}
+}
+},
+"dataContentSelection": {
+"selection": "PRIORITY",
+"dataobjectId": "PRIORITY"
+},
+"first": false
+},
+"stype": {
+"kind": "DataMeasure",
+"precondition": {
+"TimeInstantCondition": {
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_ASSIGNED'"
+}
+}
+}
+},
+"dataContentSelection": {
+"selection": "TYPE",
+"dataobjectId": "TYPE"
+},
+"first": false
+}
+}
+},
+"includeUnfinished": false,
+"includeEvidences": false,
+"aggregates": false,
+"groupedBySelections": [
+{
+"selection": "PRIORITY",
+"dataobjectId": "PRIORITY"
+}
+]
+}
+}
+},
+{
+"kind": "DerivedSingleInstanceMeasure",
+"id": "SCO_TRS_evidence",
+"function": " time ${deadline}",
+"includeEvidences": false,
+"usedMeasureMap": {
+"time": {
+"kind": "TimeMeasure",
+"id": "issue_trs_duration",
+"unitOfMeasure": "hours",
+"from": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_TRANS_METAPHASE' && VALUE == 'RESOLUCION'"
+}
+}
+},
+"to": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_ASSIGNED'"
+}
+}
+},
+"timeMeasureType": "LINEAR",
+"considerOnly": "${schedule}",
+"computeUnfinished": false,
+"firstTo": false
+}
+}
+},
+{
+"kind": "TimeMeasure",
+"id": "issue_trs_duration",
+"unitOfMeasure": "hours",
+"from": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_TRANS_METAPHASE' && VALUE == 'RESOLUCION'"
+}
+}
+},
+"to": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_ASSIGNED'"
+}
+}
+},
+"timeMeasureType": "LINEAR",
+"considerOnly": "${schedule}",
+"computeUnfinished": false,
+"firstTo": false
+},
+{
+"kind": "DerivedMultiInstanceMeasure",
+"id": "SCO_PU",
+"name": "Porcentaje incidencias pendiente de usuario en plazo",
+"description": "Porcentaje de incidencias pendiente de usuario en plazo respecto del total de incidencias comunicadas",
+"function": " value * 100",
+"includeEvidences": false,
+"usedMeasureMap": {
+"value": {
+"kind": "AggregatedMeasure",
+"aggregationFunction": "Average",
+"groupedBy": [
+{
+"kind": "DataMeasure",
+"dataContentSelection": {
+"selection": "PRIORITY",
+"dataobjectId": "PRIORITY"
+},
+"first": false
+}
+],
+"baseMeasure": {
+"kind": "DerivedSingleInstanceMeasure",
+"id": "SCO_PU_evidence",
+"function": " time ${deadline}",
+"includeEvidences": false,
+"usedMeasureMap": {
+"time": {
+"kind": "TimeMeasure",
+"id": "issue_pu_duration",
+"unitOfMeasure": "hours",
+"from": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_TRANS_PHASE' && VALUE == 'Pendiente Usuario'"
+}
+}
+},
+"to": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_TRANS_PHASE' && VALUE != 'Pendiente Usuario'"
+}
+}
+},
+"timeMeasureType": "CYCLIC",
+"singleInstanceAggFunction": "Sum",
+"considerOnly": "${schedule}",
+"computeUnfinished": false,
+"firstTo": false
+}
+}
+},
+"filter": {
+"kind": "DerivedSingleInstanceMeasure",
+"id": "filter",
+"function": "!Double.isNaN(time) && priority == '${priority}' && stype == '${stype}'",
+"includeEvidences": false,
+"usedMeasureMap": {
+"time": {
+"kind": "TimeMeasure",
+"id": "issue_pu_duration",
+"unitOfMeasure": "hours",
+"from": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_TRANS_PHASE' && VALUE == 'Pendiente Usuario'"
+}
+}
+},
+"to": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_TRANS_PHASE' && VALUE != 'Pendiente Usuario'"
+}
+}
+},
+"timeMeasureType": "CYCLIC",
+"singleInstanceAggFunction": "Sum",
+"considerOnly": "${schedule}",
+"computeUnfinished": false,
+"firstTo": false
+},
+"priority": {
+"kind": "DataMeasure",
+"dataContentSelection": {
+"selection": "PRIORITY",
+"dataobjectId": "PRIORITY"
+},
+"first": false
+},
+"stype": {
+"kind": "DataMeasure",
+"dataContentSelection": {
+"selection": "TYPE",
+"dataobjectId": "TYPE"
+},
+"first": false
+}
+}
+},
+"includeUnfinished": false,
+"includeEvidences": false,
+"aggregates": false,
+"groupedBySelections": [
+{
+"selection": "PRIORITY",
+"dataobjectId": "PRIORITY"
+}
+]
+}
+}
+},
+{
+"kind": "DerivedSingleInstanceMeasure",
+"id": "SCO_PU_evidence",
+"function": " time ${deadline}",
+"includeEvidences": false,
+"usedMeasureMap": {
+"time": {
+"kind": "TimeMeasure",
+"id": "issue_pu_duration",
+"unitOfMeasure": "hours",
+"from": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_TRANS_PHASE' && VALUE == 'Pendiente Usuario'"
+}
+}
+},
+"to": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_TRANS_PHASE' && VALUE != 'Pendiente Usuario'"
+}
+}
+},
+"timeMeasureType": "CYCLIC",
+"singleInstanceAggFunction": "Sum",
+"considerOnly": "${schedule}",
+"computeUnfinished": false,
+"firstTo": false
+}
+}
+},
+{
+"kind": "TimeMeasure",
+"id": "issue_pu_duration",
+"unitOfMeasure": "hours",
+"from": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_TRANS_PHASE' && VALUE == 'Pendiente Usuario'"
+}
+}
+},
+"to": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_TRANS_PHASE' && VALUE != 'Pendiente Usuario'"
+}
+}
+},
+"timeMeasureType": "CYCLIC",
+"singleInstanceAggFunction": "Sum",
+"considerOnly": "${schedule}",
+"computeUnfinished": false,
+"firstTo": false
+},
+{
+"kind": "DerivedMultiInstanceMeasure",
+"id": "SCO_TRLO",
+"name": "Porcentaje incidencias resueltas en plazo",
+"description": "Porcentaje de incidencias resueltas en plazo respecto del total de incidencias comunicadas",
+"function": " value * 100",
+"includeEvidences": false,
+"usedMeasureMap": {
+"value": {
+"kind": "AggregatedMeasure",
+"aggregationFunction": "Average",
+"groupedBy": [
+{
+"kind": "DataMeasure",
+"dataContentSelection": {
+"selection": "PRIORITY",
+"dataobjectId": "PRIORITY"
+},
+"first": false
+}
+],
+"baseMeasure": {
+"kind": "DerivedSingleInstanceMeasure",
+"id": "SCO_TRLO_evidence",
+"function": " time ${deadline}",
+"includeEvidences": false,
+"usedMeasureMap": {
+"time": {
+"kind": "TimeMeasure",
+"id": "issue_trlo_duration",
+"unitOfMeasure": "hours",
+"from": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_ASSIGNED'"
+}
+}
+},
+"to": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_TRANS_PHASE' && VALUE == 'Cierre temporal'"
+}
+}
+},
+"timeMeasureType": "LINEAR",
+"considerOnly": "${schedule}",
+"computeUnfinished": false,
+"firstTo": false,
+"precondition": {
+"DataPropertyCondition": {
+"appliesTo": "Data",
+"restriction": "!(VALUE == 'Pendiente Usuario')"
+}
+}
+}
+}
+},
+"filter": {
+"kind": "DerivedSingleInstanceMeasure",
+"id": "filter",
+"function": "!Double.isNaN(time) && priority == '${priority}' && stype == '${stype}'",
+"includeEvidences": false,
+"usedMeasureMap": {
+"time": {
+"kind": "TimeMeasure",
+"unitOfMeasure": "hours",
+"from": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_ASSIGNED'"
+}
+}
+},
+"to": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_TRANS_PHASE' && VALUE == 'Cierre temporal'"
+}
+}
+},
+"timeMeasureType": "LINEAR",
+"considerOnly": "${schedule}",
+"computeUnfinished": false,
+"firstTo": false
+},
+"priority": {
+"kind": "DataMeasure",
+"dataContentSelection": {
+"selection": "PRIORITY",
+"dataobjectId": "PRIORITY"
+},
+"first": false
+},
+"stype": {
+"kind": "DataMeasure",
+"dataContentSelection": {
+"selection": "TYPE",
+"dataobjectId": "TYPE"
+},
+"first": false
+}
+}
+},
+"includeUnfinished": false,
+"includeEvidences": false,
+"aggregates": false,
+"groupedBySelections": [
+{
+"selection": "PRIORITY",
+"dataobjectId": "PRIORITY"
+}
+]
+}
+}
+},
+{
+"kind": "DerivedSingleInstanceMeasure",
+"id": "SCO_TRLO_evidence",
+"function": " time ${deadline}",
+"includeEvidences": false,
+"usedMeasureMap": {
+"time": {
+"kind": "TimeMeasure",
+"id": "issue_trlo_duration",
+"unitOfMeasure": "hours",
+"from": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_ASSIGNED'"
+}
+}
+},
+"to": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_TRANS_PHASE' && VALUE == 'Cierre temporal'"
+}
+}
+},
+"timeMeasureType": "LINEAR",
+"considerOnly": "${schedule}",
+"computeUnfinished": false,
+"firstTo": false
+}
+}
+},
+{
+"kind": "TimeMeasure",
+"id": "issue_trlo_duration",
+"unitOfMeasure": "hours",
+"from": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_ASSIGNED'"
+}
+}
+},
+"to": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_TRANS_PHASE' && VALUE == 'Cierre temporal'"
+}
+}
+},
+"timeMeasureType": "LINEAR",
+"considerOnly": "${schedule}",
+"computeUnfinished": false,
+"firstTo": false,
+"precondition": {
+"DataPropertyCondition": {
+"appliesTo": "Data",
+"restriction": "!(VALUE == 'Pendiente Usuario')"
+}
+}
+},
+{
+"kind": "DerivedMultiInstanceMeasure",
+"id": "SCO_TRLP",
+"name": "Porcentaje incidencias resueltas en plazo",
+"description": "Porcentaje de incidencias resueltas en plazo respecto del total de incidencias comunicadas",
+"function": " value * 100",
+"includeEvidences": false,
+"usedMeasureMap": {
+"value": {
+"kind": "AggregatedMeasure",
+"aggregationFunction": "Average",
+"groupedBy": [
+{
+"kind": "DataMeasure",
+"dataContentSelection": {
+"selection": "PRIORITY",
+"dataobjectId": "PRIORITY"
+},
+"first": false
+}
+],
+"baseMeasure": {
+"kind": "DerivedSingleInstanceMeasure",
+"id": "SCO_TRLP_evidence",
+"function": " time ${deadline}",
+"includeEvidences": false,
+"usedMeasureMap": {
+"time": {
+"kind": "TimeMeasure",
+"precondition": {
+"DataPropertyCondition": {
+"appliesTo": "Data",
+"restriction": "!(VALUE == 'Pendiente Usuario')"
+}
+},
+"id": "issue_trlp_duration",
+"unitOfMeasure": "hours",
+"from": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_ASSIGNED'"
+}
+}
+},
+"to": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_TRANS_PHASE' && VALUE == 'Cierre temporal'"
+}
+}
+},
+"timeMeasureType": "LINEAR",
+"considerOnly": "${schedule}",
+"computeUnfinished": false,
+"firstTo": false
+}
+}
+},
+"filter": {
+"kind": "DerivedSingleInstanceMeasure",
+"id": "filter",
+"function": "!Double.isNaN(time) && priority == '${priority}' && stype == '${stype}'",
+"includeEvidences": false,
+"usedMeasureMap": {
+"time": {
+"kind": "TimeMeasure",
+"unitOfMeasure": "hours",
+"from": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_ASSIGNED'"
+}
+}
+},
+"to": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_TRANS_PHASE' && VALUE == 'Cierre temporal'"
+}
+}
+},
+"timeMeasureType": "LINEAR",
+"considerOnly": "${schedule}",
+"computeUnfinished": false,
+"firstTo": false
+},
+"priority": {
+"kind": "DataMeasure",
+"dataContentSelection": {
+"selection": "PRIORITY",
+"dataobjectId": "PRIORITY"
+},
+"first": false
+},
+"stype": {
+"kind": "DataMeasure",
+"dataContentSelection": {
+"selection": "TYPE",
+"dataobjectId": "TYPE"
+},
+"first": false
+}
+}
+},
+"includeUnfinished": false,
+"includeEvidences": false,
+"aggregates": false,
+"groupedBySelections": [
+{
+"selection": "PRIORITY",
+"dataobjectId": "PRIORITY"
+}
+]
+}
+}
+},
+{
+"kind": "DerivedSingleInstanceMeasure",
+"id": "SCO_TRLP_evidence",
+"function": " time ${deadline}",
+"includeEvidences": false,
+"usedMeasureMap": {
+"time": {
+"kind": "TimeMeasure",
+"id": "issue_trlp_duration",
+"precondition": {
+"DataPropertyCondition": {
+"appliesTo": "Data",
+"restriction": "!(VALUE == 'Pendiente Usuario')"
+}
+},
+"unitOfMeasure": "hours",
+"from": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_ASSIGNED'"
+}
+}
+},
+"to": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_TRANS_PHASE' && VALUE == 'Cierre temporal'"
+}
+}
+},
+"timeMeasureType": "LINEAR",
+"considerOnly": "${schedule}",
+"computeUnfinished": false,
+"firstTo": false
+}
+}
+},
+{
+"kind": "TimeMeasure",
+"id": "issue_trlp_duration",
+"unitOfMeasure": "hours",
+"from": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_ASSIGNED'"
+}
+}
+},
+"to": {
+"kind": "TimeInstantCondition",
+"appliesTo": "Data",
+"changesToState": {
+"dataObjectState": {
+"name": "ACTION == 'SDK_HIST_TRANS_PHASE' && VALUE == 'Cierre temporal'"
+}
+}
+},
+"timeMeasureType": "LINEAR",
+"considerOnly": "${schedule}",
+"computeUnfinished": false,
+"firstTo": false
+}
+]
+}

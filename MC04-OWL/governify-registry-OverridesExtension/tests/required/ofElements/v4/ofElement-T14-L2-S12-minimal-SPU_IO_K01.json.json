@@ -1,0 +1,207 @@
+{
+    "penalties": [{
+        "of": [{
+                "condition": "SPU_IO_K01 >= 90.00 && SPU_IO_K01 < 95.00",
+                "value": "-2"
+            },
+            {
+                "condition": "SPU_IO_K01 >= 85.00 && SPU_IO_K01 < 90.00",
+                "value": "-3"
+            },
+            {
+                "condition": "SPU_IO_K01 >= 0 && SPU_IO_K01 < 85.00",
+                "value": "-5"
+            }
+        ],
+        "over": {
+            "porcentajePTOT": {
+                "unit": "%",
+                "type": "double",
+                "description": "Porcentaje de penalizacion sobre la facturacion mensual SPU"
+            }
+        }
+    }],
+    "evidences": [{
+            "SPU_IO_K01_evidence": {
+                "scope": {
+                    "activity": {
+                        "default": "Actividad no planificada",
+                        "type": "string",
+                        "description": "Actividad",
+                        "name": "Actividad"
+                    },
+                    "serviceLine": {
+                        "default": "Línea de servicio de operación",
+                        "type": "string",
+                        "description": "Linea de Servicio",
+                        "name": "LineaServicio"
+                    },
+                    "node": {
+                        "default": "*",
+                        "metadata": {
+                            "reported": true
+                        },
+                        "type": "string",
+                        "description": "Provincia",
+                        "name": "Nodo"
+                    },
+                    "priority": {
+                        "default": "*",
+                        "metadata": {
+                            "reported": true
+                        },
+                        "type": "string",
+                        "description": "Prioridad de la incidencia",
+                        "name": "Prioridad"
+                    }
+                },
+                "parameters": {
+                    "schedule": {
+                        "schema": {
+                            "type": "string",
+                            "description": "Horario del servicio"
+                        }
+                    },
+                    "deadline": {
+                        "schema": {
+                            "unit": "hours",
+                            "type": "string",
+                            "description": "Plazo de resolucion de una inicidencia"
+                        }
+                    }
+                },
+                "computer": "http://localhost:8080/api/v5/indicators/SPU_IO_K01_evidence/",
+                "schema": {
+                    "type": "string",
+                    "description": "Incidencias resueltas en plazo"
+                }
+            }
+        },
+        {
+            "issue_start": {
+                "computer": "http://localhost:8080/api/v5/indicators/issue_start/",
+                "schema": {
+                    "type": "string",
+                    "description": "Fecha de Inicio de incidencia"
+                }
+            }
+        },
+        {
+            "issue_end": {
+                "computer": "http://localhost:8080/api/v5/indicators/issue_end/",
+                "schema": {
+                    "type": "string",
+                    "description": "Fecha de Inicio de incidencia"
+                }
+            }
+        },
+        {
+            "issue_duration": {
+                "computer": "http://localhost:8080/api/v5/indicators/issue_duration/",
+                "schema": {
+                    "unit": "seconds",
+                    "type": "string",
+                    "description": "Duracion de una incidencia"
+                }
+            }
+        },
+        {
+            "issue_idle_time": {
+                "computer": "http://localhost:8080/api/v5/indicators/issue_idle_time/",
+                "schema": {
+                    "unit": "seconds",
+                    "type": "string",
+                    "description": "Tiempo parado de una incidencia"
+                }
+            }
+        },
+        {
+            "issue_subject": {
+                "computer": "http://localhost:8080/api/v5/indicators/issue_subject/",
+                "schema": {
+                    "type": "string",
+                    "description": "Asunto de la incidencia"
+                }
+            }
+        },
+        {
+            "issue_source": {
+                "computer": "http://localhost:8080/api/v5/indicators/issue_source/",
+                "schema": {
+                    "type": "string",
+                    "description": "Origen de la incidencia"
+                }
+            }
+        },
+        {
+            "issue_typology": {
+                "computer": "http://localhost:8080/api/v5/indicators/issue_typology/",
+                "schema": {
+                    "type": "string",
+                    "description": "Tipologia de la incidencia"
+                }
+            }
+        },
+        {
+            "issue_priority": {
+                "computer": "http://localhost:8080/api/v5/indicators/issue_priority/",
+                "schema": {
+                    "type": "string",
+                    "description": "Prioridad de la incidencia"
+                }
+            }
+        },
+        {
+            "issue_resource": {
+                "computer": "http://localhost:8080/api/v5/indicators/issue_resource/",
+                "schema": {
+                    "type": "string",
+                    "description": "Recurso de la incidencia"
+                }
+            }
+        },
+        {
+            "issue_node": {
+                "computer": "http://localhost:8080/api/v5/indicators/issue_node/",
+                "schema": {
+                    "type": "string",
+                    "description": "Nodo de la incidencia"
+                }
+            }
+        },
+        {
+            "issue_center": {
+                "computer": "http://localhost:8080/api/v5/indicators/issue_center/",
+                "schema": {
+                    "type": "string",
+                    "description": "Centro de la incidencia"
+                }
+            }
+        },
+        {
+            "issue_resolutor": {
+                "computer": "http://localhost:8080/api/v5/indicators/issue_resolutor/",
+                "schema": {
+                    "type": "string",
+                    "description": "Resolutor de la incidencia"
+                }
+            }
+        }
+    ],
+    "window": {
+        "initial": "2014-10-16",
+        "period": "monthly",
+        "type": "static"
+    },
+    "with": {
+        "SPU_IO_K01": {
+            "schedule": "L-DT00:00-23:59",
+            "deadline": "<= 2"
+        }
+    },
+    "objective": "SPU_IO_K01 >= 95.00",
+    "scope": {
+        "node": "*",
+        "priority": "P1"
+    }
+}

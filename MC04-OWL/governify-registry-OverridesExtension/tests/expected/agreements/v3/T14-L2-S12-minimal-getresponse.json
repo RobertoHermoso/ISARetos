@@ -1,0 +1,3789 @@
+{
+    "id": "T14-L2-S12-minimal",
+    "version": "0.9.2",
+    "type": "agreement",
+    "context": {
+        "iAgree": "2.0",
+        "provider": "Accenture",
+        "consumer": "SAS",
+        "validity": {
+            "initial": "2014-10-16",
+            "timeZone": "Europe/Madrid"
+        },
+        "infrastructure": {
+            "designer": "http://designer.governify.io",
+            "portal": "http://portal.governify.io",
+            "registry": "http://registry.sas.governify.io",
+            "reporter": "http://reporter.services.sas.governify.io"
+        },
+        "definitions": {
+            "schemas": {
+                "porcentajePTOT": {
+                    "description": "Porcentaje de penalizacion sobre la facturacion mensual SPU",
+                    "type": "double",
+                    "unit": "%"
+                },
+                "deadline": {
+                    "description": "Plazo de resolucion de una inicidencia",
+                    "type": "string",
+                    "unit": "hours"
+                },
+                "schedule": {
+                    "description": "Horario del servicio",
+                    "type": "string"
+                }
+            },
+            "scopes": {
+                "SPU": {
+                    "priority": {
+                        "name": "Prioridad",
+                        "description": "Prioridad de la incidencia",
+                        "type": "string",
+                        "metadata": {
+                            "reported": true
+                        }
+                    },
+                    "node": {
+                        "name": "Nodo",
+                        "description": "Provincia",
+                        "type": "string",
+                        "metadata": {
+                            "reported": true
+                        }
+                    },
+                    "center": {
+                        "name": "Centro",
+                        "description": "Centro",
+                        "type": "string",
+                        "metadata": {
+                            "reported": true
+                        }
+                    },
+                    "nodeETC": {
+                        "name": "Nodo ETC",
+                        "description": "ETCs del nodo",
+                        "type": "integer",
+                        "format": "int32",
+                        "metadata": {
+                            "reported": true
+                        }
+                    },
+                    "serviceLine": {
+                        "name": "LineaServicio",
+                        "description": "Linea de Servicio",
+                        "type": "string",
+                        "default": "Línea de servicio de operación"
+                    },
+                    "activity": {
+                        "name": "Actividad",
+                        "description": "Actividad",
+                        "type": "string",
+                        "default": "Actividad no planificada"
+                    }
+                }
+            },
+            "logs": {
+                "casdm": {
+                    "default": true,
+                    "uri": "http://logs:8083/api/v2/ca-sdm/v10.13",
+                    "stateUri": "http://logs:8083/api/v2/ca-sdm/v10.13/count",
+                    "measures": "http://nginx/v3/SPU_IO.json?accessToken=741b9259-8bbc-4e74-9865-68ce53287a81",
+                    "scopes": {
+                        "SPU": {
+                            "priority": "priority",
+                            "node": "NODO",
+                            "center": "CENTRO"
+                        }
+                    }
+                },
+                "jira": {
+                    "uri": "http://logs:8083/api/v2/jira/v01.03",
+                    "stateUri": "http://logs:8083/api/v2/jira/v01.03/count",
+                    "measures": "http://nginx/v3/SPU_IO.json?accessToken=741b9259-8bbc-4e74-9865-68ce53287a81",
+                    "scopes": {
+                        "SPU": {
+                            "priority": "priority",
+                            "node": "ASUNTO_NODO",
+                            "center": "CENTRO"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "terms": {
+        "pricing": {
+            "billing": {
+                "period": "monthly",
+                "initial": "2016-05-12T10:35:36.000",
+                "penalties": [{
+                    "over": {
+                        "porcentajePTOT": {
+                            "description": "Porcentaje de penalizacion sobre la facturacion mensual SPU",
+                            "type": "double",
+                            "unit": "%"
+                        }
+                    },
+                    "aggregatedBy": "sum",
+                    "groupBy": {
+                        "serviceLine": {
+                            "name": "LineaServicio",
+                            "description": "Linea de Servicio",
+                            "type": "string",
+                            "default": "Línea de servicio de operación"
+                        },
+                        "activity": {
+                            "name": "Actividad",
+                            "description": "Actividad",
+                            "type": "string",
+                            "default": "Actividad no planificada"
+                        }
+                    },
+                    "upTo": -10
+                }]
+            }
+        },
+        "metrics": {
+            "issue_start": {
+                "schema": {
+                    "description": "Fecha de Inicio de incidencia",
+                    "type": "string"
+                },
+                "computer": "http://localhost:8080/api/v4/indicators/issue_start/"
+            },
+            "issue_end": {
+                "schema": {
+                    "description": "Fecha de Inicio de incidencia",
+                    "type": "string"
+                },
+                "computer": "http://localhost:8080/api/v4/indicators/issue_end/"
+            },
+            "issue_duration": {
+                "schema": {
+                    "description": "Duracion de una incidencia",
+                    "type": "string",
+                    "unit": "seconds"
+                },
+                "computer": "http://localhost:8080/api/v4/indicators/issue_duration/"
+            },
+            "issue_duration_K05": {
+                "schema": {
+                    "description": "Duracion de una incidencia sin tener en cuenta el campo prioridad",
+                    "type": "string",
+                    "unit": "seconds"
+                },
+                "computer": "http://localhost:8080/api/v4/indicators/issue_duration_K05/"
+            },
+            "issue_area_K18": {
+                "schema": {
+                    "description": "Area de la incidencia",
+                    "type": "string",
+                    "unit": "seconds"
+                },
+                "computer": "http://localhost:8080/api/v4/indicators/issue_area_K18/"
+            },
+            "issue_idle_time": {
+                "schema": {
+                    "description": "Tiempo parado de una incidencia",
+                    "type": "string",
+                    "unit": "seconds"
+                },
+                "computer": "http://localhost:8080/api/v4/indicators/issue_idle_time/"
+            },
+            "issue_subject": {
+                "schema": {
+                    "description": "Asunto de la incidencia",
+                    "type": "string"
+                },
+                "computer": "http://localhost:8080/api/v4/indicators/issue_subject/"
+            },
+            "issue_source": {
+                "schema": {
+                    "description": "Origen de la incidencia",
+                    "type": "string"
+                },
+                "computer": "http://localhost:8080/api/v4/indicators/issue_source/"
+            },
+            "issue_typology": {
+                "schema": {
+                    "description": "Tipologia de la incidencia",
+                    "type": "string"
+                },
+                "computer": "http://localhost:8080/api/v4/indicators/issue_typology/"
+            },
+            "issue_priority": {
+                "schema": {
+                    "description": "Prioridad de la incidencia",
+                    "type": "string"
+                },
+                "computer": "http://localhost:8080/api/v4/indicators/issue_priority/"
+            },
+            "issue_resource": {
+                "schema": {
+                    "description": "Recurso de la incidencia",
+                    "type": "string"
+                },
+                "computer": "http://localhost:8080/api/v4/indicators/issue_resource/"
+            },
+            "issue_node": {
+                "schema": {
+                    "description": "Nodo de la incidencia",
+                    "type": "string"
+                },
+                "computer": "http://localhost:8080/api/v4/indicators/issue_node/"
+            },
+            "issue_center": {
+                "schema": {
+                    "description": "Centro de la incidencia",
+                    "type": "string"
+                },
+                "computer": "http://localhost:8080/api/v4/indicators/issue_center/"
+            },
+            "issue_resolutor": {
+                "schema": {
+                    "description": "Resolutor de la incidencia",
+                    "type": "string"
+                },
+                "computer": "http://localhost:8080/api/v4/indicators/issue_resolutor/"
+            },
+            "SPU_IO_K00": {
+                "schema": {
+                    "description": "Penalizacion total del periodo",
+                    "type": "double",
+                    "unit": "%"
+                },
+                "computer": "http://localhost:5001/api/v3/states/T14-L2-S12-minimal/pricing/billing/penalties",
+                "scope": {
+                    "SPU": {
+                        "priority": {
+                            "name": "Prioridad",
+                            "description": "Prioridad de la incidencia",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "node": {
+                            "name": "Nodo",
+                            "description": "Provincia",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "center": {
+                            "name": "Centro",
+                            "description": "Centro",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "nodeETC": {
+                            "name": "Nodo ETC",
+                            "description": "ETCs del nodo",
+                            "type": "integer",
+                            "format": "int32",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "serviceLine": {
+                            "name": "LineaServicio",
+                            "description": "Linea de Servicio",
+                            "type": "string",
+                            "default": "Línea de servicio de operación"
+                        },
+                        "activity": {
+                            "name": "Actividad",
+                            "description": "Actividad",
+                            "type": "string",
+                            "default": "Actividad no planificada"
+                        }
+                    }
+                },
+                "metadata": {
+                    "name": "Penalización total del periodo",
+                    "description": "Penalización a aplicar en la factura del periodo.",
+                    "kind": "Penalizador",
+                    "class": "Totalizador",
+                    "reportable": false,
+                    "frequency": 1,
+                    "initial": "2014-10-16"
+                },
+                "defaultStateReload": true,
+                "window": {
+                    "type": "static",
+                    "period": "monthly",
+                    "initial": "2014-10-16"
+                }
+            },
+            "SPU_IO_K01_evidence": {
+                "schema": {
+                    "description": "Incidencias resueltas en plazo",
+                    "type": "string"
+                },
+                "computer": "http://localhost:8080/api/v4/indicators/SPU_IO_K01_evidence/",
+                "parameters": {
+                    "deadline": {
+                        "schema": {
+                            "description": "Plazo de resolucion de una inicidencia",
+                            "type": "string",
+                            "unit": "hours"
+                        }
+                    },
+                    "schedule": {
+                        "schema": {
+                            "description": "Horario del servicio",
+                            "type": "string"
+                        }
+                    }
+                },
+                "scope": {
+                    "SPU": {
+                        "priority": {
+                            "name": "Prioridad",
+                            "description": "Prioridad de la incidencia",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "node": {
+                            "name": "Nodo",
+                            "description": "Provincia",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "center": {
+                            "name": "Centro",
+                            "description": "Centro",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "nodeETC": {
+                            "name": "Nodo ETC",
+                            "description": "ETCs del nodo",
+                            "type": "integer",
+                            "format": "int32",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "serviceLine": {
+                            "name": "LineaServicio",
+                            "description": "Linea de Servicio",
+                            "type": "string",
+                            "default": "Línea de servicio de operación"
+                        },
+                        "activity": {
+                            "name": "Actividad",
+                            "description": "Actividad",
+                            "type": "string",
+                            "default": "Actividad no planificada"
+                        }
+                    }
+                }
+            },
+            "SPU_IO_K01": {
+                "schema": {
+                    "description": "Porcentaje incidencias resueltas en plazo",
+                    "type": "double",
+                    "unit": "%"
+                },
+                "computer": "http://localhost:8080/api/v4/indicators/SPU_IO_K01/",
+                "parameters": {
+                    "deadline": {
+                        "schema": {
+                            "description": "Plazo de resolucion de una inicidencia",
+                            "type": "string",
+                            "unit": "hours"
+                        }
+                    },
+                    "schedule": {
+                        "schema": {
+                            "description": "Horario del servicio",
+                            "type": "string"
+                        }
+                    }
+                },
+                "scope": {
+                    "SPU": {
+                        "priority": {
+                            "name": "Prioridad",
+                            "description": "Prioridad de la incidencia",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "node": {
+                            "name": "Nodo",
+                            "description": "Provincia",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "center": {
+                            "name": "Centro",
+                            "description": "Centro",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "nodeETC": {
+                            "name": "Nodo ETC",
+                            "description": "ETCs del nodo",
+                            "type": "integer",
+                            "format": "int32",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "serviceLine": {
+                            "name": "LineaServicio",
+                            "description": "Linea de Servicio",
+                            "type": "string",
+                            "default": "Línea de servicio de operación"
+                        },
+                        "activity": {
+                            "name": "Actividad",
+                            "description": "Actividad",
+                            "type": "string",
+                            "default": "Actividad no planificada"
+                        }
+                    }
+                },
+                "metadata": {
+                    "name": "Porcentaje incidencias resueltas en plazo",
+                    "description": "Porcentaje de incidencias resueltas en plazo respecto del total de incidencias comunicadas.",
+                    "kind": "Penalizador",
+                    "class": "Negocio",
+                    "reportable": false
+                }
+            },
+            "SPU_IO_K06_t_evidence": {
+                "schema": {
+                    "description": "Incidencias reabiertas (incluyendo el centro en el scope)",
+                    "type": "bool"
+                },
+                "computer": "http://localhost:8080/api/v4/indicators/SPU_IO_K06_t_evidence/",
+                "parameters": {
+                    "deadline": {
+                        "schema": {
+                            "description": "Plazo de resolucion de una inicidencia",
+                            "type": "string",
+                            "unit": "hours"
+                        }
+                    },
+                    "schedule": {
+                        "schema": {
+                            "description": "Horario del servicio",
+                            "type": "string"
+                        }
+                    }
+                },
+                "scope": {
+                    "SPU": {
+                        "priority": {
+                            "name": "Prioridad",
+                            "description": "Prioridad de la incidencia",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "node": {
+                            "name": "Nodo",
+                            "description": "Provincia",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "center": {
+                            "name": "Centro",
+                            "description": "Centro",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "nodeETC": {
+                            "name": "Nodo ETC",
+                            "description": "ETCs del nodo",
+                            "type": "integer",
+                            "format": "int32",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "serviceLine": {
+                            "name": "LineaServicio",
+                            "description": "Linea de Servicio",
+                            "type": "string",
+                            "default": "Línea de servicio de operación"
+                        },
+                        "activity": {
+                            "name": "Actividad",
+                            "description": "Actividad",
+                            "type": "string",
+                            "default": "Actividad no planificada"
+                        }
+                    }
+                }
+            },
+            "SPU_IO_K06_t": {
+                "schema": {
+                    "description": "Porcentaje incidencias reabiertas (incluyendo el centro en el scope)",
+                    "type": "double",
+                    "unit": "%"
+                },
+                "computer": "http://localhost:8080/api/v4/indicators/SPU_IO_K06_t/",
+                "scope": {
+                    "SPU": {
+                        "priority": {
+                            "name": "Prioridad",
+                            "description": "Prioridad de la incidencia",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "node": {
+                            "name": "Nodo",
+                            "description": "Provincia",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "center": {
+                            "name": "Centro",
+                            "description": "Centro",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "nodeETC": {
+                            "name": "Nodo ETC",
+                            "description": "ETCs del nodo",
+                            "type": "integer",
+                            "format": "int32",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "serviceLine": {
+                            "name": "LineaServicio",
+                            "description": "Linea de Servicio",
+                            "type": "string",
+                            "default": "Línea de servicio de operación"
+                        },
+                        "activity": {
+                            "name": "Actividad",
+                            "description": "Actividad",
+                            "type": "string",
+                            "default": "Actividad no planificada"
+                        }
+                    }
+                },
+                "metadata": {
+                    "name": "Porcentaje incidencias reabiertas",
+                    "description": "Porcentaje de incidencias que se deben reabrir debido a que en su momento no fueron correctamente solucionadas, es decir, mal cerradas.",
+                    "kind": "Penalizador",
+                    "class": "Negocio",
+                    "reportable": true
+                }
+            },
+            "SPU_IO_K06_evidence": {
+                "schema": {
+                    "description": "Incidencias que no fueron correctamente solucionadas (e.d. mal cerradas)",
+                    "type": "string"
+                },
+                "computer": "http://localhost:8080/api/v4/indicators/SPU_IO_K06_evidence/",
+                "parameters": {
+                    "deadline": {
+                        "schema": {
+                            "description": "Plazo de resolucion de una inicidencia",
+                            "type": "string",
+                            "unit": "hours"
+                        }
+                    },
+                    "schedule": {
+                        "schema": {
+                            "description": "Horario del servicio",
+                            "type": "string"
+                        }
+                    }
+                },
+                "scope": {
+                    "SPU": {
+                        "priority": {
+                            "name": "Prioridad",
+                            "description": "Prioridad de la incidencia",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "node": {
+                            "name": "Nodo",
+                            "description": "Provincia",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "center": {
+                            "name": "Centro",
+                            "description": "Centro",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "nodeETC": {
+                            "name": "Nodo ETC",
+                            "description": "ETCs del nodo",
+                            "type": "integer",
+                            "format": "int32",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "serviceLine": {
+                            "name": "LineaServicio",
+                            "description": "Linea de Servicio",
+                            "type": "string",
+                            "default": "Línea de servicio de operación"
+                        },
+                        "activity": {
+                            "name": "Actividad",
+                            "description": "Actividad",
+                            "type": "string",
+                            "default": "Actividad no planificada"
+                        }
+                    }
+                }
+            },
+            "SPU_IO_K06": {
+                "schema": {
+                    "description": "Porcentaje incidencias reabiertas",
+                    "type": "double",
+                    "unit": "%"
+                },
+                "computer": "http://localhost:8080/api/v4/indicators/SPU_IO_K06/",
+                "scope": {
+                    "SPU": {
+                        "priority": {
+                            "name": "Prioridad",
+                            "description": "Prioridad de la incidencia",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "node": {
+                            "name": "Nodo",
+                            "description": "Provincia",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "center": {
+                            "name": "Centro",
+                            "description": "Centro",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "nodeETC": {
+                            "name": "Nodo ETC",
+                            "description": "ETCs del nodo",
+                            "type": "integer",
+                            "format": "int32",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "serviceLine": {
+                            "name": "LineaServicio",
+                            "description": "Linea de Servicio",
+                            "type": "string",
+                            "default": "Línea de servicio de operación"
+                        },
+                        "activity": {
+                            "name": "Actividad",
+                            "description": "Actividad",
+                            "type": "string",
+                            "default": "Actividad no planificada"
+                        }
+                    }
+                },
+                "metadata": {
+                    "name": "Porcentaje incidencias reabiertas",
+                    "description": "Porcentaje de incidencias que se deben reabrir debido a que en su momento no fueron correctamente solucionadas, es decir, mal cerradas.",
+                    "kind": "Penalizador",
+                    "class": "Negocio",
+                    "reportable": false
+                }
+            },
+            "SPU_IO_K06_current_penalty": {
+                "schema": {
+                    "description": "Penalizacion del mes actual para SPU_IO_K06",
+                    "type": "double",
+                    "unit": "%"
+                },
+                "computer": "http://localhost:5001/api/v3/states/T14-L2-S12-minimal/guarantees/SPU_IO_K06_t/penalty",
+                "parameters": {
+                    "offset": {
+                        "type": "number",
+                        "description": "Offset over current month."
+                    }
+                },
+                "scope": {
+                    "SPU": {
+                        "priority": {
+                            "name": "Prioridad",
+                            "description": "Prioridad de la incidencia",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "node": {
+                            "name": "Nodo",
+                            "description": "Provincia",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "center": {
+                            "name": "Centro",
+                            "description": "Centro",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "nodeETC": {
+                            "name": "Nodo ETC",
+                            "description": "ETCs del nodo",
+                            "type": "integer",
+                            "format": "int32",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "serviceLine": {
+                            "name": "LineaServicio",
+                            "description": "Linea de Servicio",
+                            "type": "string",
+                            "default": "Línea de servicio de operación"
+                        },
+                        "activity": {
+                            "name": "Actividad",
+                            "description": "Actividad",
+                            "type": "string",
+                            "default": "Actividad no planificada"
+                        }
+                    }
+                },
+                "metadata": {
+                    "name": "Reincidencia penalización SPU_IO_K06 en centros",
+                    "description": "Incumplimiento en un centro en dos meses consecutivos del indicador SPU_IO_K06",
+                    "kind": "Penalizador",
+                    "class": "Negocio",
+                    "reportable": false
+                }
+            },
+            "SPU_IO_K06_last_penalty": {
+                "schema": {
+                    "description": "Penalizacion del mes anterior para SPU_IO_K06",
+                    "type": "double",
+                    "unit": "%"
+                },
+                "computer": "http://localhost:5001/api/v3/states/T14-L2-S12-minimal/guarantees/SPU_IO_K06_t/penalty",
+                "parameters": {
+                    "offset": {
+                        "type": "number",
+                        "description": "Offset over current month."
+                    }
+                },
+                "scope": {
+                    "SPU": {
+                        "priority": {
+                            "name": "Prioridad",
+                            "description": "Prioridad de la incidencia",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "node": {
+                            "name": "Nodo",
+                            "description": "Provincia",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "center": {
+                            "name": "Centro",
+                            "description": "Centro",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "nodeETC": {
+                            "name": "Nodo ETC",
+                            "description": "ETCs del nodo",
+                            "type": "integer",
+                            "format": "int32",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "serviceLine": {
+                            "name": "LineaServicio",
+                            "description": "Linea de Servicio",
+                            "type": "string",
+                            "default": "Línea de servicio de operación"
+                        },
+                        "activity": {
+                            "name": "Actividad",
+                            "description": "Actividad",
+                            "type": "string",
+                            "default": "Actividad no planificada"
+                        }
+                    }
+                },
+                "metadata": {
+                    "name": "Reincidencia penalización SPU_IO_K06 en centros",
+                    "description": "Incumplimiento en un centro en dos meses consecutivos del indicador SPU_IO_K06",
+                    "kind": "Penalizador",
+                    "class": "Negocio",
+                    "reportable": false
+                }
+            },
+            "SPU_IO_K80": {
+                "schema": {
+                    "description": "Numero de incidencias nuevas dadas de alta",
+                    "type": "number",
+                    "unit": "nº"
+                },
+                "computer": "http://localhost:8080/api/v4/indicators/SPU_IO_K80/",
+                "defaultStateReload": true,
+                "metadata": {
+                    "name": "Demanda nueva solicitada de incidencias",
+                    "description": "Numero de incidencias nuevas dadas de alta",
+                    "kind": "Penalizador",
+                    "class": "Negocio",
+                    "reportable": true,
+                    "frequency": 1,
+                    "initial": "2014-10-16"
+                },
+                "window": {
+                    "type": "static",
+                    "period": "monthly",
+                    "initial": "2014-10-16"
+                },
+                "scope": {
+                    "SPU": {
+                        "node": {
+                            "name": "Nodo",
+                            "description": "Provincia",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "center": {
+                            "name": "Centro",
+                            "description": "Centro",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "serviceLine": {
+                            "name": "LineaServicio",
+                            "description": "Linea de Servicio",
+                            "type": "string",
+                            "default": "Línea de servicio de operación"
+                        },
+                        "activity": {
+                            "name": "Actividad",
+                            "description": "Actividad",
+                            "type": "string",
+                            "default": "Actividad no planificada"
+                        }
+                    }
+                }
+            },
+            "SPU_IO_K81": {
+                "schema": {
+                    "description": "Numero de incidencias resueltas",
+                    "type": "number",
+                    "unit": "nº"
+                },
+                "computer": "http://localhost:8080/api/v4/indicators/SPU_IO_K81/",
+                "defaultStateReload": true,
+                "metadata": {
+                    "name": "Demanda resuelta incidencias",
+                    "description": "Numero de incidencias resueltas en el periodo",
+                    "kind": "Penalizador",
+                    "class": "Negocio",
+                    "reportable": true,
+                    "frequency": 1,
+                    "initial": "2014-10-16"
+                },
+                "window": {
+                    "type": "static",
+                    "period": "monthly",
+                    "initial": "2014-10-16"
+                },
+                "scope": {
+                    "SPU": {
+                        "node": {
+                            "name": "Nodo",
+                            "description": "Provincia",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "center": {
+                            "name": "Centro",
+                            "description": "Centro",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "serviceLine": {
+                            "name": "LineaServicio",
+                            "description": "Linea de Servicio",
+                            "type": "string",
+                            "default": "Línea de servicio de operación"
+                        },
+                        "activity": {
+                            "name": "Actividad",
+                            "description": "Actividad",
+                            "type": "string",
+                            "default": "Actividad no planificada"
+                        }
+                    }
+                }
+            },
+            "SPU_IO_K18_evidence": {
+                "schema": {
+                    "description": "Factor de rotacion del personal",
+                    "type": "string"
+                },
+                "computer": "http://localhost:8080/api/v4/indicators/SPU_IO_K18_evidence/",
+                "parameters": {
+                    "deadline": {
+                        "schema": {
+                            "description": "Plazo de resolucion de una inicidencia",
+                            "type": "string",
+                            "unit": "hours"
+                        }
+                    },
+                    "schedule": {
+                        "schema": {
+                            "description": "Horario del servicio",
+                            "type": "string"
+                        }
+                    }
+                },
+                "scope": {
+                    "SPU": {
+                        "priority": {
+                            "name": "Prioridad",
+                            "description": "Prioridad de la incidencia",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "node": {
+                            "name": "Nodo",
+                            "description": "Provincia",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "center": {
+                            "name": "Centro",
+                            "description": "Centro",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "nodeETC": {
+                            "name": "Nodo ETC",
+                            "description": "ETCs del nodo",
+                            "type": "integer",
+                            "format": "int32",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "serviceLine": {
+                            "name": "LineaServicio",
+                            "description": "Linea de Servicio",
+                            "type": "string",
+                            "default": "Línea de servicio de operación"
+                        },
+                        "activity": {
+                            "name": "Actividad",
+                            "description": "Actividad",
+                            "type": "string",
+                            "default": "Actividad no planificada"
+                        }
+                    }
+                }
+            },
+            "SPU_IO_K18": {
+                "schema": {
+                    "description": "Factor de rotacion del personal",
+                    "type": "int32",
+                    "unit": "nº"
+                },
+                "computer": "http://localhost:8080/api/v4/indicators/SPU_IO_K18/",
+                "scope": {
+                    "SPU": {
+                        "priority": {
+                            "name": "Prioridad",
+                            "description": "Prioridad de la incidencia",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "node": {
+                            "name": "Nodo",
+                            "description": "Provincia",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "center": {
+                            "name": "Centro",
+                            "description": "Centro",
+                            "type": "string",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "nodeETC": {
+                            "name": "Nodo ETC",
+                            "description": "ETCs del nodo",
+                            "type": "integer",
+                            "format": "int32",
+                            "metadata": {
+                                "reported": true
+                            }
+                        },
+                        "serviceLine": {
+                            "name": "LineaServicio",
+                            "description": "Linea de Servicio",
+                            "type": "string",
+                            "default": "Línea de servicio de operación"
+                        },
+                        "activity": {
+                            "name": "Actividad",
+                            "description": "Actividad",
+                            "type": "string",
+                            "default": "Actividad no planificada"
+                        }
+                    }
+                },
+                "log": {
+                    "jira": {
+                        "uri": "http://logs:8083/api/v2/jira/v01.03",
+                        "stateUri": "http://logs:8083/api/v2/jira/v01.03/count",
+                        "measures": "http://nginx/v3/SPU_IO.json?accessToken=741b9259-8bbc-4e74-9865-68ce53287a81",
+                        "scopes": {
+                            "SPU": {
+                                "priority": "priority",
+                                "node": "ASUNTO_NODO",
+                                "center": "CENTRO"
+                            }
+                        }
+                    }
+                },
+                "metadata": {
+                    "name": "Factor de rotacion del personal (FRP)",
+                    "description": "Numero de cambios de personal que no se han solicitado a la empresa adjudicataria en el periodo de medida establecido.",
+                    "kind": "Penalizador",
+                    "class": "Negocio",
+                    "reportable": false
+                }
+            }
+        },
+        "guarantees": [{
+                "id": "SPU_IO_K01",
+                "scope": {
+                    "priority": {
+                        "name": "Prioridad",
+                        "description": "Prioridad de la incidencia",
+                        "type": "string",
+                        "metadata": {
+                            "reported": true
+                        }
+                    },
+                    "node": {
+                        "name": "Nodo",
+                        "description": "Provincia",
+                        "type": "string",
+                        "metadata": {
+                            "reported": true
+                        }
+                    },
+                    "serviceLine": {
+                        "name": "LineaServicio",
+                        "description": "Linea de Servicio",
+                        "type": "string",
+                        "default": "Línea de servicio de operación"
+                    },
+                    "activity": {
+                        "name": "Actividad",
+                        "description": "Actividad",
+                        "type": "string",
+                        "default": "Actividad no planificada"
+                    }
+                },
+                "of": [{
+                        "scope": {
+                            "priority": "P1",
+                            "node": "*"
+                        },
+                        "objective": "SPU_IO_K01 >= 95.00",
+                        "with": {
+                            "SPU_IO_K01": {
+                                "deadline": "<= 2",
+                                "schedule": "L-DT00:00-23:59"
+                            }
+                        },
+                        "window": {
+                            "type": "static",
+                            "period": "monthly",
+                            "initial": "2014-10-16"
+                        },
+                        "evidences": [{
+                                "SPU_IO_K01_evidence": {
+                                    "schema": {
+                                        "description": "Incidencias resueltas en plazo",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/SPU_IO_K01_evidence/",
+                                    "parameters": {
+                                        "deadline": {
+                                            "schema": {
+                                                "description": "Plazo de resolucion de una inicidencia",
+                                                "type": "string",
+                                                "unit": "hours"
+                                            }
+                                        },
+                                        "schedule": {
+                                            "schema": {
+                                                "description": "Horario del servicio",
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "scope": {
+                                        "SPU": {
+                                            "priority": {
+                                                "name": "Prioridad",
+                                                "description": "Prioridad de la incidencia",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "node": {
+                                                "name": "Nodo",
+                                                "description": "Provincia",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "center": {
+                                                "name": "Centro",
+                                                "description": "Centro",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "nodeETC": {
+                                                "name": "Nodo ETC",
+                                                "description": "ETCs del nodo",
+                                                "type": "integer",
+                                                "format": "int32",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "serviceLine": {
+                                                "name": "LineaServicio",
+                                                "description": "Linea de Servicio",
+                                                "type": "string",
+                                                "default": "Línea de servicio de operación"
+                                            },
+                                            "activity": {
+                                                "name": "Actividad",
+                                                "description": "Actividad",
+                                                "type": "string",
+                                                "default": "Actividad no planificada"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "issue_start": {
+                                    "schema": {
+                                        "description": "Fecha de Inicio de incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_start/"
+                                }
+                            },
+                            {
+                                "issue_end": {
+                                    "schema": {
+                                        "description": "Fecha de Inicio de incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_end/"
+                                }
+                            },
+                            {
+                                "issue_duration": {
+                                    "schema": {
+                                        "description": "Duracion de una incidencia",
+                                        "type": "string",
+                                        "unit": "seconds"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_duration/"
+                                }
+                            },
+                            {
+                                "issue_idle_time": {
+                                    "schema": {
+                                        "description": "Tiempo parado de una incidencia",
+                                        "type": "string",
+                                        "unit": "seconds"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_idle_time/"
+                                }
+                            },
+                            {
+                                "issue_subject": {
+                                    "schema": {
+                                        "description": "Asunto de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_subject/"
+                                }
+                            },
+                            {
+                                "issue_source": {
+                                    "schema": {
+                                        "description": "Origen de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_source/"
+                                }
+                            },
+                            {
+                                "issue_typology": {
+                                    "schema": {
+                                        "description": "Tipologia de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_typology/"
+                                }
+                            },
+                            {
+                                "issue_priority": {
+                                    "schema": {
+                                        "description": "Prioridad de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_priority/"
+                                }
+                            },
+                            {
+                                "issue_resource": {
+                                    "schema": {
+                                        "description": "Recurso de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_resource/"
+                                }
+                            },
+                            {
+                                "issue_node": {
+                                    "schema": {
+                                        "description": "Nodo de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_node/"
+                                }
+                            },
+                            {
+                                "issue_center": {
+                                    "schema": {
+                                        "description": "Centro de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_center/"
+                                }
+                            },
+                            {
+                                "issue_resolutor": {
+                                    "schema": {
+                                        "description": "Resolutor de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_resolutor/"
+                                }
+                            }
+                        ],
+                        "penalties": [{
+                            "over": {
+                                "porcentajePTOT": {
+                                    "description": "Porcentaje de penalizacion sobre la facturacion mensual SPU",
+                                    "type": "double",
+                                    "unit": "%"
+                                }
+                            },
+                            "of": [{
+                                    "value": "-2",
+                                    "condition": "SPU_IO_K01 >= 90.00 && SPU_IO_K01 < 95.00"
+                                },
+                                {
+                                    "value": "-3",
+                                    "condition": "SPU_IO_K01 >= 85.00 && SPU_IO_K01 < 90.00"
+                                },
+                                {
+                                    "value": "-5",
+                                    "condition": "SPU_IO_K01 >= 0 && SPU_IO_K01 < 85.00"
+                                }
+                            ]
+                        }]
+                    },
+                    {
+                        "scope": {
+                            "priority": "P2",
+                            "node": "*"
+                        },
+                        "objective": "SPU_IO_K01 >= 90.00",
+                        "with": {
+                            "SPU_IO_K01": {
+                                "deadline": "<= 4",
+                                "schedule": "L-VT08:00-20:00"
+                            }
+                        },
+                        "window": {
+                            "type": "static",
+                            "period": "monthly",
+                            "initial": "2014-10-16"
+                        },
+                        "evidences": [{
+                                "SPU_IO_K01_evidence": {
+                                    "schema": {
+                                        "description": "Incidencias resueltas en plazo",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/SPU_IO_K01_evidence/",
+                                    "parameters": {
+                                        "deadline": {
+                                            "schema": {
+                                                "description": "Plazo de resolucion de una inicidencia",
+                                                "type": "string",
+                                                "unit": "hours"
+                                            }
+                                        },
+                                        "schedule": {
+                                            "schema": {
+                                                "description": "Horario del servicio",
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "scope": {
+                                        "SPU": {
+                                            "priority": {
+                                                "name": "Prioridad",
+                                                "description": "Prioridad de la incidencia",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "node": {
+                                                "name": "Nodo",
+                                                "description": "Provincia",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "center": {
+                                                "name": "Centro",
+                                                "description": "Centro",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "nodeETC": {
+                                                "name": "Nodo ETC",
+                                                "description": "ETCs del nodo",
+                                                "type": "integer",
+                                                "format": "int32",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "serviceLine": {
+                                                "name": "LineaServicio",
+                                                "description": "Linea de Servicio",
+                                                "type": "string",
+                                                "default": "Línea de servicio de operación"
+                                            },
+                                            "activity": {
+                                                "name": "Actividad",
+                                                "description": "Actividad",
+                                                "type": "string",
+                                                "default": "Actividad no planificada"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "issue_start": {
+                                    "schema": {
+                                        "description": "Fecha de Inicio de incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_start/"
+                                }
+                            },
+                            {
+                                "issue_end": {
+                                    "schema": {
+                                        "description": "Fecha de Inicio de incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_end/"
+                                }
+                            },
+                            {
+                                "issue_duration": {
+                                    "schema": {
+                                        "description": "Duracion de una incidencia",
+                                        "type": "string",
+                                        "unit": "seconds"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_duration/"
+                                }
+                            },
+                            {
+                                "issue_idle_time": {
+                                    "schema": {
+                                        "description": "Tiempo parado de una incidencia",
+                                        "type": "string",
+                                        "unit": "seconds"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_idle_time/"
+                                }
+                            },
+                            {
+                                "issue_subject": {
+                                    "schema": {
+                                        "description": "Asunto de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_subject/"
+                                }
+                            },
+                            {
+                                "issue_source": {
+                                    "schema": {
+                                        "description": "Origen de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_source/"
+                                }
+                            },
+                            {
+                                "issue_typology": {
+                                    "schema": {
+                                        "description": "Tipologia de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_typology/"
+                                }
+                            },
+                            {
+                                "issue_priority": {
+                                    "schema": {
+                                        "description": "Prioridad de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_priority/"
+                                }
+                            },
+                            {
+                                "issue_resource": {
+                                    "schema": {
+                                        "description": "Recurso de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_resource/"
+                                }
+                            },
+                            {
+                                "issue_node": {
+                                    "schema": {
+                                        "description": "Nodo de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_node/"
+                                }
+                            },
+                            {
+                                "issue_center": {
+                                    "schema": {
+                                        "description": "Centro de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_center/"
+                                }
+                            },
+                            {
+                                "issue_resolutor": {
+                                    "schema": {
+                                        "description": "Resolutor de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_resolutor/"
+                                }
+                            }
+                        ],
+                        "penalties": [{
+                            "over": {
+                                "porcentajePTOT": {
+                                    "description": "Porcentaje de penalizacion sobre la facturacion mensual SPU",
+                                    "type": "double",
+                                    "unit": "%"
+                                }
+                            },
+                            "of": [{
+                                    "value": "-1.5",
+                                    "condition": "SPU_IO_K01 >= 85.00 && SPU_IO_K01 < 90.00"
+                                },
+                                {
+                                    "value": "-2",
+                                    "condition": "SPU_IO_K01 >= 80.00 && SPU_IO_K01 < 85.00"
+                                },
+                                {
+                                    "value": "-3",
+                                    "condition": "SPU_IO_K01 >= 0 && SPU_IO_K01 < 80.00"
+                                }
+                            ]
+                        }]
+                    },
+                    {
+                        "scope": {
+                            "priority": "P3",
+                            "node": "*"
+                        },
+                        "objective": "SPU_IO_K01 >= 82.50",
+                        "with": {
+                            "SPU_IO_K01": {
+                                "deadline": "<= 17",
+                                "schedule": "L-VT08:00-20:00"
+                            }
+                        },
+                        "window": {
+                            "type": "static",
+                            "period": "monthly",
+                            "initial": "2014-10-16"
+                        },
+                        "evidences": [{
+                                "SPU_IO_K01_evidence": {
+                                    "schema": {
+                                        "description": "Incidencias resueltas en plazo",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/SPU_IO_K01_evidence/",
+                                    "parameters": {
+                                        "deadline": {
+                                            "schema": {
+                                                "description": "Plazo de resolucion de una inicidencia",
+                                                "type": "string",
+                                                "unit": "hours"
+                                            }
+                                        },
+                                        "schedule": {
+                                            "schema": {
+                                                "description": "Horario del servicio",
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "scope": {
+                                        "SPU": {
+                                            "priority": {
+                                                "name": "Prioridad",
+                                                "description": "Prioridad de la incidencia",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "node": {
+                                                "name": "Nodo",
+                                                "description": "Provincia",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "center": {
+                                                "name": "Centro",
+                                                "description": "Centro",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "nodeETC": {
+                                                "name": "Nodo ETC",
+                                                "description": "ETCs del nodo",
+                                                "type": "integer",
+                                                "format": "int32",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "serviceLine": {
+                                                "name": "LineaServicio",
+                                                "description": "Linea de Servicio",
+                                                "type": "string",
+                                                "default": "Línea de servicio de operación"
+                                            },
+                                            "activity": {
+                                                "name": "Actividad",
+                                                "description": "Actividad",
+                                                "type": "string",
+                                                "default": "Actividad no planificada"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "issue_start": {
+                                    "schema": {
+                                        "description": "Fecha de Inicio de incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_start/"
+                                }
+                            },
+                            {
+                                "issue_end": {
+                                    "schema": {
+                                        "description": "Fecha de Inicio de incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_end/"
+                                }
+                            },
+                            {
+                                "issue_duration": {
+                                    "schema": {
+                                        "description": "Duracion de una incidencia",
+                                        "type": "string",
+                                        "unit": "seconds"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_duration/"
+                                }
+                            },
+                            {
+                                "issue_idle_time": {
+                                    "schema": {
+                                        "description": "Tiempo parado de una incidencia",
+                                        "type": "string",
+                                        "unit": "seconds"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_idle_time/"
+                                }
+                            },
+                            {
+                                "issue_subject": {
+                                    "schema": {
+                                        "description": "Asunto de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_subject/"
+                                }
+                            },
+                            {
+                                "issue_source": {
+                                    "schema": {
+                                        "description": "Origen de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_source/"
+                                }
+                            },
+                            {
+                                "issue_typology": {
+                                    "schema": {
+                                        "description": "Tipologia de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_typology/"
+                                }
+                            },
+                            {
+                                "issue_priority": {
+                                    "schema": {
+                                        "description": "Prioridad de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_priority/"
+                                }
+                            },
+                            {
+                                "issue_resource": {
+                                    "schema": {
+                                        "description": "Recurso de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_resource/"
+                                }
+                            },
+                            {
+                                "issue_node": {
+                                    "schema": {
+                                        "description": "Nodo de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_node/"
+                                }
+                            },
+                            {
+                                "issue_center": {
+                                    "schema": {
+                                        "description": "Centro de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_center/"
+                                }
+                            },
+                            {
+                                "issue_resolutor": {
+                                    "schema": {
+                                        "description": "Resolutor de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_resolutor/"
+                                }
+                            }
+                        ],
+                        "penalties": [{
+                            "over": {
+                                "porcentajePTOT": {
+                                    "description": "Porcentaje de penalizacion sobre la facturacion mensual SPU",
+                                    "type": "double",
+                                    "unit": "%"
+                                }
+                            },
+                            "of": [{
+                                    "value": "-0.75",
+                                    "condition": "SPU_IO_K01 >= 77.50 && SPU_IO_K01 < 82.50"
+                                },
+                                {
+                                    "value": "-1.25",
+                                    "condition": "SPU_IO_K01 >= 72.50 && SPU_IO_K01 < 77.50"
+                                },
+                                {
+                                    "value": "-1.75",
+                                    "condition": "SPU_IO_K01 >= 0 && SPU_IO_K01 < 72.50"
+                                }
+                            ]
+                        }]
+                    }
+                ]
+            },
+            {
+                "id": "SPU_IO_K06_t",
+                "scope": {
+                    "priority": {
+                        "name": "Prioridad",
+                        "description": "Prioridad de la incidencia",
+                        "type": "string",
+                        "metadata": {
+                            "reported": true
+                        }
+                    },
+                    "node": {
+                        "name": "Nodo",
+                        "description": "Provincia",
+                        "type": "string",
+                        "metadata": {
+                            "reported": true
+                        }
+                    },
+                    "center": {
+                        "name": "Centro",
+                        "description": "Centro",
+                        "type": "string",
+                        "metadata": {
+                            "reported": true
+                        }
+                    },
+                    "serviceLine": {
+                        "name": "LineaServicio",
+                        "description": "Linea de Servicio",
+                        "type": "string",
+                        "default": "Línea de servicio de operación"
+                    },
+                    "activity": {
+                        "name": "Actividad",
+                        "description": "Actividad",
+                        "type": "string",
+                        "default": "Actividad no planificada"
+                    }
+                },
+                "of": [{
+                        "scope": {
+                            "priority": "P1",
+                            "node": "*",
+                            "center": "*"
+                        },
+                        "objective": "SPU_IO_K06_t <= 1.00",
+                        "with": {
+                            "SPU_IO_K06_t": {}
+                        },
+                        "window": {
+                            "type": "static",
+                            "period": "monthly",
+                            "initial": "2014-10-16"
+                        },
+                        "evidences": [{
+                                "SPU_IO_K06_t_evidence": {
+                                    "schema": {
+                                        "description": "Incidencias reabiertas (incluyendo el centro en el scope)",
+                                        "type": "bool"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/SPU_IO_K06_t_evidence/",
+                                    "parameters": {
+                                        "deadline": {
+                                            "schema": {
+                                                "description": "Plazo de resolucion de una inicidencia",
+                                                "type": "string",
+                                                "unit": "hours"
+                                            }
+                                        },
+                                        "schedule": {
+                                            "schema": {
+                                                "description": "Horario del servicio",
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "scope": {
+                                        "SPU": {
+                                            "priority": {
+                                                "name": "Prioridad",
+                                                "description": "Prioridad de la incidencia",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "node": {
+                                                "name": "Nodo",
+                                                "description": "Provincia",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "center": {
+                                                "name": "Centro",
+                                                "description": "Centro",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "nodeETC": {
+                                                "name": "Nodo ETC",
+                                                "description": "ETCs del nodo",
+                                                "type": "integer",
+                                                "format": "int32",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "serviceLine": {
+                                                "name": "LineaServicio",
+                                                "description": "Linea de Servicio",
+                                                "type": "string",
+                                                "default": "Línea de servicio de operación"
+                                            },
+                                            "activity": {
+                                                "name": "Actividad",
+                                                "description": "Actividad",
+                                                "type": "string",
+                                                "default": "Actividad no planificada"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "issue_start": {
+                                    "schema": {
+                                        "description": "Fecha de Inicio de incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_start/"
+                                }
+                            },
+                            {
+                                "issue_end": {
+                                    "schema": {
+                                        "description": "Fecha de Inicio de incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_end/"
+                                }
+                            },
+                            {
+                                "issue_duration": {
+                                    "schema": {
+                                        "description": "Duracion de una incidencia",
+                                        "type": "string",
+                                        "unit": "seconds"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_duration/"
+                                }
+                            },
+                            {
+                                "issue_idle_time": {
+                                    "schema": {
+                                        "description": "Tiempo parado de una incidencia",
+                                        "type": "string",
+                                        "unit": "seconds"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_idle_time/"
+                                }
+                            },
+                            {
+                                "issue_subject": {
+                                    "schema": {
+                                        "description": "Asunto de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_subject/"
+                                }
+                            },
+                            {
+                                "issue_source": {
+                                    "schema": {
+                                        "description": "Origen de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_source/"
+                                }
+                            },
+                            {
+                                "issue_typology": {
+                                    "schema": {
+                                        "description": "Tipologia de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_typology/"
+                                }
+                            },
+                            {
+                                "issue_priority": {
+                                    "schema": {
+                                        "description": "Prioridad de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_priority/"
+                                }
+                            },
+                            {
+                                "issue_resource": {
+                                    "schema": {
+                                        "description": "Recurso de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_resource/"
+                                }
+                            },
+                            {
+                                "issue_node": {
+                                    "schema": {
+                                        "description": "Nodo de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_node/"
+                                }
+                            },
+                            {
+                                "issue_center": {
+                                    "schema": {
+                                        "description": "Centro de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_center/"
+                                }
+                            },
+                            {
+                                "issue_resolutor": {
+                                    "schema": {
+                                        "description": "Resolutor de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_resolutor/"
+                                }
+                            }
+                        ],
+                        "penalties": [{
+                            "over": {
+                                "porcentajePTOT": {
+                                    "description": "Porcentaje de penalizacion sobre la facturacion mensual SPU",
+                                    "type": "double",
+                                    "unit": "%"
+                                }
+                            },
+                            "of": [{
+                                    "value": "-2",
+                                    "condition": "SPU_IO_K06_t > 1.00 && SPU_IO_K06_t <= 2.00"
+                                },
+                                {
+                                    "value": "-3",
+                                    "condition": "SPU_IO_K06_t > 2.00 && SPU_IO_K06_t <= 3.00"
+                                },
+                                {
+                                    "value": "-5",
+                                    "condition": "SPU_IO_K06_t  > 3.00 && SPU_IO_K06_t  <= 100.00"
+                                }
+                            ]
+                        }]
+                    },
+                    {
+                        "scope": {
+                            "priority": "P2",
+                            "node": "*",
+                            "center": "*"
+                        },
+                        "objective": "SPU_IO_K06_t <= 2.00",
+                        "with": {
+                            "SPU_IO_K06_t": {}
+                        },
+                        "window": {
+                            "type": "static",
+                            "period": "monthly",
+                            "initial": "2014-10-16"
+                        },
+                        "evidences": [{
+                                "SPU_IO_K06_t_evidence": {
+                                    "schema": {
+                                        "description": "Incidencias reabiertas (incluyendo el centro en el scope)",
+                                        "type": "bool"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/SPU_IO_K06_t_evidence/",
+                                    "parameters": {
+                                        "deadline": {
+                                            "schema": {
+                                                "description": "Plazo de resolucion de una inicidencia",
+                                                "type": "string",
+                                                "unit": "hours"
+                                            }
+                                        },
+                                        "schedule": {
+                                            "schema": {
+                                                "description": "Horario del servicio",
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "scope": {
+                                        "SPU": {
+                                            "priority": {
+                                                "name": "Prioridad",
+                                                "description": "Prioridad de la incidencia",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "node": {
+                                                "name": "Nodo",
+                                                "description": "Provincia",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "center": {
+                                                "name": "Centro",
+                                                "description": "Centro",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "nodeETC": {
+                                                "name": "Nodo ETC",
+                                                "description": "ETCs del nodo",
+                                                "type": "integer",
+                                                "format": "int32",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "serviceLine": {
+                                                "name": "LineaServicio",
+                                                "description": "Linea de Servicio",
+                                                "type": "string",
+                                                "default": "Línea de servicio de operación"
+                                            },
+                                            "activity": {
+                                                "name": "Actividad",
+                                                "description": "Actividad",
+                                                "type": "string",
+                                                "default": "Actividad no planificada"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "issue_start": {
+                                    "schema": {
+                                        "description": "Fecha de Inicio de incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_start/"
+                                }
+                            },
+                            {
+                                "issue_end": {
+                                    "schema": {
+                                        "description": "Fecha de Inicio de incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_end/"
+                                }
+                            },
+                            {
+                                "issue_duration": {
+                                    "schema": {
+                                        "description": "Duracion de una incidencia",
+                                        "type": "string",
+                                        "unit": "seconds"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_duration/"
+                                }
+                            },
+                            {
+                                "issue_idle_time": {
+                                    "schema": {
+                                        "description": "Tiempo parado de una incidencia",
+                                        "type": "string",
+                                        "unit": "seconds"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_idle_time/"
+                                }
+                            },
+                            {
+                                "issue_subject": {
+                                    "schema": {
+                                        "description": "Asunto de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_subject/"
+                                }
+                            },
+                            {
+                                "issue_source": {
+                                    "schema": {
+                                        "description": "Origen de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_source/"
+                                }
+                            },
+                            {
+                                "issue_typology": {
+                                    "schema": {
+                                        "description": "Tipologia de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_typology/"
+                                }
+                            },
+                            {
+                                "issue_priority": {
+                                    "schema": {
+                                        "description": "Prioridad de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_priority/"
+                                }
+                            },
+                            {
+                                "issue_resource": {
+                                    "schema": {
+                                        "description": "Recurso de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_resource/"
+                                }
+                            },
+                            {
+                                "issue_node": {
+                                    "schema": {
+                                        "description": "Nodo de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_node/"
+                                }
+                            },
+                            {
+                                "issue_center": {
+                                    "schema": {
+                                        "description": "Centro de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_center/"
+                                }
+                            },
+                            {
+                                "issue_resolutor": {
+                                    "schema": {
+                                        "description": "Resolutor de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_resolutor/"
+                                }
+                            }
+                        ],
+                        "penalties": [{
+                            "over": {
+                                "porcentajePTOT": {
+                                    "description": "Porcentaje de penalizacion sobre la facturacion mensual SPU",
+                                    "type": "double",
+                                    "unit": "%"
+                                }
+                            },
+                            "of": [{
+                                    "value": "-1.5",
+                                    "condition": "SPU_IO_K06_t > 2.00 && SPU_IO_K06_t <= 3.00"
+                                },
+                                {
+                                    "value": "-2",
+                                    "condition": "SPU_IO_K06_t > 3.00 && SPU_IO_K06_t <= 5.00"
+                                },
+                                {
+                                    "value": "-3",
+                                    "condition": "SPU_IO_K06_t > 5.00 && SPU_IO_K06_t <= 100.00"
+                                }
+                            ]
+                        }]
+                    },
+                    {
+                        "scope": {
+                            "priority": "P3",
+                            "node": "*",
+                            "center": "*"
+                        },
+                        "objective": "SPU_IO_K06_t <= 7.50",
+                        "with": {
+                            "SPU_IO_K06_t": {}
+                        },
+                        "window": {
+                            "type": "static",
+                            "period": "monthly",
+                            "initial": "2014-10-16"
+                        },
+                        "evidences": [{
+                                "SPU_IO_K06_t_evidence": {
+                                    "schema": {
+                                        "description": "Incidencias reabiertas (incluyendo el centro en el scope)",
+                                        "type": "bool"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/SPU_IO_K06_t_evidence/",
+                                    "parameters": {
+                                        "deadline": {
+                                            "schema": {
+                                                "description": "Plazo de resolucion de una inicidencia",
+                                                "type": "string",
+                                                "unit": "hours"
+                                            }
+                                        },
+                                        "schedule": {
+                                            "schema": {
+                                                "description": "Horario del servicio",
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "scope": {
+                                        "SPU": {
+                                            "priority": {
+                                                "name": "Prioridad",
+                                                "description": "Prioridad de la incidencia",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "node": {
+                                                "name": "Nodo",
+                                                "description": "Provincia",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "center": {
+                                                "name": "Centro",
+                                                "description": "Centro",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "nodeETC": {
+                                                "name": "Nodo ETC",
+                                                "description": "ETCs del nodo",
+                                                "type": "integer",
+                                                "format": "int32",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "serviceLine": {
+                                                "name": "LineaServicio",
+                                                "description": "Linea de Servicio",
+                                                "type": "string",
+                                                "default": "Línea de servicio de operación"
+                                            },
+                                            "activity": {
+                                                "name": "Actividad",
+                                                "description": "Actividad",
+                                                "type": "string",
+                                                "default": "Actividad no planificada"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "issue_start": {
+                                    "schema": {
+                                        "description": "Fecha de Inicio de incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_start/"
+                                }
+                            },
+                            {
+                                "issue_end": {
+                                    "schema": {
+                                        "description": "Fecha de Inicio de incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_end/"
+                                }
+                            },
+                            {
+                                "issue_duration": {
+                                    "schema": {
+                                        "description": "Duracion de una incidencia",
+                                        "type": "string",
+                                        "unit": "seconds"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_duration/"
+                                }
+                            },
+                            {
+                                "issue_idle_time": {
+                                    "schema": {
+                                        "description": "Tiempo parado de una incidencia",
+                                        "type": "string",
+                                        "unit": "seconds"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_idle_time/"
+                                }
+                            },
+                            {
+                                "issue_subject": {
+                                    "schema": {
+                                        "description": "Asunto de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_subject/"
+                                }
+                            },
+                            {
+                                "issue_source": {
+                                    "schema": {
+                                        "description": "Origen de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_source/"
+                                }
+                            },
+                            {
+                                "issue_typology": {
+                                    "schema": {
+                                        "description": "Tipologia de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_typology/"
+                                }
+                            },
+                            {
+                                "issue_priority": {
+                                    "schema": {
+                                        "description": "Prioridad de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_priority/"
+                                }
+                            },
+                            {
+                                "issue_resource": {
+                                    "schema": {
+                                        "description": "Recurso de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_resource/"
+                                }
+                            },
+                            {
+                                "issue_node": {
+                                    "schema": {
+                                        "description": "Nodo de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_node/"
+                                }
+                            },
+                            {
+                                "issue_center": {
+                                    "schema": {
+                                        "description": "Centro de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_center/"
+                                }
+                            },
+                            {
+                                "issue_resolutor": {
+                                    "schema": {
+                                        "description": "Resolutor de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_resolutor/"
+                                }
+                            }
+                        ],
+                        "penalties": [{
+                            "over": {
+                                "porcentajePTOT": {
+                                    "description": "Porcentaje de penalizacion sobre la facturacion mensual SPU",
+                                    "type": "double",
+                                    "unit": "%"
+                                }
+                            },
+                            "of": [{
+                                    "value": "-0.75",
+                                    "condition": "SPU_IO_K06_t > 7.50 && SPU_IO_K06_t <= 11.00"
+                                },
+                                {
+                                    "value": "-1.25",
+                                    "condition": "SPU_IO_K06_t > 11.00 && SPU_IO_K06_t <= 14.50"
+                                },
+                                {
+                                    "value": "-1.75",
+                                    "condition": "SPU_IO_K06_t > 14.50 && SPU_IO_K06_t <= 100.00"
+                                }
+                            ]
+                        }]
+                    }
+                ]
+            },
+            {
+                "id": "SPU_IO_K06",
+                "scope": {
+                    "priority": {
+                        "name": "Prioridad",
+                        "description": "Prioridad de la incidencia",
+                        "type": "string",
+                        "metadata": {
+                            "reported": true
+                        }
+                    },
+                    "node": {
+                        "name": "Nodo",
+                        "description": "Provincia",
+                        "type": "string",
+                        "metadata": {
+                            "reported": true
+                        }
+                    },
+                    "serviceLine": {
+                        "name": "LineaServicio",
+                        "description": "Linea de Servicio",
+                        "type": "string",
+                        "default": "Línea de servicio de operación"
+                    },
+                    "activity": {
+                        "name": "Actividad",
+                        "description": "Actividad",
+                        "type": "string",
+                        "default": "Actividad no planificada"
+                    }
+                },
+                "of": [{
+                        "scope": {
+                            "priority": "P1",
+                            "node": "*"
+                        },
+                        "objective": "SPU_IO_K06 <= 1.00",
+                        "with": {
+                            "SPU_IO_K06": {}
+                        },
+                        "window": {
+                            "type": "static",
+                            "period": "monthly",
+                            "initial": "2014-10-16"
+                        },
+                        "evidences": [{
+                                "SPU_IO_K06_evidence": {
+                                    "schema": {
+                                        "description": "Incidencias que no fueron correctamente solucionadas (e.d. mal cerradas)",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/SPU_IO_K06_evidence/",
+                                    "parameters": {
+                                        "deadline": {
+                                            "schema": {
+                                                "description": "Plazo de resolucion de una inicidencia",
+                                                "type": "string",
+                                                "unit": "hours"
+                                            }
+                                        },
+                                        "schedule": {
+                                            "schema": {
+                                                "description": "Horario del servicio",
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "scope": {
+                                        "SPU": {
+                                            "priority": {
+                                                "name": "Prioridad",
+                                                "description": "Prioridad de la incidencia",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "node": {
+                                                "name": "Nodo",
+                                                "description": "Provincia",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "center": {
+                                                "name": "Centro",
+                                                "description": "Centro",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "nodeETC": {
+                                                "name": "Nodo ETC",
+                                                "description": "ETCs del nodo",
+                                                "type": "integer",
+                                                "format": "int32",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "serviceLine": {
+                                                "name": "LineaServicio",
+                                                "description": "Linea de Servicio",
+                                                "type": "string",
+                                                "default": "Línea de servicio de operación"
+                                            },
+                                            "activity": {
+                                                "name": "Actividad",
+                                                "description": "Actividad",
+                                                "type": "string",
+                                                "default": "Actividad no planificada"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "issue_start": {
+                                    "schema": {
+                                        "description": "Fecha de Inicio de incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_start/"
+                                }
+                            },
+                            {
+                                "issue_end": {
+                                    "schema": {
+                                        "description": "Fecha de Inicio de incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_end/"
+                                }
+                            },
+                            {
+                                "issue_duration": {
+                                    "schema": {
+                                        "description": "Duracion de una incidencia",
+                                        "type": "string",
+                                        "unit": "seconds"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_duration/"
+                                }
+                            },
+                            {
+                                "issue_idle_time": {
+                                    "schema": {
+                                        "description": "Tiempo parado de una incidencia",
+                                        "type": "string",
+                                        "unit": "seconds"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_idle_time/"
+                                }
+                            },
+                            {
+                                "issue_subject": {
+                                    "schema": {
+                                        "description": "Asunto de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_subject/"
+                                }
+                            },
+                            {
+                                "issue_source": {
+                                    "schema": {
+                                        "description": "Origen de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_source/"
+                                }
+                            },
+                            {
+                                "issue_typology": {
+                                    "schema": {
+                                        "description": "Tipologia de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_typology/"
+                                }
+                            },
+                            {
+                                "issue_priority": {
+                                    "schema": {
+                                        "description": "Prioridad de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_priority/"
+                                }
+                            },
+                            {
+                                "issue_resource": {
+                                    "schema": {
+                                        "description": "Recurso de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_resource/"
+                                }
+                            },
+                            {
+                                "issue_node": {
+                                    "schema": {
+                                        "description": "Nodo de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_node/"
+                                }
+                            },
+                            {
+                                "issue_center": {
+                                    "schema": {
+                                        "description": "Centro de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_center/"
+                                }
+                            },
+                            {
+                                "issue_resolutor": {
+                                    "schema": {
+                                        "description": "Resolutor de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_resolutor/"
+                                }
+                            }
+                        ],
+                        "penalties": [{
+                            "over": {
+                                "porcentajePTOT": {
+                                    "description": "Porcentaje de penalizacion sobre la facturacion mensual SPU",
+                                    "type": "double",
+                                    "unit": "%"
+                                }
+                            },
+                            "of": [{
+                                    "value": "-2",
+                                    "condition": "SPU_IO_K06 > 1.00 && SPU_IO_K06 <= 2.00"
+                                },
+                                {
+                                    "value": "-3",
+                                    "condition": "SPU_IO_K06 > 2.00 && SPU_IO_K06 <= 3.00"
+                                },
+                                {
+                                    "value": "-5",
+                                    "condition": "SPU_IO_K06  > 3.00 && SPU_IO_K06  <= 100.00"
+                                }
+                            ]
+                        }]
+                    },
+                    {
+                        "scope": {
+                            "priority": "P2",
+                            "node": "*"
+                        },
+                        "objective": "SPU_IO_K06 <= 2.00",
+                        "with": {
+                            "SPU_IO_K06": {}
+                        },
+                        "window": {
+                            "type": "static",
+                            "period": "monthly",
+                            "initial": "2014-10-16"
+                        },
+                        "evidences": [{
+                                "SPU_IO_K06_evidence": {
+                                    "schema": {
+                                        "description": "Incidencias que no fueron correctamente solucionadas (e.d. mal cerradas)",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/SPU_IO_K06_evidence/",
+                                    "parameters": {
+                                        "deadline": {
+                                            "schema": {
+                                                "description": "Plazo de resolucion de una inicidencia",
+                                                "type": "string",
+                                                "unit": "hours"
+                                            }
+                                        },
+                                        "schedule": {
+                                            "schema": {
+                                                "description": "Horario del servicio",
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "scope": {
+                                        "SPU": {
+                                            "priority": {
+                                                "name": "Prioridad",
+                                                "description": "Prioridad de la incidencia",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "node": {
+                                                "name": "Nodo",
+                                                "description": "Provincia",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "center": {
+                                                "name": "Centro",
+                                                "description": "Centro",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "nodeETC": {
+                                                "name": "Nodo ETC",
+                                                "description": "ETCs del nodo",
+                                                "type": "integer",
+                                                "format": "int32",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "serviceLine": {
+                                                "name": "LineaServicio",
+                                                "description": "Linea de Servicio",
+                                                "type": "string",
+                                                "default": "Línea de servicio de operación"
+                                            },
+                                            "activity": {
+                                                "name": "Actividad",
+                                                "description": "Actividad",
+                                                "type": "string",
+                                                "default": "Actividad no planificada"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "issue_start": {
+                                    "schema": {
+                                        "description": "Fecha de Inicio de incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_start/"
+                                }
+                            },
+                            {
+                                "issue_end": {
+                                    "schema": {
+                                        "description": "Fecha de Inicio de incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_end/"
+                                }
+                            },
+                            {
+                                "issue_duration": {
+                                    "schema": {
+                                        "description": "Duracion de una incidencia",
+                                        "type": "string",
+                                        "unit": "seconds"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_duration/"
+                                }
+                            },
+                            {
+                                "issue_idle_time": {
+                                    "schema": {
+                                        "description": "Tiempo parado de una incidencia",
+                                        "type": "string",
+                                        "unit": "seconds"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_idle_time/"
+                                }
+                            },
+                            {
+                                "issue_subject": {
+                                    "schema": {
+                                        "description": "Asunto de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_subject/"
+                                }
+                            },
+                            {
+                                "issue_source": {
+                                    "schema": {
+                                        "description": "Origen de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_source/"
+                                }
+                            },
+                            {
+                                "issue_typology": {
+                                    "schema": {
+                                        "description": "Tipologia de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_typology/"
+                                }
+                            },
+                            {
+                                "issue_priority": {
+                                    "schema": {
+                                        "description": "Prioridad de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_priority/"
+                                }
+                            },
+                            {
+                                "issue_resource": {
+                                    "schema": {
+                                        "description": "Recurso de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_resource/"
+                                }
+                            },
+                            {
+                                "issue_node": {
+                                    "schema": {
+                                        "description": "Nodo de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_node/"
+                                }
+                            },
+                            {
+                                "issue_center": {
+                                    "schema": {
+                                        "description": "Centro de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_center/"
+                                }
+                            },
+                            {
+                                "issue_resolutor": {
+                                    "schema": {
+                                        "description": "Resolutor de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_resolutor/"
+                                }
+                            }
+                        ],
+                        "penalties": [{
+                            "over": {
+                                "porcentajePTOT": {
+                                    "description": "Porcentaje de penalizacion sobre la facturacion mensual SPU",
+                                    "type": "double",
+                                    "unit": "%"
+                                }
+                            },
+                            "of": [{
+                                    "value": "-1.5",
+                                    "condition": "SPU_IO_K06 > 2.00 && SPU_IO_K06 <= 3.00"
+                                },
+                                {
+                                    "value": "-2",
+                                    "condition": "SPU_IO_K06 > 3.00 && SPU_IO_K06 <= 5.00"
+                                },
+                                {
+                                    "value": "-3",
+                                    "condition": "SPU_IO_K06 > 5.00 && SPU_IO_K06 <= 100.00"
+                                }
+                            ]
+                        }]
+                    },
+                    {
+                        "scope": {
+                            "priority": "P3",
+                            "node": "*"
+                        },
+                        "objective": "SPU_IO_K06 <= 7.50",
+                        "with": {
+                            "SPU_IO_K06": {}
+                        },
+                        "window": {
+                            "type": "static",
+                            "period": "monthly",
+                            "initial": "2014-10-16"
+                        },
+                        "evidences": [{
+                                "SPU_IO_K06_evidence": {
+                                    "schema": {
+                                        "description": "Incidencias que no fueron correctamente solucionadas (e.d. mal cerradas)",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/SPU_IO_K06_evidence/",
+                                    "parameters": {
+                                        "deadline": {
+                                            "schema": {
+                                                "description": "Plazo de resolucion de una inicidencia",
+                                                "type": "string",
+                                                "unit": "hours"
+                                            }
+                                        },
+                                        "schedule": {
+                                            "schema": {
+                                                "description": "Horario del servicio",
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "scope": {
+                                        "SPU": {
+                                            "priority": {
+                                                "name": "Prioridad",
+                                                "description": "Prioridad de la incidencia",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "node": {
+                                                "name": "Nodo",
+                                                "description": "Provincia",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "center": {
+                                                "name": "Centro",
+                                                "description": "Centro",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "nodeETC": {
+                                                "name": "Nodo ETC",
+                                                "description": "ETCs del nodo",
+                                                "type": "integer",
+                                                "format": "int32",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "serviceLine": {
+                                                "name": "LineaServicio",
+                                                "description": "Linea de Servicio",
+                                                "type": "string",
+                                                "default": "Línea de servicio de operación"
+                                            },
+                                            "activity": {
+                                                "name": "Actividad",
+                                                "description": "Actividad",
+                                                "type": "string",
+                                                "default": "Actividad no planificada"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "issue_start": {
+                                    "schema": {
+                                        "description": "Fecha de Inicio de incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_start/"
+                                }
+                            },
+                            {
+                                "issue_end": {
+                                    "schema": {
+                                        "description": "Fecha de Inicio de incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_end/"
+                                }
+                            },
+                            {
+                                "issue_duration": {
+                                    "schema": {
+                                        "description": "Duracion de una incidencia",
+                                        "type": "string",
+                                        "unit": "seconds"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_duration/"
+                                }
+                            },
+                            {
+                                "issue_idle_time": {
+                                    "schema": {
+                                        "description": "Tiempo parado de una incidencia",
+                                        "type": "string",
+                                        "unit": "seconds"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_idle_time/"
+                                }
+                            },
+                            {
+                                "issue_subject": {
+                                    "schema": {
+                                        "description": "Asunto de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_subject/"
+                                }
+                            },
+                            {
+                                "issue_source": {
+                                    "schema": {
+                                        "description": "Origen de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_source/"
+                                }
+                            },
+                            {
+                                "issue_typology": {
+                                    "schema": {
+                                        "description": "Tipologia de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_typology/"
+                                }
+                            },
+                            {
+                                "issue_priority": {
+                                    "schema": {
+                                        "description": "Prioridad de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_priority/"
+                                }
+                            },
+                            {
+                                "issue_resource": {
+                                    "schema": {
+                                        "description": "Recurso de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_resource/"
+                                }
+                            },
+                            {
+                                "issue_node": {
+                                    "schema": {
+                                        "description": "Nodo de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_node/"
+                                }
+                            },
+                            {
+                                "issue_center": {
+                                    "schema": {
+                                        "description": "Centro de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_center/"
+                                }
+                            },
+                            {
+                                "issue_resolutor": {
+                                    "schema": {
+                                        "description": "Resolutor de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_resolutor/"
+                                }
+                            }
+                        ],
+                        "penalties": [{
+                            "over": {
+                                "porcentajePTOT": {
+                                    "description": "Porcentaje de penalizacion sobre la facturacion mensual SPU",
+                                    "type": "double",
+                                    "unit": "%"
+                                }
+                            },
+                            "of": [{
+                                    "value": "-0.75",
+                                    "condition": "SPU_IO_K06 > 7.50 && SPU_IO_K06 <= 11.00"
+                                },
+                                {
+                                    "value": "-1.25",
+                                    "condition": "SPU_IO_K06 > 11.00 && SPU_IO_K06 <= 14.50"
+                                },
+                                {
+                                    "value": "-1.75",
+                                    "condition": "SPU_IO_K06 > 14.50 && SPU_IO_K06 <= 100.00"
+                                }
+                            ]
+                        }]
+                    }
+                ]
+            },
+            {
+                "id": "SPU_IO_K06_C",
+                "scope": {
+                    "priority": {
+                        "name": "Prioridad",
+                        "description": "Prioridad de la incidencia",
+                        "type": "string",
+                        "metadata": {
+                            "reported": true
+                        }
+                    },
+                    "node": {
+                        "name": "Nodo",
+                        "description": "Provincia",
+                        "type": "string",
+                        "metadata": {
+                            "reported": true
+                        }
+                    },
+                    "center": {
+                        "name": "Centro",
+                        "description": "Centro",
+                        "type": "string",
+                        "metadata": {
+                            "reported": true
+                        }
+                    },
+                    "serviceLine": {
+                        "name": "LineaServicio",
+                        "description": "Linea de Servicio",
+                        "type": "string",
+                        "default": "Línea de servicio de operación"
+                    },
+                    "activity": {
+                        "name": "Actividad",
+                        "description": "Actividad",
+                        "type": "string",
+                        "default": "Actividad no planificada"
+                    }
+                },
+                "of": [{
+                    "scope": {
+                        "priority": "*",
+                        "node": "*",
+                        "center": "*"
+                    },
+                    "objective": "SPU_IO_K06_current_penalty * SPU_IO_K06_last_penalty == 0",
+                    "with": {
+                        "SPU_IO_K06_current_penalty": {
+                            "offset": 0
+                        },
+                        "SPU_IO_K06_last_penalty": {
+                            "offset": -1
+                        }
+                    },
+                    "window": {
+                        "type": "static",
+                        "period": "monthly",
+                        "initial": "2014-10-16"
+                    },
+                    "penalties": [{
+                        "over": {
+                            "porcentajePTOT": {
+                                "description": "Porcentaje de penalizacion sobre la facturacion mensual SPU",
+                                "type": "double",
+                                "unit": "%"
+                            }
+                        },
+                        "of": [{
+                            "value": "-0.5",
+                            "condition": "SPU_IO_K06_current_penalty * SPU_IO_K06_last_penalty > 0"
+                        }]
+                    }]
+                }]
+            },
+            {
+                "id": "SPU_IO_K18",
+                "scope": {
+                    "node": {
+                        "name": "Nodo",
+                        "description": "Provincia",
+                        "type": "string",
+                        "metadata": {
+                            "reported": true
+                        }
+                    },
+                    "nodeETC": {
+                        "name": "Nodo ETC",
+                        "description": "ETCs del nodo",
+                        "type": "integer",
+                        "format": "int32",
+                        "metadata": {
+                            "reported": true
+                        }
+                    },
+                    "serviceLine": {
+                        "name": "LineaServicio",
+                        "description": "Linea de Servicio",
+                        "type": "string",
+                        "default": "Línea de servicio de operación"
+                    },
+                    "activity": {
+                        "name": "Actividad",
+                        "description": "Actividad",
+                        "type": "string",
+                        "default": "Actividad no planificada"
+                    }
+                },
+                "of": [{
+                        "scope": {
+                            "node": "*",
+                            "nodeETC": "< 20"
+                        },
+                        "objective": "SPU_IO_K18 <= 1",
+                        "with": {
+                            "SPU_IO_K18": {}
+                        },
+                        "window": {
+                            "type": "static",
+                            "period": "quarterly",
+                            "initial": "2014-10-16"
+                        },
+                        "evidences": [{
+                                "SPU_IO_K18_evidence": {
+                                    "schema": {
+                                        "description": "Factor de rotacion del personal",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/SPU_IO_K18_evidence/",
+                                    "parameters": {
+                                        "deadline": {
+                                            "schema": {
+                                                "description": "Plazo de resolucion de una inicidencia",
+                                                "type": "string",
+                                                "unit": "hours"
+                                            }
+                                        },
+                                        "schedule": {
+                                            "schema": {
+                                                "description": "Horario del servicio",
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "scope": {
+                                        "SPU": {
+                                            "priority": {
+                                                "name": "Prioridad",
+                                                "description": "Prioridad de la incidencia",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "node": {
+                                                "name": "Nodo",
+                                                "description": "Provincia",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "center": {
+                                                "name": "Centro",
+                                                "description": "Centro",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "nodeETC": {
+                                                "name": "Nodo ETC",
+                                                "description": "ETCs del nodo",
+                                                "type": "integer",
+                                                "format": "int32",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "serviceLine": {
+                                                "name": "LineaServicio",
+                                                "description": "Linea de Servicio",
+                                                "type": "string",
+                                                "default": "Línea de servicio de operación"
+                                            },
+                                            "activity": {
+                                                "name": "Actividad",
+                                                "description": "Actividad",
+                                                "type": "string",
+                                                "default": "Actividad no planificada"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "issue_start": {
+                                    "schema": {
+                                        "description": "Fecha de Inicio de incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_start/"
+                                }
+                            },
+                            {
+                                "issue_end": {
+                                    "schema": {
+                                        "description": "Fecha de Inicio de incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_end/"
+                                }
+                            },
+                            {
+                                "issue_idle_time": {
+                                    "schema": {
+                                        "description": "Tiempo parado de una incidencia",
+                                        "type": "string",
+                                        "unit": "seconds"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_idle_time/"
+                                }
+                            },
+                            {
+                                "issue_subject": {
+                                    "schema": {
+                                        "description": "Asunto de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_subject/"
+                                }
+                            },
+                            {
+                                "issue_source": {
+                                    "schema": {
+                                        "description": "Origen de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_source/"
+                                }
+                            },
+                            {
+                                "issue_typology": {
+                                    "schema": {
+                                        "description": "Tipologia de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_typology/"
+                                }
+                            },
+                            {
+                                "issue_priority": {
+                                    "schema": {
+                                        "description": "Prioridad de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_priority/"
+                                }
+                            },
+                            {
+                                "issue_resource": {
+                                    "schema": {
+                                        "description": "Recurso de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_resource/"
+                                }
+                            },
+                            {
+                                "issue_area_K18": {
+                                    "schema": {
+                                        "description": "Area de la incidencia",
+                                        "type": "string",
+                                        "unit": "seconds"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_area_K18/"
+                                }
+                            },
+                            {
+                                "issue_node": {
+                                    "schema": {
+                                        "description": "Nodo de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_node/"
+                                }
+                            },
+                            {
+                                "issue_center": {
+                                    "schema": {
+                                        "description": "Centro de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_center/"
+                                }
+                            },
+                            {
+                                "issue_resolutor": {
+                                    "schema": {
+                                        "description": "Resolutor de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_resolutor/"
+                                }
+                            }
+                        ],
+                        "penalties": [{
+                            "over": {
+                                "porcentajePTOT": {
+                                    "description": "Porcentaje de penalizacion sobre la facturacion mensual SPU",
+                                    "type": "double",
+                                    "unit": "%"
+                                }
+                            },
+                            "of": [{
+                                "value": "-1",
+                                "condition": "SPU_IO_K18 >= 2"
+                            }]
+                        }]
+                    },
+                    {
+                        "scope": {
+                            "node": "*",
+                            "nodeETC": ">= 20"
+                        },
+                        "objective": "SPU_IO_K18 <= 2",
+                        "with": {
+                            "SPU_IO_K18": {}
+                        },
+                        "window": {
+                            "type": "static",
+                            "period": "quarterly",
+                            "initial": "2014-10-16"
+                        },
+                        "evidences": [{
+                                "SPU_IO_K18_evidence": {
+                                    "schema": {
+                                        "description": "Factor de rotacion del personal",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/SPU_IO_K18_evidence/",
+                                    "parameters": {
+                                        "deadline": {
+                                            "schema": {
+                                                "description": "Plazo de resolucion de una inicidencia",
+                                                "type": "string",
+                                                "unit": "hours"
+                                            }
+                                        },
+                                        "schedule": {
+                                            "schema": {
+                                                "description": "Horario del servicio",
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "scope": {
+                                        "SPU": {
+                                            "priority": {
+                                                "name": "Prioridad",
+                                                "description": "Prioridad de la incidencia",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "node": {
+                                                "name": "Nodo",
+                                                "description": "Provincia",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "center": {
+                                                "name": "Centro",
+                                                "description": "Centro",
+                                                "type": "string",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "nodeETC": {
+                                                "name": "Nodo ETC",
+                                                "description": "ETCs del nodo",
+                                                "type": "integer",
+                                                "format": "int32",
+                                                "metadata": {
+                                                    "reported": true
+                                                }
+                                            },
+                                            "serviceLine": {
+                                                "name": "LineaServicio",
+                                                "description": "Linea de Servicio",
+                                                "type": "string",
+                                                "default": "Línea de servicio de operación"
+                                            },
+                                            "activity": {
+                                                "name": "Actividad",
+                                                "description": "Actividad",
+                                                "type": "string",
+                                                "default": "Actividad no planificada"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "issue_start": {
+                                    "schema": {
+                                        "description": "Fecha de Inicio de incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_start/"
+                                }
+                            },
+                            {
+                                "issue_end": {
+                                    "schema": {
+                                        "description": "Fecha de Inicio de incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_end/"
+                                }
+                            },
+                            {
+                                "issue_idle_time": {
+                                    "schema": {
+                                        "description": "Tiempo parado de una incidencia",
+                                        "type": "string",
+                                        "unit": "seconds"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_idle_time/"
+                                }
+                            },
+                            {
+                                "issue_subject": {
+                                    "schema": {
+                                        "description": "Asunto de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_subject/"
+                                }
+                            },
+                            {
+                                "issue_source": {
+                                    "schema": {
+                                        "description": "Origen de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_source/"
+                                }
+                            },
+                            {
+                                "issue_typology": {
+                                    "schema": {
+                                        "description": "Tipologia de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_typology/"
+                                }
+                            },
+                            {
+                                "issue_priority": {
+                                    "schema": {
+                                        "description": "Prioridad de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_priority/"
+                                }
+                            },
+                            {
+                                "issue_resource": {
+                                    "schema": {
+                                        "description": "Recurso de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_resource/"
+                                }
+                            },
+                            {
+                                "issue_area_K18": {
+                                    "schema": {
+                                        "description": "Area de la incidencia",
+                                        "type": "string",
+                                        "unit": "seconds"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_area_K18/"
+                                }
+                            },
+                            {
+                                "issue_node": {
+                                    "schema": {
+                                        "description": "Nodo de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_node/"
+                                }
+                            },
+                            {
+                                "issue_center": {
+                                    "schema": {
+                                        "description": "Centro de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_center/"
+                                }
+                            },
+                            {
+                                "issue_resolutor": {
+                                    "schema": {
+                                        "description": "Resolutor de la incidencia",
+                                        "type": "string"
+                                    },
+                                    "computer": "http://localhost:8080/api/v4/indicators/issue_resolutor/"
+                                }
+                            }
+                        ],
+                        "penalties": [{
+                            "over": {
+                                "porcentajePTOT": {
+                                    "description": "Porcentaje de penalizacion sobre la facturacion mensual SPU",
+                                    "type": "double",
+                                    "unit": "%"
+                                }
+                            },
+                            "of": [{
+                                "value": "-1",
+                                "condition": "SPU_IO_K18 >= 3"
+                            }]
+                        }]
+                    }
+                ]
+            }
+        ]
+    },
+    "__v": 0
+}

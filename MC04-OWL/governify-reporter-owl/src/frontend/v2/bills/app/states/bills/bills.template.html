@@ -1,0 +1,121 @@
+<h3 class="header gv-app-red-text light">Periods states:</h3><br />
+
+<div class="row" ng-cloak>
+    <div class="card ">
+        <div class="card-content ">
+            <ul>
+                <li>
+                    <strong>ANS</strong>: {{agreement}}
+                </li>
+                <li>
+                    <strong>First period</strong>: {{firstBill}}
+                </li>
+                <li>
+                    <strong>Last period</strong>: {{lastBill}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br />
+<ul ng-repeat="k in years">
+    <h5>{{k}}</h5>
+    <li class="divider"></li><br />
+    <table class="months-table">
+        <tr ng-repeat="m in yearMonths[k]">
+            <td class="months">{{m.month}}</td>
+            <td ng-if="m.state == 'open'" class="opened">Open</td>
+            <td ng-if="m.state == 'closed'" class="closed">Closed</td>
+            <td ng-if="m.state == 'open'"><a data-target="modal1" class="modal-trigger waves-effect waves-light btn close"
+                    ng-click="changeCloseData(m.bill, m.month, k)">Close</a></td>
+            <td ng-if="m.state == 'closed'" title="Fecha de cierre" class="closeDate">{{m.closeDate |
+                date:'dd/MM/yyyy'}}</td>
+
+        </tr>
+    </table>
+</ul>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <div class="row">
+            ¿Are you sure you want to close this period? This action will block agreement state and future overrides in
+            the period: {{currentMonth}} {{currentYear}}.<br />
+            <b>This action can not be undone.
+            </b>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="modal-close waves-effect waves-light btn btn-warn">Cancel</button>
+        <button ng-click="closeBill(currentBill)" class="modal-close waves-effect waves-light btn btn-success">Close
+            {{currentMonth}} {{currentYear}}</button>
+    </div>
+</div>
+
+
+<style>
+    .months {
+        font-size: 17px;
+        width: 25em;
+    }
+
+    .months-table {
+        width: 80%;
+    }
+
+    td {
+        text-align: center;
+    }
+
+    .btn-warn {
+        background-color: #E94949 !important;
+    }
+
+    .opened {
+        font-size: 17px;
+        color: #48E04C;
+        text-transform: uppercase;
+        /* text-shadow: 2px 2px #D2FFCE; */
+    }
+
+    .closed {
+        font-size: 17px;
+        color: #EE4242;
+        text-transform: uppercase;
+        /* text-shadow: 2px 2px #FFCECE; */
+    }
+
+    .close {
+        background-color: #6BDDFA;
+    }
+
+    .close:hover {
+        background-color: #A9EEFF;
+    }
+
+    .closeDate {
+        font-size: 17px;
+        color: #8C8C8C;
+    }
+
+    .btn-success {
+        background-color: #48E04C !important;
+    }
+
+    .modal {
+        font-size: 17px;
+        width: 50%;
+        max-width: 1000px;
+    }
+
+    .card .card-content {
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+    }
+</style>
+
+<script>
+    $(document).ready(function () {
+        $('.modal').modal();
+    });
+</script>

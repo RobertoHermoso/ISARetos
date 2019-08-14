@@ -135,37 +135,6 @@ function lcdNumber(t, n){
 
 }
 
-/**
- * 
- * @param {Integer} section           - There are 5 sections in LCD format
- * @param {Integer} currentNumber     - The current number that we are going to formatter in LCD
- * @param {Integer} t                 - The number of lines
- * @param {String} res                - The result
- * @param {Integer} index             - The current number position, if it is the last we are going to write \n
- * @param {Integer} max               - The lenght of the numbers
- */
-function aux(section, currentNumber, t, res, index, max){
-    if((currentNumber==2 || currentNumber===3 || currentNumber===5 || currentNumber===6 || currentNumber===7 || currentNumber===8
-        || currentNumber===9 || currentNumber===0) && section%2==1){
-            if(section!==3 && currentNumber!==0){
-                res+= "-"*t + "     "
-                console.log(res)
-            }
-        }
 
-    if(index+1===max){
-        res+= "\n"
-    }
-        return res;
-}
-
-function repeatStringNumTimes(string, times) {
-    var repeatedString = "";
-    while (times > 0) {
-      repeatedString += string;
-      times--;
-    }
-    return repeatedString;
-  }
 
 lcdNumber(6,1234567809);

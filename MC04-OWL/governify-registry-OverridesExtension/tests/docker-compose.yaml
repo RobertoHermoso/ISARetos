@@ -1,0 +1,47 @@
+# DOCKER COMPOSE for testing
+version: '2'
+services:
+
+  logs:
+    container_name: tests-logs-container
+    image: isagroup/governify-project-sas-logs
+    links:
+      - mongodb:mongo
+    ports:
+      - 8083:8083
+    environment:
+      - NODE_ENV=production
+      - PORT=8083
+      - MONGO_HOSTNAME=mongo
+      - MONGO_PORT=27017
+      - MONGO_DATABASE=logsv2
+      - LOG_SYSTEM=logs.sas
+    restart: always
+
+  computer:
+    container_name: tests-computer-container
+    image: isagroup/governify-computer-ppinot:6.0.0
+    ports:
+      - 8080:8080
+    links:
+      - logs:logs
+      - nginx
+    restart: always
+    environment:
+      - JAVA_OPTS=-Xms128m -Xmx8g -XX:PermSize=64m -XX:MaxPermSize=4g -XX:ParallelGCThreads=4 -XX:+UseParNewGC -server
+
+  mongodb:
+    container_name: tests-mongodb-container
+    image: isagroup/governify-tests-mongo-with-synthetic-logs
+    ports:
+      - 127.0.0.1:37019:27017
+   # command: --auth
+    restart: always
+
+  nginx:
+    container_name: nginx-container
+    image: nginx
+    volumes:
+      - ./required/computer-config:/usr/share/nginx/html
+    ports:
+      - 8082:80
