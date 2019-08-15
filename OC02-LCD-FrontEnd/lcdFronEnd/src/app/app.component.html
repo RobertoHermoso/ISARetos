@@ -2,6 +2,9 @@
 <div style="text-align:center">
   <img width="500" alt="Angular Logo" src="assets/img/logo.png">
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+
 <h2>To get the LCD formatt numbers just write here: </h2>
 <form [formGroup]="lcdForm" (ngSubmit)="onSubmit()">
 
@@ -22,5 +25,8 @@
 
 </form>
 
+<br/>
+
+<div [innerHTML]="example"></div>
 
 <router-outlet></router-outlet>
