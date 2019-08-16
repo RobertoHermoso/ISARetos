@@ -11,7 +11,8 @@ export class AppComponent implements OnInit  {
   title = 'lcdFronEnd';
   t = "";
   n = "";
-  example : any
+  numbers : any
+
 
   lcdForm: FormGroup
   submitted = false;
@@ -50,10 +51,18 @@ onSubmit() {
   this.t = this.lcdForm.value.t
   this.n = this.lcdForm.value.n
   
-  this.http.get(root_url+"/lcd" ,{params}).subscribe(
-    (data: {}) => {
+  this.http.get(root_url+"/lcdOneByOne" ,{params}).subscribe(
+    (data: []) => {
+      var acum = []
       //this.example = data['result'].replace(/(\\r\\n)|([\r\n])/gmi, '<br/>');
-      this.example = data['result'].replace(/(\\r\\n)|([\r\n])/gmi, '<br/>');
+      //this.example = data['result'].replace(/(\\r\\n)|([\r\n])/gmi, '<br/>');
+       data['result'].forEach(element => {
+            element = element.replace(/(\\r\\n)|([\r\n])/gmi, '<br/>');
+
+            acum.push(element)
+      });
+
+      this.numbers=acum
     }
   )
  

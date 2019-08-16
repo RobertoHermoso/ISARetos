@@ -27,6 +27,14 @@
 
 <br/>
 
-<div [innerHTML]="example"></div>
+<div *ngFor = "let number of numbers">
+
+  <br/>
+<div id="inner" [innerHTML]="number">
+    <br/>
+</div>
+
+</div>
+
 
 <router-outlet></router-outlet>
