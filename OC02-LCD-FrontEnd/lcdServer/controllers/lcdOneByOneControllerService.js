@@ -95,12 +95,12 @@ function lcdNumberOneByOne(t, n){
               if(sections==4){
 
               if(currentNumber==2 || currentNumber==3 || currentNumber==7){
-                  vert+= whiteSpace.repeat(t)
+                  vert+= whiteSpace.repeat(t+1)
                   vert += whiteSpace+whiteSpace+"|"+whiteSpace+whiteSpace
               }
               else if(currentNumber==4 || currentNumber==8 || currentNumber==9 || currentNumber==0){
-                  vert += "|"
-                  vert += whiteSpace.repeat(t)
+                  vert += whiteSpace+"|"
+                  vert += whiteSpace.repeat(t+1)
                   vert += "|"+whiteSpace+whiteSpace
 
               }else if(currentNumber==5 || currentNumber ==6){
@@ -116,11 +116,11 @@ function lcdNumberOneByOne(t, n){
                   vert+= whiteSpace.repeat(t+1)
               }
               else if(currentNumber==3 || currentNumber ==4 || currentNumber ==5 || currentNumber==7 || currentNumber==9){
-                  vert += whiteSpace.repeat(t)
+                  vert += whiteSpace.repeat(t+1)
                   vert += whiteSpace+whiteSpace+"|"+whiteSpace
               }else if (currentNumber==6 || currentNumber==8 || currentNumber==0)  {
                   vert += whiteSpace+"|"
-                  vert += whiteSpace.repeat(t)
+                  vert += whiteSpace.repeat(t+1)
                   vert += "|"+whiteSpace
               }
           }
