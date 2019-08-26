@@ -1,0 +1,12 @@
+.card {
+
+     float:left;
+      margin: 15px
+}
+
+
+.center {
+    margin: auto;
+    width: 70%;
+    padding: 20px;
+  }

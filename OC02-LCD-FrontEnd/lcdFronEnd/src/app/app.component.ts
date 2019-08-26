@@ -54,8 +54,6 @@ onSubmit() {
   this.http.get(root_url+"/lcdOneByOne" ,{params}).subscribe(
     (data: []) => {
       var acum = []
-      //this.example = data['result'].replace(/(\\r\\n)|([\r\n])/gmi, '<br/>');
-      //this.example = data['result'].replace(/(\\r\\n)|([\r\n])/gmi, '<br/>');
        data['result'].forEach(element => {
             element = element.replace(/(\\r\\n)|([\r\n])/gmi, '<br/>');
 

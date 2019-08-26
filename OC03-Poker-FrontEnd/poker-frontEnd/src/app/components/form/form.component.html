@@ -1,0 +1,202 @@
+ <form [formGroup]="playerForm" (ngSubmit)="addPlayer()">
+    <fieldset>
+            <div class="form-group">
+                    <label for="playerName">Player name:</label>
+                    <input type="text" class="form-control" formControlName="playerName" id="playerName" placeholder="Narancia">
+            </div>
+            <div class="form-group">
+                    <label for="moneyPot">Money Pot (In €):</label>
+                    <input type="number" formControlName="moneyPot" class="form-control" id="moneyPot" placeholder="2000" min=0>
+            </div>
+           <div class="center"> 
+               <h1> Hand:</h1>
+                    <div class="card text-white bg-dark mb-3">
+                    <div class="card-header">Card 1</div>
+                    <div class="card-body">
+                    <div class="form-group">
+                    <label for="value1">Value:</label>
+
+                    <select class="form-control" formControlName="value1" name="value1" id="value1">
+                        <option value="1"> 1 </option>
+                        <option value="2"> 2 </option>
+                        <option value="3"> 3 </option>
+                        <option value="4"> 4 </option>
+                        <option value="5"> 5 </option>
+                        <option value="6"> 6 </option>
+                        <option value="7"> 7 </option>
+                        <option value="8"> 8 </option>
+                        <option value="9"> 9 </option>
+                        <option value="10"> 10 </option>
+                        <option value="J"> Jack </option>
+                        <option value="Q"> Queen </option>
+                        <option value="K"> King </option>
+                        <option value="A"> Ace </option>
+                    </select>
+
+                    </div>
+                    <div class="form-group">
+                    <label for="suit1">Suit:</label>
+                    <select class="form-control" name="suit1" formControlName="suit1" id="suit1">
+                        <option value="D"> Diamond </option>
+                        <option value="H"> Heart </option>
+                        <option value="S"> Spades </option>
+                        <option value="C"> Clubs </option>
+                    </select>
+                    </div>
+
+                    </div>
+                    </div>
+
+                    <div class="card text-black bg-primary mb-3">
+                            <div class="card-header">Card 2</div>
+                            <div class="card-body">
+                            <div class="form-group">
+                            <label for="value2">Value:</label>
+        
+                            <select class="form-control" name="value2" formControlName="value2" id="value2">
+                                <option value="1"> 1 </option>
+                                <option value="2"> 2 </option>
+                                <option value="3"> 3 </option>
+                                <option value="4"> 4 </option>
+                                <option value="5"> 5 </option>
+                                <option value="6"> 6 </option>
+                                <option value="7"> 7 </option>
+                                <option value="8"> 8 </option>
+                                <option value="9"> 9 </option>
+                                <option value="10"> 10 </option>
+                                <option value="J"> Jack </option>
+                                <option value="Q"> Queen </option>
+                                <option value="K"> King </option>
+                                <option value="A"> Ace </option>
+                            </select>
+        
+                            </div>
+                    <div class="form-group">
+                    <label for="suit2">Suit:</label>
+                    <select class="form-control" name="suit2" formControlName="suit2" id="suit2">
+                        <option value="D"> Diamond </option>
+                        <option value="H"> Heart </option>
+                        <option value="S"> Spades </option>
+                        <option value="C"> Clubs </option>
+                    </select>
+                    </div>
+
+                    </div>
+                    </div>
+                    <div class="card text-white bg-dark mb-3">
+                            <div class="card-header">Card 3</div>
+                            <div class="card-body">
+                            <div class="form-group">
+                            <label for="value3">Value:</label>
+        
+                            <select class="form-control" name="value3" formControlName="value3" id="value3">
+                                <option value="1"> 1 </option>
+                                <option value="2"> 2 </option>
+                                <option value="3"> 3 </option>
+                                <option value="4"> 4 </option>
+                                <option value="5"> 5 </option>
+                                <option value="6"> 6 </option>
+                                <option value="7"> 7 </option>
+                                <option value="8"> 8 </option>
+                                <option value="9"> 9 </option>
+                                <option value="10"> 10 </option>
+                                <option value="J"> Jack </option>
+                                <option value="Q"> Queen </option>
+                                <option value="K"> King </option>
+                                <option value="A"> Ace </option>
+                            </select>
+        
+                            </div>
+                            <div class="form-group">
+                            <label for="suit3">Suit:</label>
+                            <select class="form-control" name="suit3" formControlName="suit3" id="suit3">
+                                <option value="D"> Diamond </option>
+                                <option value="H"> Heart </option>
+                                <option value="S"> Spades </option>
+                                <option value="C"> Clubs </option>
+                            </select>
+                            </div>
+        
+                            </div>
+                            </div>
+
+                    <div class="card text-black bg-primary mb-3">
+                            <div class="card-header">Card 4</div>
+                            <div class="card-body">
+                            <div class="form-group">
+                            <label for="value4">Value:</label>
+        
+                            <select class="form-control" name="value4" formControlName="value4" id="value4">
+                                <option value="1"> 1 </option>
+                                <option value="2"> 2 </option>
+                                <option value="3"> 3 </option>
+                                <option value="4"> 4 </option>
+                                <option value="5"> 5 </option>
+                                <option value="6"> 6 </option>
+                                <option value="7"> 7 </option>
+                                <option value="8"> 8 </option>
+                                <option value="9"> 9 </option>
+                                <option value="10"> 10 </option>
+                                <option value="J"> Jack </option>
+                                <option value="Q"> Queen </option>
+                                <option value="K"> King </option>
+                                <option value="A"> Ace </option>
+                            </select>
+        
+                            </div>
+                            <div class="form-group">
+                            <label for="suit4">Suit:</label>
+                            <select class="form-control" name="suit4" formControlName="suit4" id="suit4">
+                                <option value="D"> Diamond </option>
+                                <option value="H"> Heart </option>
+                                <option value="S"> Spades </option>
+                                <option value="C"> Clubs </option>
+                            </select>
+                            </div>
+        
+                            </div>
+                            </div>
+                    <div class="card text-white bg-dark mb-3">
+                            <div class="card-header">Card 5</div>
+                            <div class="card-body">
+                            <div class="form-group">
+                            <label for="value5">Value:</label>
+        
+                            <select class="form-control" name="value5"  formControlName="value5" id="value5">
+                                <option value="1"> 1 </option>
+                                <option value="2"> 2 </option>
+                                <option value="3"> 3 </option>
+                                <option value="4"> 4 </option>
+                                <option value="5"> 5 </option>
+                                <option value="6"> 6 </option>
+                                <option value="7"> 7 </option>
+                                <option value="8"> 8 </option>
+                                <option value="9"> 9 </option>
+                                <option value="10"> 10 </option>
+                                <option value="J"> Jack </option>
+                                <option value="Q"> Queen </option>
+                                <option value="K"> King </option>
+                                <option value="A"> Ace </option>
+                            </select>
+        
+                            </div>
+                            <div class="form-group">
+                            <label for="suit5">Suit:</label>
+                            <select class="form-control" name="suit5"  formControlName="suit5"  id="suit5">
+                                <option value="D"> Diamond </option>
+                                <option value="H"> Heart </option>
+                                <option value="S"> Spades </option>
+                                <option value="C"> Clubs </option>
+                            </select>
+                            </div>
+        
+                            </div>
+                            </div>
+    </div>
+
+    </fieldset>
+
+    <button class="btn btn-primary"  type="submit" value="submit">Add player</button>
+    <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+
+ </form>

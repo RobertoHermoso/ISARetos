@@ -4,3 +4,4 @@ package-lock.json
 package-lock.json
 OC01-LCD/lcd-server/node_modules/*
 OC02-LCD-FrontEnd/lcdServer/node_modules/*
+OC03-Poker-FrontEnd/pokerAPI/node_modules/*

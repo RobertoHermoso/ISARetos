@@ -1,0 +1,143 @@
+openapi: 3.0.0
+info:
+  description: API For Poker
+  version: 1.0.0
+  title: Poker API
+  contact:
+    email: rhermoso98@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+tags:
+  - name: jugadas
+    description: Obtencion de las jugadas de cada ronda
+  - name: resultados
+    description: Obtencion de los resultados de cada partida
+paths:
+  /jugadas:
+    get:
+      tags:
+        - jugadas
+      summary: Obtienes todas las jugadas de las partidas.
+      operationId: getJugadas
+      description: >
+        Obtienes todas las jugadas de las partidas  Está compuesta por una lista
+        de cada partida, en cada una de ellas estará definido las cartas de cada
+        jugador, su apuesta, el nombre del jugador y el bote de la partida
+      responses:
+        "200":
+          description: Obtienes todas las jugadas almacenadas
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Jugada"
+        "400":
+          description: No se encuentran jugadas
+    post:
+      tags:
+        - jugadas
+      summary: Añade una jugada
+      operationId: addJugadas
+      description: Añade una jugada completa con todos los jugadores y el bote
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Jugada"
+        description: Juagada a añadir
+      responses:
+        "201":
+          description: Jugada agregada
+        "400":
+          description: Parametros erroneos
+        "409":
+          description: La jugada existe
+    delete:
+      tags:
+        - jugadas
+      summary: Elimina las jugadas almacenadas
+      description: Elimina todas las jugadas almacenadas en el archivo json
+      responses:
+        "200":
+          description: OK
+  /resultados:
+    get:
+      tags:
+        - resultados
+      summary: Obtienes todas los resultados de las partidas.
+      operationId: getResultados
+      description: "Obtienes todos los resultados de cada partida los resultados pueden
+        ser: X jugador ha ganado Y, Partida amañada o empate"
+      responses:
+        "200":
+          description: Obtienes todos los resultados de las partidas almacenadas
+          content:
+            "*/*":
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Resultado"
+        "400":
+          description: No se encuentran jugadas
+  /resultado:
+    get:
+      tags:
+        - resultados
+      summary: Obtienes todos los resultados de la partida pasada por parametro.
+      operationId: getResultado
+      description: "Obtienes el resultado la partida pasada por parametro, los resultados
+        pueden ser: X jugador ha ganado Y, Partida amañada o empate"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Jugada"
+        description: Juagada para obtener el resultado
+      responses:
+        "200":
+          description: Obtienes el resultado de la partida
+          content:
+            "*/*":
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Resultado"
+        "400":
+          description: La entrada no es válida
+servers:
+  - url: https://virtserver.swaggerhub.com/Quimi11/Poker/1.0.0
+components:
+  schemas:
+    Jugada:
+      type: object
+      required:
+        - jugador
+        - apuesta
+        - cartas
+      properties:
+        jugador:
+          type: string
+          example: Cristiano
+        apuesta:
+          type: integer
+          example: 1000
+        cartas:
+          type: array
+          minimum: 5
+          maximum: 5
+          items:
+            type: object
+            properties:
+              valor:
+                type: string
+                example: 9
+              palo:
+                type: string
+                example: D
+    Resultado:
+      type: array
+      items:
+        type: string
+        example: El jugador Cristiano ha ganado 2300
