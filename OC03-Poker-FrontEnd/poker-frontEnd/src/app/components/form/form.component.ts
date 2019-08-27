@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http'
 
+import {PlayersService} from '../../services/players.service'
+
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -13,17 +15,15 @@ export class FormComponent implements OnInit {
   playerForm: FormGroup
 
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
+
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private PlayersService: PlayersService) { }
 
 
-  partida= { "jugadas" : []};
-  
-  jugada = [];
 
   ngOnInit() {
     this.playerForm = this.formBuilder.group({
       playerName: ['', Validators.required],
-      moneyPot: ['', [Validators.required, Validators.min(0)]],
+      bet: ['', [Validators.required, Validators.min(0)]],
       value1:['', Validators.required],
       value2:['', Validators.required],
       value3:['', Validators.required],
@@ -39,9 +39,36 @@ export class FormComponent implements OnInit {
   }
 
   addPlayer(){
-    //this.jugadas.push(this.playerForm.valueChanges)
-    this.jugada.push(this.playerForm.value.playerName)
+    var jugada = {
+      "jugador": this.playerForm.value.playerName,
+      "apuesta": this.playerForm.value.bet,
+      "cartas":[
+        {
+          "valor":this.playerForm.value.value1,
+          "palo": this.playerForm.value.suit1
+        },
+        {
+          "valor":this.playerForm.value.value2,
+          "palo": this.playerForm.value.suit2
+        },
+        {
+          "valor":this.playerForm.value.value3,
+          "palo": this.playerForm.value.suit3
+        },
+        {
+          "valor":this.playerForm.value.value4,
+          "palo": this.playerForm.value.suit4
+        },
+        {
+          "valor":this.playerForm.value.value5,
+          "palo": this.playerForm.value.suit5
+        },
+      ]
+    }
+    this.PlayersService.jugadas.jugadas.push(jugada)
+    var res = JSON.stringify(this.PlayersService.jugadas, null, "\t")
     console.log(this.playerForm.value)
+    console.log(res)
   }
 
   onReset() {

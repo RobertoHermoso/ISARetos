@@ -3,7 +3,21 @@
   <img width="500" alt="Angular Logo" src="assets/img/pokerLogo.png">
 </div>
 <div style="margin:50px">
-<h2>Add your players: </h2>
-<app-form></app-form>
+<div class="card border-primary mb-8">
+  <div class="card-header">Add your players:</div>
+  <div class="card-body">
+      <app-form></app-form>
+  </div>
+</div>
+
+<br/>
+<div class="card border-secondary mb-8">
+    <div class="card-header">Players:</div>
+    <div class="card-body">
+        <app-players></app-players>
+    </div>
+  </div>
+
+
 </div>
 <router-outlet></router-outlet>
