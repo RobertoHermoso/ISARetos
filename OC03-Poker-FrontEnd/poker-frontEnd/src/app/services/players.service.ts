@@ -8,6 +8,10 @@ export class PlayersService {
   jugadas = {"jugadas": 
     []
   };
+  cardImage = new Map();
 
-  constructor() { }
+ 
+  constructor() { 
+
+  }
 }

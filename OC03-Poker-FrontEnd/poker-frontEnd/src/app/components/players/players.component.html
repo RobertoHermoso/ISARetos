@@ -1,6 +1,14 @@
-<p>players works!</p>
 
 <div *ngFor= "let jugada of PlayersService.jugadas.jugadas">
-    {{jugada.jugador}}
+    <div class="card bg-light mb-3" style="max-width: 30rem;">
+        <div class="card-body">
+          <h4 class="card-title">Player: {{jugada.jugador}}</h4>
+          <p class="card-text">Bet: {{jugada.apuesta}}</p>
+          <div *ngFor= "let card of jugada.cartas">
+
+              <img src="{{getUrlFromCard(card)}}"/>
+          </div>
+        </div>
+      </div>
 
 </div>
