@@ -11,6 +11,7 @@ import { PlayersService } from '../../services/players.service'
 export class PlaysAndResultComponent implements OnInit {
 
   jugadasResult : any
+  results : any
 
   constructor(public PlayersService : PlayersService ,private http: HttpClient ) { }
 
@@ -27,10 +28,31 @@ export class PlaysAndResultComponent implements OnInit {
     }
   )
 
+  this.http.get(this.PlayersService.rootURL+"/resultados").subscribe(
+    (data: []) => {
+      var acum = []
+       data['result'].forEach(element => {
+            acum.push(element)
+      });
+      this.results = acum
+      console.log(this.results)
+    }
+  )
+
   }
 
   getIndex (list: [], element: any){
     return list.findIndex(element); 
+  }
+
+  delete(){
+
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+
+    this.http.delete<any>(this.PlayersService.rootURL+"/jugadas", {headers: headers}).subscribe(
+  
+    );
+    window.location.reload();
   }
 
   

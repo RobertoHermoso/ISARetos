@@ -1,7 +1,18 @@
-.card{
+
+
+.conjunto{
     float:left;
-    margin: 15px;
-    width: 15%
+    margin: 20px;
+
+    /*border-left: thick solid #2c1e1e;*/
+    border-image:  linear-gradient(
+        to bottom, 
+        red, 
+        rgb(0, 0, 0)
+      ) 1 100%;
+    border-left-width: 10px;
+    border-left-style: solid;
+    padding: 30px
 }
 
 img {

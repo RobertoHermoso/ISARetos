@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, Form} from '@angular/forms';
 import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http'
 
 import {PlayersService} from '../../services/players.service'
@@ -13,6 +13,7 @@ import {PlayersService} from '../../services/players.service'
 export class FormComponent implements OnInit {
 
   playerForm: FormGroup
+  boteForm : FormGroup
 
 
 
@@ -35,6 +36,10 @@ export class FormComponent implements OnInit {
       suit4:['', Validators.required],
       suit5:['', Validators.required],
 
+  });
+
+  this.boteForm = this.formBuilder.group({
+    money: ['', Validators.required]
   });
   }
 
@@ -70,6 +75,16 @@ export class FormComponent implements OnInit {
     console.log(this.playerForm.value)
     console.log(res)
   }
+
+  addBote(){
+    var bote = this.boteForm.value.money
+    this.PlayersService.jugadas.bote = bote
+    var res = JSON.stringify(this.PlayersService.jugadas, null, "\t")
+    console.log(res)
+    this.boteForm.reset()
+  }
+
+
 
   onReset() {
     this.playerForm.reset();

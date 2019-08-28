@@ -36,7 +36,7 @@ module.exports.funcjugadasDELETE = function funcjugadasDELETE(req, res, next) {
   var rowdata = fs.readFileSync('jsonFiles/poker.json', 'utf8')
   var json = JSON.parse(rowdata)
 
-  var aux = [{}];
+  var aux = [];
 
   json['partida'] = aux
 

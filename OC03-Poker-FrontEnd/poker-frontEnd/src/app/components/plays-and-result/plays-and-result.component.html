@@ -1,7 +1,8 @@
+<button class="btn btn-danger"  type="submit" value="submit" (click)="delete()" >Delete games</button>
 
-
-<div *ngFor= "let conjunto of jugadasResult">
-    <h1> Game {{getIndex(jugadasResult, conjunto)}} : </h1>
+<div *ngFor= "let conjunto of jugadasResult; let i = index">
+    <div class= "conjunto">
+    <h1> Game {{i+1}}:  </h1>
     <div *ngFor= "let jugada of conjunto.jugadas">
         <div class="card bg-light mb-5">
             <div class="card-body">
@@ -15,4 +16,11 @@
         </div>
 
     </div>
+    
+    <h3>Bote: {{conjunto.bote}} </h3>
+
+    <h3>Result: {{results[i]}}</h3>
+
+    </div>
 </div>
+

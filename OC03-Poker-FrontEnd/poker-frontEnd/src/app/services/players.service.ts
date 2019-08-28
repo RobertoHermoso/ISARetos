@@ -7,6 +7,7 @@ export class PlayersService {
 
   jugadas = {"jugadas": 
     []
+    ,"bote": 0
   };
   cardImage = new Map();
 

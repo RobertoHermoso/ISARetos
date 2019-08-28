@@ -1,5 +1,6 @@
-
+<h3>Bote: {{PlayersService.jugadas.bote}} </h3>
 <div *ngFor= "let jugada of PlayersService.jugadas.jugadas">
+  
     <div class="card bg-light mb-5">
         <div class="card-body">
           <h4 class="card-title">Player: {{jugada.jugador}}</h4>
@@ -12,3 +13,9 @@
       </div>
 
 </div>
+
+<br/>
+
+<button class="btn btn-primary"  type="submit" value="submit" (click)="addGame()" >Add Game</button>
+
+

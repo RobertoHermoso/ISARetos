@@ -195,3 +195,16 @@
     <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
 
  </form>
+<br/>
+ <form [formGroup]="boteForm" (ngSubmit)="addBote()" ngNativeValidate>
+     <fieldset>
+            <div class="form-group">
+                    <label for="money">Bote:</label>
+                    <input type="number" required formControlName="money" class="form-control" id="money" placeholder="3000" min=0>
+            </div>
+
+
+     </fieldset>
+
+<button class="btn btn-primary"  type="submit" value="submit">Add bote</button>
+ </form>
