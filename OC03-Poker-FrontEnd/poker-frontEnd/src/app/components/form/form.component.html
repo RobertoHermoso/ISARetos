@@ -1,12 +1,12 @@
- <form [formGroup]="playerForm" (ngSubmit)="addPlayer()">
+ <form [formGroup]="playerForm" (ngSubmit)="addPlayer()" ngNativeValidate>
     <fieldset>
             <div class="form-group">
                     <label for="playerName">Player name:</label>
-                    <input type="text" class="form-control" formControlName="playerName" id="playerName" placeholder="Narancia">
+                    <input type="text" class="form-control" formControlName="playerName" id="playerName" placeholder="Narancia" required>
             </div>
             <div class="form-group">
                     <label for="bet">Bet (In €):</label>
-                    <input type="number" formControlName="bet" class="form-control" id="bet" placeholder="2000" min=0>
+                    <input type="number" required formControlName="bet" class="form-control" id="bet" placeholder="2000" min=0>
             </div>
            <div class="center"> 
                <h1> Hand:</h1>
@@ -16,7 +16,7 @@
                     <div class="form-group">
                     <label for="value1">Value:</label>
 
-                    <select class="form-control" formControlName="value1" name="value1" id="value1">
+                    <select class="form-control" required formControlName="value1" name="value1" id="value1">
                         <option value="2"> 2 </option>
                         <option value="3"> 3 </option>
                         <option value="4"> 4 </option>
@@ -35,7 +35,7 @@
                     </div>
                     <div class="form-group">
                     <label for="suit1">Suit:</label>
-                    <select class="form-control" name="suit1" formControlName="suit1" id="suit1">
+                    <select class="form-control" required name="suit1" formControlName="suit1" id="suit1">
                         <option value="D"> Diamond </option>
                         <option value="H"> Heart </option>
                         <option value="S"> Spades </option>
@@ -52,7 +52,7 @@
                             <div class="form-group">
                             <label for="value2">Value:</label>
         
-                            <select class="form-control" name="value2" formControlName="value2" id="value2">
+                            <select class="form-control" required name="value2" formControlName="value2" id="value2">
                                 <option value="2"> 2 </option>
                                 <option value="3"> 3 </option>
                                 <option value="4"> 4 </option>
@@ -71,7 +71,7 @@
                             </div>
                     <div class="form-group">
                     <label for="suit2">Suit:</label>
-                    <select class="form-control" name="suit2" formControlName="suit2" id="suit2">
+                    <select class="form-control" name="suit2" required formControlName="suit2" id="suit2">
                         <option value="D"> Diamond </option>
                         <option value="H"> Heart </option>
                         <option value="S"> Spades </option>
@@ -87,7 +87,7 @@
                             <div class="form-group">
                             <label for="value3">Value:</label>
         
-                            <select class="form-control" name="value3" formControlName="value3" id="value3">
+                            <select class="form-control" required name="value3" formControlName="value3" id="value3">
                                 <option value="2"> 2 </option>
                                 <option value="3"> 3 </option>
                                 <option value="4"> 4 </option>
@@ -106,7 +106,7 @@
                             </div>
                             <div class="form-group">
                             <label for="suit3">Suit:</label>
-                            <select class="form-control" name="suit3" formControlName="suit3" id="suit3">
+                            <select class="form-control" required name="suit3" formControlName="suit3" id="suit3">
                                 <option value="D"> Diamond </option>
                                 <option value="H"> Heart </option>
                                 <option value="S"> Spades </option>
@@ -123,7 +123,7 @@
                             <div class="form-group">
                             <label for="value4">Value:</label>
         
-                            <select class="form-control" name="value4" formControlName="value4" id="value4">
+                            <select class="form-control" required name="value4" formControlName="value4" id="value4">
                                 <option value="2"> 2 </option>
                                 <option value="3"> 3 </option>
                                 <option value="4"> 4 </option>
@@ -142,7 +142,7 @@
                             </div>
                             <div class="form-group">
                             <label for="suit4">Suit:</label>
-                            <select class="form-control" name="suit4" formControlName="suit4" id="suit4">
+                            <select class="form-control" required name="suit4" formControlName="suit4" id="suit4">
                                 <option value="D"> Diamond </option>
                                 <option value="H"> Heart </option>
                                 <option value="S"> Spades </option>
@@ -158,7 +158,7 @@
                             <div class="form-group">
                             <label for="value5">Value:</label>
         
-                            <select class="form-control" name="value5"  formControlName="value5" id="value5">
+                            <select class="form-control" required name="value5"  formControlName="value5" id="value5">
                                 <option value="2"> 2 </option>
                                 <option value="3"> 3 </option>
                                 <option value="4"> 4 </option>
@@ -177,7 +177,7 @@
                             </div>
                             <div class="form-group">
                             <label for="suit5">Suit:</label>
-                            <select class="form-control" name="suit5"  formControlName="suit5"  id="suit5">
+                            <select class="form-control" required name="suit5"  formControlName="suit5"  id="suit5">
                                 <option value="D"> Diamond </option>
                                 <option value="H"> Heart </option>
                                 <option value="S"> Spades </option>

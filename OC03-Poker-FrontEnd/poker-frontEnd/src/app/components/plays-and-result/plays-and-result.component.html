@@ -1,0 +1,18 @@
+
+
+<div *ngFor= "let conjunto of jugadasResult">
+    <h1> Game {{getIndex(jugadasResult, conjunto)}} : </h1>
+    <div *ngFor= "let jugada of conjunto.jugadas">
+        <div class="card bg-light mb-5">
+            <div class="card-body">
+            <h4 class="card-title">Player: {{jugada.jugador}}</h4>
+            <p class="card-text">Bet: {{jugada.apuesta}}</p>
+            <div class ="cardList" *ngFor= "let card of jugada.cartas">
+
+                <img class= "cards"src="{{PlayersService.getUrlFromCard(card)}}"/>
+            </div>
+            </div>
+        </div>
+
+    </div>
+</div>

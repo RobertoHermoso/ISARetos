@@ -39,10 +39,8 @@ onSubmit() {
 
   let params = new HttpParams().set('t',this.lcdForm.value.t).set('n',this.lcdForm.value.n)
 
-
   this.submitted = true;
 
-  console.log(this.lcdForm)
   // stop here if form is invalid
   if (this.lcdForm.invalid) {
       return;
